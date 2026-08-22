@@ -1,13 +1,16 @@
 @use 'media' as media;
 
 :host {
+    --sidebar-width: 17.5rem; /* 280px в rem */
+    --scrollbar-width: 0.25rem; /* 4px в rem */
+
     display: block;
     width: 100%;
 }
 
 .sidebar-layout {
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     gap: var(--unit-8);
     align-items: start;
     width: 100%;
@@ -26,7 +29,7 @@
         scrollbar-width: thin;
 
         &::-webkit-scrollbar {
-            width: 4px;
+            width: var(--scrollbar-width);
         }
 
         &::-webkit-scrollbar-thumb {

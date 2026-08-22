@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { HeaderComponent } from '@widgets/header';
+import { SidebarLayoutComponent } from '@shared/sidebar-layout';
 
 @Component({
     selector: 'app-root',
-    imports: [HeaderComponent],
+    imports: [SidebarLayoutComponent],
     templateUrl: './app.component.html',
 })
 export class AppComponent {

@@ -1,8 +1,8 @@
 @use 'media' as media;
 
 :host {
-    --sidebar-width: 17.5rem; /* 280px в rem */
-    --scrollbar-width: 0.25rem; /* 4px в rem */
+    --sidebar-width: 17.5rem;
+    --scrollbar-width: 0.25rem;
 
     display: block;
     width: 100%;

@@ -1,0 +1,31 @@
+@use 'media' as media;
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition:
+        background-color var(--transition-base),
+        color var(--transition-base);
+
+    &__main {
+        flex-grow: 1;
+        padding-top: var(--unit-8);
+        padding-bottom: var(--unit-8);
+    }
+
+    &__container {
+        width: 100%;
+        max-width: media.$screen-xxl;
+        margin: 0 auto;
+        padding-right: var(--unit-4);
+        padding-left: var(--unit-4);
+    }
+}

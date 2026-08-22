@@ -1,0 +1,53 @@
+# https://editorconfig.org
+root = true
+
+# --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ ---
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+# --- TYPESCRIPT / JAVASCRIPT / STYLES ---
+[*.{js,jsx,ts,tsx,css,scss}]
+indent_style = space
+indent_size = 4
+
+# --- ANGULAR HTML TEMPLATES ---
+[*.html]
+indent_style = space
+indent_size = 2
+
+# --- JSON & CONFIGS ---
+[*.{json,jsonc,babelrc,eslintrc,prettierrc}]
+indent_style = space
+indent_size = 2
+
+# --- DOCKER & YAML ---
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# --- PRISMA SCHEMA ---
+[*.prisma]
+indent_style = space
+indent_size = 2
+
+# В Markdown два пробела в конце строки означают переносы <br>, поэтому trim_trailing_whitespace отключаем
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+# Makefiles требуют строго реальных табуляций для выполнения команд
+[{Makefile,*.mk}]
+indent_style = tab
+indent_size = 4
+
+[*.sh]
+end_of_line = lf
+indent_style = space
+indent_size = 2

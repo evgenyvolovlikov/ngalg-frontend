@@ -38,6 +38,12 @@ const articlesRoute: Route = {
     loadChildren: () => import('@pages/articles-pages').then((routes) => routes.ARTICLE_ROUTES),
 };
 
+/* Курс */
+const courseRoute: Route = {
+    path: APP_ROUTES_MAP.COURSE.path,
+    loadChildren: () => import('@pages/course-pages').then((routes) => routes.COURSE_ROUTES),
+};
+
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
 export const appRoutes: Routes = [
     landingPage,
@@ -45,4 +51,5 @@ export const appRoutes: Routes = [
     dashboardRoute,
     tracksRoute,
     articlesRoute,
+    courseRoute,
 ];

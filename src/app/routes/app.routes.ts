@@ -13,6 +13,12 @@ const landingPage: Route = {
 
 /*  ПРИВАТНЫЕ ПОЛЯ */
 
+/* Авторизация */
+const authRoute: Route = {
+    path: APP_ROUTES_MAP.AUTH.path,
+    loadChildren: () => import('@pages/auth-page').then((routes) => routes.AUTH_ROUTES),
+};
+
 /* Статьи */
 const articlesRoute: Route = {
     path: APP_ROUTES_MAP.ARTICLES.path,
@@ -20,4 +26,4 @@ const articlesRoute: Route = {
 };
 
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
-export const appRoutes: Routes = [landingPage, articlesRoute];
+export const appRoutes: Routes = [landingPage, authRoute, articlesRoute];

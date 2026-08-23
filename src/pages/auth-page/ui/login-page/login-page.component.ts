@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { AuthLoginFormComponent } from '@features/auth-by-login';
+
 import { AuthLayoutComponent } from '@shared/layouts/auth-layout';
 
 @Component({
@@ -7,6 +9,6 @@ import { AuthLayoutComponent } from '@shared/layouts/auth-layout';
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: 'login-page.component.html',
-    imports: [AuthLayoutComponent],
+    imports: [AuthLayoutComponent, AuthLoginFormComponent],
 })
 export class LoginPageComponent {}

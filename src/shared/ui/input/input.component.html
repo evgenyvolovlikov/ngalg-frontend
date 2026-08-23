@@ -1,0 +1,42 @@
+<div [class]="containerClasses()">
+  @if (label()) {
+  <label [for]="inputId()" class="input-container__label"> {{ label() }} </label>
+  }
+
+  <div class="input-container__wrapper">
+    <ng-content select="[prefix]" />
+
+    <input
+      [id]="inputId()"
+      [type]="currentType()"
+      [value]="value()"
+      [placeholder]="placeholder()"
+      [disabled]="isDisabled()"
+      [readOnly]="readonly()"
+      [attr.autocomplete]="autocomplete()"
+      [attr.aria-invalid]="error() ? 'true' : null"
+      [attr.aria-describedby]="error() ? errorId() : null"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      class="input-container__field"
+    />
+
+    @if (type() === 'password') {
+    <button
+      type="button"
+      class="input-container__eye-btn"
+      [disabled]="isDisabled()"
+      (click)="togglePasswordVisibility()"
+      [attr.aria-label]="showPassword() ? 'Скрыть пароль' : 'Показать пароль'"
+    >
+      <span class="input-container__eye-icon" [class.input-container__eye-icon--active]="showPassword()"></span>
+    </button>
+    }
+
+    <ng-content select="[suffix]" />
+  </div>
+
+  @if (error()) {
+  <span [id]="errorId()" class="input-container__error-text" role="alert"> {{ error() }} </span>
+  }
+</div>

@@ -1,0 +1,30 @@
+<button [type]="type()" [class]="buttonClasses()" [disabled]="isDisabled()" [attr.aria-busy]="loading()">
+  @if (loading()) {
+  <svg class="button__spinner" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      fill="none"
+      stroke-width="3"
+      stroke-dasharray="32"
+      opacity="0.25"
+    />
+    <circle
+      cx="12"
+      cy="12"
+      r="10"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-dasharray="16"
+      stroke-linecap="round"
+    />
+  </svg>
+  }
+
+  <span class="button__content">
+    <ng-content />
+  </span>
+</button>

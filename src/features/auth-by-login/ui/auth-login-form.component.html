@@ -1,0 +1,56 @@
+<div class="auth-login-form">
+  <header class="auth-login-form__header">
+    <h2 class="auth-login-form__title">Вход в систему</h2>
+    <p class="auth-login-form__subtitle">Введите свои данные для доступа к личному кабинету</p>
+  </header>
+
+  @if (serverError()) {
+  <div class="auth-login-form__alert auth-login-form__alert--error" role="alert">{{ serverError() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-login-form__form" novalidate>
+    <app-input
+      formControlName="email"
+      type="email"
+      size="md"
+      label="Электронная почта"
+      placeholder="example@domain.com"
+      autocomplete="username"
+      [error]="getErrorMessage('email')"
+      class="auth-login-form__field"
+    />
+
+    <app-input
+      formControlName="password"
+      type="password"
+      size="md"
+      label="Пароль"
+      placeholder="Введите ваш пароль"
+      autocomplete="current-password"
+      [error]="getErrorMessage('password')"
+      class="auth-login-form__field"
+    />
+
+    <div class="auth-login-form__forgot-wrapper">
+      <app-link variant="secondary" routerLink="/auth/reset-password" class="auth-login-form__forgot-link">
+        Забыли пароль?
+      </app-link>
+    </div>
+
+    <app-button
+      type="submit"
+      variant="primary"
+      size="lg"
+      [fullWidth]="true"
+      [loading]="isLoading()"
+      class="auth-login-form__submit"
+    >
+      Войти
+    </app-button>
+  </form>
+
+  <footer class="auth-login-form__footer">
+    <span class="auth-login-form__footer-text">Нет аккаунта?</span>
+    <app-link variant="underline" routerLink="/auth/register"> Создать профиль </app-link>
+  </footer>
+</div>

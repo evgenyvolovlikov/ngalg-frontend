@@ -35,7 +35,6 @@
     /* Path Aliases (FSD Архитектура) */
     "rootDir": ".",
     "paths": {
-      "@src/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],

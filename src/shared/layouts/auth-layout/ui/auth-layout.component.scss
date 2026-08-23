@@ -1,0 +1,49 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.auth-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--unit-4);
+    background-color: var(--background-color);
+    transition: background-color var(--transition-base);
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    &__brand {
+        margin-bottom: var(--unit-6);
+    }
+
+    &__logo {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+        letter-spacing: -0.5px;
+
+        &:hover {
+            opacity: var(--opacity-hover);
+        }
+    }
+
+    &__card {
+        width: 100%;
+        padding: var(--unit-8);
+        background-color: var(--surface-color, var(--background-color));
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        transition:
+            background-color var(--transition-base),
+            border-color var(--transition-base);
+    }
+}

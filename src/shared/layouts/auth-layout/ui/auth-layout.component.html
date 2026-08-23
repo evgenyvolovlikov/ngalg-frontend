@@ -1,0 +1,13 @@
+<main class="auth-layout">
+  <div class="auth-layout__wrapper">
+    @if (brandName()) {
+    <div class="auth-layout__brand">
+      <app-link routerLink="/" class="auth-layout__logo"> {{ brandName() }} </app-link>
+    </div>
+    }
+
+    <div class="auth-layout__card">
+      <ng-content />
+    </div>
+  </div>
+</main>

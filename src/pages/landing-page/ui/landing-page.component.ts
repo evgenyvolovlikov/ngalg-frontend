@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { MainLayoutComponent } from '@shared/main-layout';
+import { MainLayoutComponent } from '@shared/layouts/main-layout';
 
 @Component({
     selector: 'app-landing-page',

@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-
-import { SidebarLayoutComponent } from '@shared/sidebar-layout';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
-    imports: [SidebarLayoutComponent],
+    imports: [RouterOutlet],
     templateUrl: './app.component.html',
 })
 export class AppComponent {

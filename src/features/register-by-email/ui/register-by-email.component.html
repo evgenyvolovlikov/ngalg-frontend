@@ -1,0 +1,71 @@
+<div class="send-register-form">
+  <header class="send-register-form__header">
+    <h2 class="send-register-form__title">Создать аккаунт</h2>
+    <p class="send-register-form__subtitle">Заполните поля ниже для регистрации в системе</p>
+  </header>
+
+  @if (serverError()) {
+  <div class="send-register-form__alert send-register-form__alert--error" role="alert">{{ serverError() }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="send-register-form__form" novalidate>
+    <app-input
+      formControlName="name"
+      size="md"
+      label="Имя пользователя"
+      placeholder="Введите ваше имя"
+      autocomplete="name"
+      [error]="getErrorMessage('name')"
+      class="send-register-form__field"
+    />
+
+    <app-input
+      formControlName="email"
+      type="email"
+      size="md"
+      label="Электронная почта"
+      placeholder="example@domain.com"
+      autocomplete="email"
+      [error]="getErrorMessage('email')"
+      class="send-register-form__field"
+    />
+
+    <app-input
+      formControlName="password"
+      type="password"
+      size="md"
+      label="Пароль"
+      placeholder="Минимум 8 символов"
+      autocomplete="new-password"
+      [error]="getErrorMessage('password')"
+      class="send-register-form__field"
+    />
+
+    <app-input
+      formControlName="confirmPassword"
+      type="password"
+      size="md"
+      label="Подтверждение пароля"
+      placeholder="Повторите ваш пароль"
+      autocomplete="new-password"
+      [error]="getErrorMessage('confirmPassword')"
+      class="send-register-form__field"
+    />
+
+    <app-button
+      type="submit"
+      variant="primary"
+      size="lg"
+      [fullWidth]="true"
+      [loading]="isLoading()"
+      class="send-register-form__submit"
+    >
+      Зарегистрироваться
+    </app-button>
+  </form>
+
+  <footer class="send-register-form__footer">
+    <span class="send-register-form__footer-text"> Уже есть аккаунт? </span>
+    <app-link variant="underline" routerLink="/auth/login"> Войти </app-link>
+  </footer>
+</div>

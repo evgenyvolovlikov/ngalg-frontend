@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { ResetPasswordFormComponent } from '@features/reset-password-form';
+
 import { AuthLayoutComponent } from '@shared/layouts/auth-layout';
 
 @Component({
@@ -8,6 +10,6 @@ import { AuthLayoutComponent } from '@shared/layouts/auth-layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: 'reset-page.component.html',
 
-    imports: [AuthLayoutComponent],
+    imports: [AuthLayoutComponent, ResetPasswordFormComponent],
 })
 export class ResetPageComponent {}

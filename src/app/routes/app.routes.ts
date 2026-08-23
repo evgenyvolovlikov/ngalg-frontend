@@ -26,6 +26,12 @@ const dashboardRoute: Route = {
         import('@pages/dashboard-page').then((component) => component.DashboardPageComponent),
 };
 
+/* Треки */
+const tracksRoute: Route = {
+    path: APP_ROUTES_MAP.TRACKS.path,
+    loadChildren: () => import('@pages/tracks-page').then((routes) => routes.TRACK_ROUTES),
+};
+
 /* Статьи */
 const articlesRoute: Route = {
     path: APP_ROUTES_MAP.ARTICLES.path,
@@ -33,4 +39,10 @@ const articlesRoute: Route = {
 };
 
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
-export const appRoutes: Routes = [landingPage, authRoute, dashboardRoute, articlesRoute];
+export const appRoutes: Routes = [
+    landingPage,
+    authRoute,
+    dashboardRoute,
+    tracksRoute,
+    articlesRoute,
+];

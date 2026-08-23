@@ -1,0 +1,172 @@
+.header {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background-color: var(--background-color);
+    transition:
+        border-color var(--transition-base),
+        background-color var(--transition-base);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--screen-xxl);
+        height: var(--unit-12);
+        margin: 0 auto;
+        padding: 0 var(--unit-8);
+    }
+
+    &__logo {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+        letter-spacing: -0.5px;
+    }
+
+    &__nav-wrapper {
+        display: flex;
+        gap: var(--unit-8);
+        align-items: center;
+    }
+
+    &__menu {
+        display: flex;
+        gap: var(--unit-6);
+    }
+
+    &__link {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-color);
+
+        &:hover {
+            opacity: var(--opacity-hover);
+        }
+    }
+
+    &__nav-actions {
+        display: flex;
+        gap: var(--unit-3);
+        align-items: center;
+    }
+
+    &__burger {
+        display: none;
+    }
+
+    &__overlay {
+        display: none;
+    }
+}
+
+@media (width <= 768px) {
+    .header {
+        &__overlay {
+            position: fixed;
+            z-index: 90;
+            display: block;
+            background-color: rgb(0 0 0 / 50%);
+            inset: 0;
+            backdrop-filter: blur(2px);
+        }
+
+        &__burger {
+            position: relative;
+            z-index: 110;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+
+            span,
+            &::before,
+            &::after {
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-color);
+                border-radius: 1px;
+                transition:
+                    transform var(--transition-fast),
+                    opacity var(--transition-fast);
+                content: '';
+            }
+
+            &::before {
+                transform: translateY(-7px);
+            }
+
+            &::after {
+                transform: translateY(7px);
+            }
+
+            &--active {
+                span {
+                    opacity: 0;
+                }
+
+                &::before {
+                    transform: translateY(0) rotate(45deg);
+                }
+
+                &::after {
+                    transform: translateY(0) rotate(-45deg);
+                }
+            }
+        }
+
+        &__nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            z-index: 100;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            padding: var(--unit-20) var(--unit-6) var(--unit-6);
+            background-color: var(--background-color);
+            transition: right var(--transition-base);
+            border-left: 1px solid var(--border-color);
+
+            &--open {
+                right: 0;
+            }
+        }
+
+        &__nav-wrapper {
+            flex-direction: column;
+            gap: var(--unit-8);
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__menu {
+            flex-direction: column;
+            gap: var(--unit-4);
+            width: 100%;
+            padding-top: var(--unit-16);
+            padding-left: var(--unit-4);
+        }
+
+        &__link {
+            font-size: var(--font-size-lg);
+        }
+
+        &__nav-actions {
+            justify-content: space-between;
+            width: 100%;
+            padding-top: var(--unit-4);
+            border-top: 1px solid var(--border-color);
+        }
+    }
+}

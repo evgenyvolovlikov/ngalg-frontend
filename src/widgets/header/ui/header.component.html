@@ -1,1 +1,44 @@
-<header>Hello</header>
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<header class="header">
+  <div class="header__container">
+    <app-link routerLink="/" class="header__logo">
+      <span>ngalg</span>
+    </app-link>
+
+    <button
+      type="button"
+      class="header__burger"
+      [class.header__burger--active]="isMenuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-label]="isMenuOpen() ? 'Закрыть меню' : 'Открыть меню'"
+      [attr.aria-expanded]="isMenuOpen()"
+    >
+      <span></span>
+    </button>
+
+    @if (isMenuOpen()) {
+    <div class="header__overlay" (click)="closeMenu()" (window:keydown.escape)="closeMenu()"></div>
+    }
+
+    <nav class="header__nav" [class.header__nav--open]="isMenuOpen()">
+      <div class="header__nav-wrapper">
+        <ul class="header__menu">
+          @for (element of menuElements(); track element.label) {
+          <li>
+            <app-link variant="primary" [routerLink]="element.path" class="header__link" (click)="closeMenu()">
+              {{ element.label }}
+            </app-link>
+          </li>
+          }
+        </ul>
+
+        <div class="header__nav-actions">
+          <!-- TODO -->
+          <!-- <app-toggle-theme /> -->
+          <!-- <app-change-language /> -->
+          Actions
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

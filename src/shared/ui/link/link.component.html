@@ -1,3 +1,10 @@
-<a [routerLink]="routerLink()" [class]="'link link--' + variant()">
+<a
+  [attr.href]="url()"
+  [attr.target]="target()"
+  [attr.rel]="relValue()"
+  [class]="'link link--' + variant()"
+  [class.link--active]="isActive()"
+  (click)="handleClick($event)"
+>
   <ng-content />
 </a>

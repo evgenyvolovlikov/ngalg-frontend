@@ -8,6 +8,13 @@ export const TRACK_ROUTES: Routes = [
 
         children: [
             {
+                path: TRACKS_SUB_ROUTES.MAIN,
+                loadComponent: () =>
+                    import('../ui/tracks-page/tracks-page.component').then(
+                        (component) => component.TracksPageComponent,
+                    ),
+            },
+            {
                 path: TRACKS_SUB_ROUTES.DETAIL,
                 loadComponent: () =>
                     import('../ui/track-detail-page/track-detail-page.component').then(

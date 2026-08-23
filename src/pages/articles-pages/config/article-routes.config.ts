@@ -3,6 +3,7 @@ import { APP_ROUTES_MAP, getSafePath } from '@shared/config';
 const BASE_PATH = getSafePath(APP_ROUTES_MAP.ARTICLES.path);
 
 export const ARTICLE_SUB_ROUTES = {
+    MAIN: '',
     CREATE: 'create',
     UPDATE: ':category/:slug/update',
     DETAIL: ':category/:slug',

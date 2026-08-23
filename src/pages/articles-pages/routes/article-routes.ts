@@ -8,6 +8,13 @@ export const ARTICLE_ROUTES: Routes = [
 
         children: [
             {
+                path: ARTICLE_SUB_ROUTES.MAIN,
+                loadComponent: () =>
+                    import('../ui/articles-page/articles-page.component').then(
+                        (component) => component.ArticlesPageComponent,
+                    ),
+            },
+            {
                 path: ARTICLE_SUB_ROUTES.CREATE,
                 loadComponent: () =>
                     import('../ui/article-create-page/article-create-page.component').then(

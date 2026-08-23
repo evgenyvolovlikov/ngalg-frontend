@@ -1,5 +1,5 @@
 export type RouteMap =
-    'LANDING' | 'AUTH' | 'DASHBOARD' | 'TRACKS' | 'COURSE' | 'ARTICLES' | 'PROFILE';
+    'LANDING' | 'AUTH' | 'DASHBOARD' | 'TRACKS' | 'ARTICLES' | 'COURSE' | 'PROFILE';
 
 export interface AppRoute {
     id?: number;
@@ -14,8 +14,8 @@ export const APP_ROUTES_MAP: AppRoutes = {
     AUTH: { path: 'auth', label: 'Авторизация' },
     DASHBOARD: { path: 'dashboard', label: 'Дешборд' },
     TRACKS: { path: 'tracks', label: 'Треки' },
-    COURSE: { path: 'course', label: 'Курс' },
     ARTICLES: { path: 'articles', label: 'Статьи' },
+    COURSE: { path: 'course', label: 'Курс' },
     PROFILE: { path: 'profile', label: 'Профиль' },
 };
 

@@ -44,6 +44,12 @@ const courseRoute: Route = {
     loadChildren: () => import('@pages/course-pages').then((routes) => routes.COURSE_ROUTES),
 };
 
+/* Профиль */
+const profileRoute: Route = {
+    path: APP_ROUTES_MAP.PROFILE.path,
+    loadChildren: () => import('@pages/profile-page').then((routes) => routes.PROFILE_ROUTES),
+};
+
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
 export const appRoutes: Routes = [
     landingPage,
@@ -52,4 +58,5 @@ export const appRoutes: Routes = [
     tracksRoute,
     articlesRoute,
     courseRoute,
+    profileRoute,
 ];

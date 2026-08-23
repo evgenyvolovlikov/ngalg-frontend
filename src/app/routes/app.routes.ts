@@ -11,12 +11,19 @@ const landingPage: Route = {
         import('@pages/landing-page').then((component) => component.LandingPageComponent),
 };
 
-/*  ПРИВАТНЫЕ ПОЛЯ */
-
 /* Авторизация */
 const authRoute: Route = {
     path: APP_ROUTES_MAP.AUTH.path,
     loadChildren: () => import('@pages/auth-page').then((routes) => routes.AUTH_ROUTES),
+};
+
+/*  ПРИВАТНЫЕ ПОЛЯ */
+
+/* Дешборд */
+const dashboardRoute: Route = {
+    path: APP_ROUTES_MAP.DASHBOARD.path,
+    loadComponent: () =>
+        import('@pages/dashboard-page').then((component) => component.DashboardPageComponent),
 };
 
 /* Статьи */
@@ -26,4 +33,4 @@ const articlesRoute: Route = {
 };
 
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
-export const appRoutes: Routes = [landingPage, authRoute, articlesRoute];
+export const appRoutes: Routes = [landingPage, authRoute, dashboardRoute, articlesRoute];

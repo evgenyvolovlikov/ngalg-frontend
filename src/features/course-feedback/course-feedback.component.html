@@ -1,0 +1,38 @@
+<app-button variant="secondary" (click)="openModal()"> Send Feedback </app-button>
+
+<app-modal [(isOpen)]="isModalOpen" title="Send Feedback">
+  @if (isSuccess()) {
+  <div class="feedback-modal__success">
+    <p>Thank you for your feedback!</p>
+  </div>
+  } @else {
+  <form id="feedback-form" [formGroup]="form" (ngSubmit)="onSubmit()" class="feedback-modal__form">
+    <label class="feedback-modal__label" for="feedback-message"> What can we improve in this lesson? </label>
+
+    <textarea
+      id="feedback-message"
+      formControlName="message"
+      class="feedback-modal__textarea"
+      rows="5"
+      placeholder="I noticed that..."
+      [class.feedback-modal__textarea--error]="
+          form.get('message')?.invalid && form.get('message')?.touched
+        "
+    ></textarea>
+
+    @if ( form.get('message')?.hasError('minlength') && form.get('message')?.touched ) {
+    <span class="feedback-modal__error-text"> Message must be at least 10 characters long. </span>
+    }
+  </form>
+  }
+
+  <ng-container modal-actions>
+    @if (!isSuccess()) {
+    <app-button type="button" variant="ghost" [disabled]="isSubmitting()" (click)="closeModal()"> Cancel </app-button>
+
+    <app-button type="submit" form="feedback-form" variant="primary" [disabled]="isSubmitting() || form.invalid">
+      {{ isSubmitting() ? 'Sending...' : 'Send Feedback' }}
+    </app-button>
+    }
+  </ng-container>
+</app-modal>

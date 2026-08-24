@@ -243,6 +243,11 @@ body {
     overflow-x: clip;
 }
 
+/* Для модального окна */
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
 /* Списки */
 ul[class],
 ol[class] {

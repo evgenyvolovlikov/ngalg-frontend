@@ -1,0 +1,40 @@
+:host {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.icon {
+    display: block;
+    transition:
+        fill var(--transition-fast, 0.15s ease),
+        stroke var(--transition-fast, 0.15s ease),
+        color var(--transition-fast, 0.15s ease);
+    fill: currentcolor;
+
+    &--inherit {
+        width: 1em;
+        height: 1em;
+    }
+
+    &--sm {
+        width: var(--font-size-sm, 0.875rem);
+        height: var(--font-size-sm, 0.875rem);
+    }
+
+    &--md {
+        width: var(--font-size-base, 1rem);
+        height: var(--font-size-base, 1rem);
+    }
+
+    &--lg {
+        width: var(--font-size-lg, 1.125rem);
+        height: var(--font-size-lg, 1.125rem);
+    }
+
+    &--xl {
+        width: var(--font-size-xl, 1.25rem);
+        height: var(--font-size-xl, 1.25rem);
+    }
+}

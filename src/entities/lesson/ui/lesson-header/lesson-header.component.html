@@ -1,0 +1,14 @@
+<div class="lesson-header">
+  <div class="lesson-header__top">
+    <h1 class="lesson-header__title">{{ lesson().title }}</h1>
+
+    <app-badge variant="soft" color="success">
+      <app-icon name="clock" size="inherit" />
+      {{ lesson().durationMin }} min
+    </app-badge>
+  </div>
+
+  @if (lesson().description; as description) {
+  <p class="lesson-header__description">{{ description }}</p>
+  }
+</div>

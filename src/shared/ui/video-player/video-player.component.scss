@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.video-player {
+    position: relative;
+    display: flex;
+    width: 100%;
+    background-color: var(--inverted-background-color, #000);
+    border-radius: var(--radius-sm, 4px);
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    &__media {
+        width: 100%;
+        height: 100%;
+        background-color: var(--inverted-background-color, #000);
+        object-fit: cover;
+
+        &:focus-visible {
+            outline: 2px solid var(--border-focus);
+            outline-offset: -2px;
+        }
+    }
+
+    &__error {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: var(--unit-4, 1rem);
+        font-size: var(--font-size-base, 1rem);
+        font-weight: var(--font-weight-medium, 500);
+        line-height: var(--line-height-base, 1.5);
+        color: var(--text-on-contrast, #fff);
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+    }
+}

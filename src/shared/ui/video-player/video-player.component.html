@@ -1,0 +1,20 @@
+<div class="video-player">
+  @if (hasError()) {
+  <div class="video-player__error" role="alert">
+    <p>An error occurred when trying to load the video. Try refreshing the page.</p>
+  </div>
+  } @else {
+  <video
+    class="video-player__media"
+    controls
+    controlsList="nodownload"
+    preload="metadata"
+    [src]="src()"
+    [poster]="poster()"
+    (error)="onError()"
+    (ended)="onEnded()"
+  >
+    Ваш браузер не поддерживает тег видео.
+  </video>
+  }
+</div>

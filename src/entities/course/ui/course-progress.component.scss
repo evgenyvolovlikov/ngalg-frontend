@@ -1,0 +1,43 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.course-progress {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: var(--unit-6, 1.5rem);
+    font-family: var(--font-family-sans);
+    border-bottom: 1px solid var(--border-color);
+
+    &__title {
+        margin: 0 0 var(--unit-6, 1.5rem);
+        font-size: var(--font-size-lg, 1.125rem);
+        font-weight: var(--font-weight-medium, 500);
+        line-height: var(--line-height-tight, 1.25);
+        color: var(--text-color);
+    }
+
+    &__chart {
+        display: flex;
+        justify-content: center;
+        margin-bottom: var(--unit-8, 2rem);
+    }
+
+    &__stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: var(--font-size-sm, 0.875rem);
+    }
+
+    &__label {
+        color: var(--text-muted);
+    }
+
+    &__count {
+        font-weight: var(--font-weight-bold, 700);
+        color: var(--text-color);
+    }
+}

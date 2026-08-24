@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { CourseSidebarComponent } from '@widgets/course-sidebar';
+
 import { ARTICLE_SUB_ROUTES } from '../config/course-routes.config';
 
 export const COURSE_ROUTES: Routes = [
@@ -9,9 +11,9 @@ export const COURSE_ROUTES: Routes = [
         loadComponent: () =>
             import('@widgets/sidebar-layout').then((m) => m.SidebarLayoutComponent),
 
-        // data: {
-        //     sidebarComponent: ArticleNavigationComponent,
-        // },
+        data: {
+            sidebarComponent: CourseSidebarComponent,
+        },
 
         children: [
             {

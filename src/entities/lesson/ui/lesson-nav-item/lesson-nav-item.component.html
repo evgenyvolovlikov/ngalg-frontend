@@ -1,0 +1,18 @@
+<button
+  type="button"
+  class="lesson-item"
+  [class.lesson-item--active]="isActive()"
+  [class.lesson-item--locked]="lesson().isLocked"
+  [disabled]="lesson().isLocked"
+  [attr.aria-current]="isActive() ? 'page' : null"
+>
+  <span class="lesson-item__title" [title]="lesson().title"> {{ lesson().title }} </span>
+
+  <div class="lesson-item__indicator">
+    @if (lesson().isFree && !lesson().isLocked) {
+    <app-badge variant="text" color="success"> Free </app-badge>
+    } @else if (lesson().isLocked) {
+    <app-icon name="lock" size="md" class="lesson-item__lock" />
+    }
+  </div>
+</button>

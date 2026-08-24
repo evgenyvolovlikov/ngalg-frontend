@@ -1,0 +1,46 @@
+:host {
+    display: inline-flex;
+
+    --pr-track-color: var(--bg-surface-hover);
+    --pr-progress-color: var(--text-color);
+    --pr-text-color: var(--text-color);
+    --pr-font-size: var(--font-size-xxxl, 2rem);
+}
+
+.progress-ring {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__svg {
+        overflow: visible;
+        transform: rotate(-90deg);
+    }
+
+    circle {
+        transition:
+            stroke-dashoffset var(--transition-base, 0.3s ease),
+            stroke var(--transition-base, 0.3s ease);
+        fill: transparent;
+    }
+
+    &__track {
+        stroke: var(--pr-track-color);
+    }
+
+    &__progress {
+        stroke: var(--pr-progress-color);
+        stroke-linecap: round;
+    }
+
+    &__text {
+        position: absolute;
+        font-family: var(--font-family-sans);
+        font-size: var(--pr-font-size);
+        font-weight: var(--font-weight-regular, 400);
+        line-height: var(--line-height-none, 1);
+        color: var(--pr-text-color);
+        font-variant-numeric: tabular-nums;
+    }
+}

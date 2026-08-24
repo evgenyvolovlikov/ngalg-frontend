@@ -1,0 +1,64 @@
+:host {
+    display: inline-flex;
+}
+
+.badge {
+    display: inline-flex;
+    gap: var(--unit-1, 0.25rem);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--badge-bg);
+    border-radius: var(--radius-sm, 4px);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-none, 1);
+    color: var(--badge-color);
+    transition:
+        background-color var(--transition-fast, 0.15s ease),
+        color var(--transition-fast, 0.15s ease);
+    white-space: nowrap;
+
+    --badge-bg: transparent;
+    --badge-color: inherit;
+
+    &--soft {
+        padding: var(--unit-1) var(--unit-2);
+    }
+
+    &--text {
+        padding: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &--success {
+        --badge-color: var(--color-success);
+
+        &.badge--soft {
+            --badge-bg: var(--color-success-bg, rgb(0 150 136 / 12%));
+        }
+    }
+
+    &--neutral {
+        --badge-color: var(--text-muted);
+
+        &.badge--soft {
+            --badge-bg: var(--bg-surface);
+        }
+    }
+
+    &--error {
+        --badge-color: var(--color-error);
+
+        &.badge--soft {
+            --badge-bg: var(--color-error-bg, rgb(239 68 68 / 15%));
+        }
+    }
+
+    svg {
+        width: 1em;
+        height: 1em;
+        fill: currentcolor;
+    }
+}

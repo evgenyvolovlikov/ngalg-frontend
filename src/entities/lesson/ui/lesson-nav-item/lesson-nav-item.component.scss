@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.lesson-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--unit-3, 0.75rem) 0;
+    background: transparent;
+    border: none;
+    font-family: var(--font-family-sans);
+    color: var(--text-color);
+    text-align: left;
+    transition:
+        opacity var(--transition-fast, 0.15s ease),
+        color var(--transition-fast, 0.15s ease);
+    cursor: pointer;
+
+    &:focus-visible {
+        border-radius: var(--radius-sm, 4px);
+        outline: 2px solid var(--border-focus);
+        outline-offset: 2px;
+    }
+
+    &--active {
+        font-weight: var(--font-weight-bold, 700);
+
+        .lesson-item__title {
+            color: var(--text-color);
+        }
+    }
+
+    &--locked {
+        cursor: not-allowed;
+
+        .lesson-item__title {
+            color: var(--text-muted);
+        }
+    }
+
+    &:not(:disabled, &--active):hover {
+        opacity: var(--opacity-hover, 0.8);
+    }
+
+    &__title {
+        padding-right: var(--unit-3, 0.75rem);
+        font-size: var(--font-size-sm, 0.875rem);
+        line-height: var(--line-height-tight, 1.25);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__indicator {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    &__lock {
+        color: var(--text-disabled);
+    }
+}

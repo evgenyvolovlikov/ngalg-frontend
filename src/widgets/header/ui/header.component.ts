@@ -9,6 +9,8 @@ import {
     signal,
 } from '@angular/core';
 
+import { ToggleThemeComponent } from '@features/toggle-theme';
+
 import { LinkComponent } from '@shared/ui/link';
 
 import { HEADER_NAV_LINKS } from '../config/header-nav.config';
@@ -16,7 +18,7 @@ import { HEADER_NAV_LINKS } from '../config/header-nav.config';
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [LinkComponent],
+    imports: [LinkComponent, ToggleThemeComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

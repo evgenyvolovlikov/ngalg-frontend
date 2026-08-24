@@ -6,3 +6,8 @@ export * from './ui/blocks/article-block-note/article-block-note.component';
 export * from './ui/blocks/article-block-complexity/article-block-complexity.component';
 export * from './ui/blocks/article-block-features/article-block-features.component';
 export * from './ui/blocks/article-block-image/article-block-image.component';
+
+export * from './ui/article-navigation/article-navigation.component';
+export * from './model/mocks/article-navigation.mock.data';
+export * from './model/types/article-navigation.types';
+export * from './model/types/article.types';

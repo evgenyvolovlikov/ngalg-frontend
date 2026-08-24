@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
-import { NoteBlockData } from '../../../model/article.types';
+import { NoteBlockData } from '../../../model/types/article.types';
 
 @Component({
     selector: 'app-article-block-note',

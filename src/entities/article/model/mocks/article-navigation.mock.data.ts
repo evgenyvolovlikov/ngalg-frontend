@@ -1,4 +1,4 @@
-import { NavigationSection } from './article-navigation.types';
+import { NavigationSection } from '../types/article-navigation.types';
 
 export const ARTICLES_NAVIGATION_ELEMENTS: NavigationSection[] = [
     {

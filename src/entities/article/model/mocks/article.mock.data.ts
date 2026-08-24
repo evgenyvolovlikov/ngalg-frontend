@@ -1,4 +1,4 @@
-import { Article } from './article.types';
+import { Article } from '../types/article.types';
 
 export const mockArticle: Article = {
     id: 'art-789abc12-3456-7890-abcd-ef1234567890',

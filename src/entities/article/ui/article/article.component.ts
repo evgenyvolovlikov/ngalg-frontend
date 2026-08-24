@@ -4,7 +4,7 @@ import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs';
 import { ButtonComponent } from '@shared/ui/button';
 import { CoverImageComponent } from '@shared/ui/cover-image/cover-image.component';
 
-import { Article } from '../../model/article.types';
+import { Article } from '../../model/types/article.types';
 import { ArticleBlockRendererComponent } from '../article-block-renderer/article-block-renderer.component';
 import { ArticleHeaderComponent } from '../article-header/article-header.component';
 

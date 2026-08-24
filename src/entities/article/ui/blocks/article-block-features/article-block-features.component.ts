@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { FeaturesBlockData } from '../../../model/article.types';
+import { FeaturesBlockData } from '../../../model/types/article.types';
 
 @Component({
     selector: 'app-article-block-features',

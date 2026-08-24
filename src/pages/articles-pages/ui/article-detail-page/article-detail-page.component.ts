@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ArticleComponent } from '@entities/article';
-import { mockArticle } from '@entities/article/model/article.mock.data';
+import { mockArticle } from '@entities/article/model/mocks/article.mock.data';
 
 @Component({
     selector: 'app-article-detail-page',

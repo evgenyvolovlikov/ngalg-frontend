@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 
 import { ButtonComponent } from '@shared/ui/button';
 
-import { CodeBlockData } from '../../../model/article.types';
+import { CodeBlockData } from '../../../model/types/article.types';
 
 @Component({
     selector: 'app-article-block-code',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { ComplexityBlockData } from '../../../model/article.types';
+import { ComplexityBlockData } from '../../../model/types/article.types';
 
 @Component({
     selector: 'app-article-block-complexity',

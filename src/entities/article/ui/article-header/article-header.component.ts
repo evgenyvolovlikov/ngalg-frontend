@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { Article } from '../../model/article.types';
+import { Article } from '../../model/types/article.types';
 
 @Component({
     selector: 'app-article-header',

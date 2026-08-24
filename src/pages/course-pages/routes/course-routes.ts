@@ -6,6 +6,13 @@ export const COURSE_ROUTES: Routes = [
     {
         path: '',
 
+        loadComponent: () =>
+            import('@widgets/sidebar-layout').then((m) => m.SidebarLayoutComponent),
+
+        // data: {
+        //     sidebarComponent: ArticleNavigationComponent,
+        // },
+
         children: [
             {
                 path: ARTICLE_SUB_ROUTES.MAIN,

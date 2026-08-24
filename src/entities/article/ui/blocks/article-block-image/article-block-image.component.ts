@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { CoverImageComponent } from '@shared/ui/cover-image';
 
-import { ImageBlockData } from '../../../model/article.types';
+import { ImageBlockData } from '../../../model/types/article.types';
 
 @Component({
     selector: 'app-article-block-image',

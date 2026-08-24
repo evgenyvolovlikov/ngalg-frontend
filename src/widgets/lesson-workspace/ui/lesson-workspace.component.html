@@ -1,0 +1,23 @@
+<article class="lesson-workspace">
+  <header class="lesson-workspace__header">
+    <app-lesson-header [lesson]="lesson()" />
+  </header>
+
+  <section class="lesson-workspace__content">
+    <app-video-player [src]="lesson().videoUrl" />
+  </section>
+
+  <footer class="lesson-workspace__actions">
+    <div class="lesson-workspace__actions-left">
+      <app-course-feedback [lessonId]="lesson().id" />
+    </div>
+
+    <div class="lesson-workspace__actions-right">
+      <app-mark-watched-checkbox
+        [lessonId]="lesson().id"
+        [isWatched]="lesson().isWatched"
+        (toggle)="onToggleWatched($event)"
+      />
+    </div>
+  </footer>
+</article>

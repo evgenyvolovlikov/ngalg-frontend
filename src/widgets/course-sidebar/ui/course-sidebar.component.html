@@ -1,0 +1,21 @@
+<aside class="course-sidebar">
+  <app-course-progress [total]="10" [watched]="9" />
+
+  <section class="course-sidebar__section">
+    <h3 class="course-sidebar__title">Lessons</h3>
+
+    <div class="course-sidebar__scroll-area">
+      <nav class="course-sidebar__nav" aria-label="Список уроков">
+        @for (lesson of lessons(); track lesson.id) {
+        <app-lesson-nav-item
+          [lesson]="lesson"
+          [isActive]="lesson.id === activeLessonId()"
+          (click)="onLessonSelect(lesson)"
+        />
+        } @empty {
+        <p class="course-sidebar__empty">Уроки еще не добавлены</p>
+        }
+      </nav>
+    </div>
+  </section>
+</aside>

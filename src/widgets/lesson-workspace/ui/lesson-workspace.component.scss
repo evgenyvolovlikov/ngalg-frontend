@@ -1,0 +1,58 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.lesson-workspace {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+
+    &__header {
+        flex-shrink: 0;
+        padding: var(--unit-6, 1.5rem) var(--unit-8, 2rem);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &__content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: var(--unit-4, 1rem);
+        min-height: 0;
+        padding: var(--unit-6, 1.5rem) var(--unit-8, 2rem);
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: var(--radius-full, 9999px);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--unit-4, 1rem) var(--unit-8, 2rem);
+        border-top: 1px solid var(--border-color);
+    }
+
+    &__actions-left,
+    &__actions-right {
+        display: flex;
+        gap: var(--unit-4, 1rem);
+        align-items: center;
+    }
+}

@@ -14,6 +14,9 @@ const landingPage: Route = {
 /* Авторизация */
 const authRoute: Route = {
     path: APP_ROUTES_MAP.AUTH.path,
+
+    loadComponent: () => import('@app/layouts/auth-layout').then((m) => m.AuthLayoutComponent),
+
     loadChildren: () => import('@pages/auth-page').then((routes) => routes.AUTH_ROUTES),
 };
 
@@ -35,6 +38,10 @@ const tracksRoute: Route = {
 /* Статьи */
 const articlesRoute: Route = {
     path: APP_ROUTES_MAP.ARTICLES.path,
+
+    loadComponent: () =>
+        import('@app/layouts/sidebar-layout').then((m) => m.SidebarLayoutComponent),
+
     loadChildren: () => import('@pages/articles-pages').then((routes) => routes.ARTICLE_ROUTES),
 };
 

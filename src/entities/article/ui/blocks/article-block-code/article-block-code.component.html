@@ -1,0 +1,11 @@
+<div class="code-snippet">
+  <div class="code-snippet__header">
+    <span class="code-snippet__filename"> 📄 {{ data().filename || data().language }} </span>
+
+    <app-button type="button" variant="ghost" size="sm" (click)="copyCode()">
+      {{ isCopied() ? 'Скопировано' : 'Копировать' }}
+    </app-button>
+  </div>
+
+  <pre class="code-snippet__body"><code [class]="'language-' + data().language">{{ data().code }}</code></pre>
+</div>

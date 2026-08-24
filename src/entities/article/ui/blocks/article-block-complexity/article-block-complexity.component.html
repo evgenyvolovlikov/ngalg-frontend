@@ -1,0 +1,17 @@
+<div class="complexity-widget">
+  <div class="complexity-widget__grid">
+    <div class="complexity-card">
+      <span class="complexity-card__label">Временная сложность</span>
+      <code class="complexity-card__value">{{ data().time }}</code>
+    </div>
+
+    <div class="complexity-card">
+      <span class="complexity-card__label">Пространственная сложность</span>
+      <code class="complexity-card__value">{{ data().space }}</code>
+    </div>
+  </div>
+
+  @if (data().description; as description) {
+  <p class="complexity-widget__description">{{ description }}</p>
+  }
+</div>

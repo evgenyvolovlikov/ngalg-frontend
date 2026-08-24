@@ -1,0 +1,101 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.article-header {
+    display: flex;
+    flex-direction: column;
+
+    &__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--unit-4);
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--unit-6);
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--unit-2);
+    }
+
+    &__info {
+        display: flex;
+        gap: var(--unit-3);
+        align-items: center;
+    }
+
+    &__reading-time {
+        font-size: var(--font-size-sm);
+        color: var(--text-muted);
+    }
+
+    &__title {
+        margin: 0 0 var(--unit-4);
+        font-size: var(--font-size-xxxl);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-tight);
+        letter-spacing: -0.02em;
+    }
+
+    &__lead {
+        margin: 0 0 var(--unit-6);
+        font-size: var(--font-size-lg);
+        line-height: var(--line-height-relaxed);
+        color: var(--text-muted);
+    }
+
+    &__summary {
+        padding: var(--unit-4);
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+
+        &-label {
+            margin: 0 0 var(--unit-2);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        &-text {
+            margin: 0;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+        }
+    }
+}
+
+.tag-badge {
+    padding: var(--unit-1) var(--unit-2);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+}
+
+.level-badge {
+    padding: var(--unit-1) var(--unit-3);
+    border: 1px solid currentcolor;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+
+    &--beginner {
+        color: var(--color-success);
+    }
+
+    &--intermediate {
+        color: var(--color-warning);
+    }
+
+    &--advanced {
+        color: var(--color-error);
+    }
+}

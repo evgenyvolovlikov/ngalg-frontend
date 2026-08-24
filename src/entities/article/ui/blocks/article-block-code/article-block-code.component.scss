@@ -1,0 +1,38 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.code-snippet {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--unit-2) var(--unit-4);
+        background-color: var(--bg-surface-hover);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &__filename {
+        font-family: var(--font-family-mono, monospace);
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+    }
+
+    &__body {
+        margin: 0;
+        padding: var(--unit-4);
+        overflow-x: auto;
+
+        code {
+            font-family: var(--font-family-mono, monospace);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-base);
+        }
+    }
+}

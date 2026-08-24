@@ -1,0 +1,105 @@
+:host {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-8);
+
+    &__hero {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-4);
+    }
+
+    &__main {
+        width: 100%;
+    }
+}
+
+.article-render {
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--unit-4);
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--unit-6);
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--unit-2);
+    }
+
+    &__meta-row {
+        display: flex;
+        gap: var(--unit-3);
+        align-items: center;
+    }
+
+    &__title {
+        margin: 0 0 var(--unit-4);
+        font-size: var(--font-size-xxxl);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-tight);
+        letter-spacing: -0.02em;
+    }
+
+    &__lead {
+        margin-bottom: var(--unit-6);
+        font-size: var(--font-size-lg);
+        line-height: var(--line-height-base);
+        color: var(--text-muted);
+    }
+
+    &__summary {
+        margin-bottom: var(--unit-6);
+        padding: var(--unit-4);
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+
+        &-label {
+            margin: 0 0 var(--unit-2);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        &-text {
+            margin: 0;
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+        }
+    }
+
+    &__divider {
+        height: 1px;
+        margin: var(--unit-8) 0;
+        background-color: var(--border-color);
+        border: none;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-6);
+    }
+}
+
+.admin-panel {
+    display: flex;
+    gap: var(--unit-3);
+    justify-content: flex-end;
+    margin-top: var(--unit-8);
+    padding-top: var(--unit-4);
+    border-top: 1px solid var(--border-color);
+}

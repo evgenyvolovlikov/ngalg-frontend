@@ -1,0 +1,28 @@
+<section class="article">
+  <div class="article__hero">
+    <app-breadcrumbs [items]="breadcrumbs()" />
+
+    @if (article().coverImage; as cover) {
+    <app-cover-image [src]="cover.url" [alt]="cover.alt" [priority]="true" />
+    }
+  </div>
+
+  <main class="article__main">
+    <article class="article-render">
+      <app-article-header [article]="article()" />
+
+      <hr class="article-render__divider" aria-hidden="true" />
+
+      <div class="article-render__content">
+        @for (block of article().blocks; track $index) {
+        <app-article-block-renderer [block]="block" />
+        }
+      </div>
+    </article>
+  </main>
+
+  <footer class="admin-panel">
+    <app-button (click)="onEdit()"> Редактировать </app-button>
+    <app-button (click)="onDelete()"> Удалить </app-button>
+  </footer>
+</section>

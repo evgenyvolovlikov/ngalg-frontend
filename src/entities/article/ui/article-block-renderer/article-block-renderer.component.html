@@ -1,0 +1,13 @@
+@switch (block().type) { @case ('TEXT') {
+<app-markdown-renderer [rawMarkdown]="block().data.content" />
+} @case ('CODE') {
+<app-article-block-code [data]="block().data" />
+} @case ('NOTE') {
+<app-article-block-note [data]="block().data" />
+} @case ('COMPLEXITY') {
+<app-article-block-complexity [data]="block().data" />
+} @case ('IMAGE') {
+<app-article-block-image [data]="block().data" />
+} @case ('FEATURES') {
+<app-article-block-features [data]="block().data" />
+} }

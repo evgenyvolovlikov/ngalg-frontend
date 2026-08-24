@@ -50,13 +50,20 @@ const profileRoute: Route = {
     loadChildren: () => import('@pages/profile-page').then((routes) => routes.PROFILE_ROUTES),
 };
 
+const mainLayoutRoute: Route = {
+    path: '',
+    loadComponent: () =>
+        import('@app/layouts/main-layout').then((component) => component.MainLayoutComponent),
+    children: [dashboardRoute, tracksRoute, articlesRoute, courseRoute, profileRoute],
+};
+
 /*  ФИНАЛЬНЫЙ ЭКСПОРТ */
 export const appRoutes: Routes = [
     landingPage,
     authRoute,
-    dashboardRoute,
-    tracksRoute,
-    articlesRoute,
-    courseRoute,
-    profileRoute,
+    mainLayoutRoute,
+    {
+        path: '**',
+        redirectTo: APP_ROUTES_MAP.LANDING.path,
+    },
 ];

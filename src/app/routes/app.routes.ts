@@ -38,10 +38,6 @@ const tracksRoute: Route = {
 /* Статьи */
 const articlesRoute: Route = {
     path: APP_ROUTES_MAP.ARTICLES.path,
-
-    loadComponent: () =>
-        import('@app/layouts/sidebar-layout').then((m) => m.SidebarLayoutComponent),
-
     loadChildren: () => import('@pages/articles-pages').then((routes) => routes.ARTICLE_ROUTES),
 };
 

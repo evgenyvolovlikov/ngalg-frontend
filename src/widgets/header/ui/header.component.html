@@ -1,4 +1,3 @@
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <header class="header">
   <div class="header__container">
     <app-link routerLink="/" class="header__logo">
@@ -12,18 +11,31 @@
       (click)="toggleMenu()"
       [attr.aria-label]="isMenuOpen() ? 'Закрыть меню' : 'Открыть меню'"
       [attr.aria-expanded]="isMenuOpen()"
+      aria-controls="header-navigation"
     >
       <span></span>
     </button>
 
     @if (isMenuOpen()) {
-    <div class="header__overlay" (click)="closeMenu()" (window:keydown.escape)="closeMenu()"></div>
+    <button
+      type="button"
+      class="header__overlay"
+      tabindex="-1"
+      aria-hidden="true"
+      (click)="closeMenu()"
+      (window:keydown.escape)="closeMenu()"
+    ></button>
     }
 
-    <nav class="header__nav" [class.header__nav--open]="isMenuOpen()">
+    <nav
+      id="header-navigation"
+      class="header__nav"
+      [class.header__nav--open]="isMenuOpen()"
+      [attr.aria-hidden]="!isMenuOpen()"
+    >
       <div class="header__nav-wrapper">
         <ul class="header__menu">
-          @for (element of menuElements(); track element.label) {
+          @for (element of menuElements; track element.path) {
           <li>
             <app-link variant="primary" [routerLink]="element.path" class="header__link" (click)="closeMenu()">
               {{ element.label }}
@@ -32,12 +44,7 @@
           }
         </ul>
 
-        <div class="header__nav-actions">
-          <!-- TODO -->
-          <!-- <app-toggle-theme /> -->
-          <!-- <app-change-language /> -->
-          Actions
-        </div>
+        <div class="header__nav-actions">Actions</div>
       </div>
     </nav>
   </div>

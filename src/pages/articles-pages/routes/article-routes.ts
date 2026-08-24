@@ -1,11 +1,19 @@
 import { Routes } from '@angular/router';
 
+import { ArticleNavigationComponent } from '@features/add-article-navigation';
+
 import { ARTICLE_SUB_ROUTES } from '../config/article-routes.config';
 
 export const ARTICLE_ROUTES: Routes = [
     {
         path: '',
 
+        loadComponent: () =>
+            import('@widgets/sidebar-layout').then((m) => m.SidebarLayoutComponent),
+
+        data: {
+            sidebarComponent: ArticleNavigationComponent,
+        },
         children: [
             {
                 path: ARTICLE_SUB_ROUTES.MAIN,

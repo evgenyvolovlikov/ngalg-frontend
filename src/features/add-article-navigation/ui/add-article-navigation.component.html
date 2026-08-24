@@ -1,0 +1,9 @@
+<nav class="article-navigation" aria-label="Навигация по базе знаний">
+  @for (section of sections(); track section.id) {
+  <div class="article-navigation__section">
+    <h3 [id]="'section-title-' + section.id" class="article-navigation__title">{{ section.title }}</h3>
+
+    <app-navigation [elements]="section.items" orientation="vertical" />
+  </div>
+  }
+</nav>

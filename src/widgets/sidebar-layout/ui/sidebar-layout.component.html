@@ -1,7 +1,9 @@
 <div class="sidebar-layout">
   <aside class="sidebar-layout__sidebar">
     <div class="sidebar-layout__sidebar-content">
-      <div>App Sidebar</div>
+      @if (sidebarComponent(); as component) {
+      <ng-container *ngComponentOutlet="component" />
+      }
     </div>
   </aside>
 

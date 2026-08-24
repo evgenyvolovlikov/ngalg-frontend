@@ -1,0 +1,35 @@
+<ul
+  class="navigation"
+  [class.navigation--sub]="isSubList()"
+  [class.navigation--horizontal]="orientation() === 'horizontal' && !isSubList()"
+>
+  @for (element of elements(); track element.id ?? element.label) {
+  <li class="navigation__item">
+    <a
+      class="navigation__link"
+      [class.navigation__link--sub]="isSubList()"
+      [routerLink]="element.route"
+      [routerLinkActive]="
+          isSubList()
+            ? 'navigation__link--sub-active'
+            : 'navigation__link--active'
+        "
+      [routerLinkActiveOptions]="{ exact: element.exact ?? false }"
+    >
+      @if (element.icon) {
+      <span class="navigation__icon" aria-hidden="true">{{ element.icon }}</span>
+      }
+
+      <span class="navigation__text">{{ element.label }}</span>
+
+      @if (element.tag) {
+      <span class="navigation__tag" [attr.data-type]="element.tag"> {{ element.tag }} </span>
+      }
+    </a>
+
+    @if (orientation() === 'vertical' && element.children?.length) {
+    <app-navigation [elements]="element.children!" [orientation]="orientation()" [isSubList]="true" />
+    }
+  </li>
+  }
+</ul>

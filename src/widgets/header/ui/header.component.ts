@@ -1,6 +1,15 @@
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    Renderer2,
+    effect,
+    inject,
+    signal,
+} from '@angular/core';
 
-import { LinkComponent } from '@shared/ui/link/link.component';
+import { LinkComponent } from '@shared/ui/link';
 
 import { HEADER_NAV_LINKS } from '../config/header-nav.config';
 
@@ -13,15 +22,28 @@ import { HEADER_NAV_LINKS } from '../config/header-nav.config';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-    readonly isMenuOpen = signal(false);
+    private readonly document = inject(DOCUMENT);
+    private readonly renderer = inject(Renderer2);
+    private readonly destroyRef = inject(DestroyRef);
 
-    protected readonly menuElements = signal(HEADER_NAV_LINKS);
+    readonly isMenuOpen = signal(false);
+    protected readonly menuElements = HEADER_NAV_LINKS;
 
     constructor() {
-        effect(() => {
-            if (typeof document !== 'undefined') {
-                document.body.style.overflow = this.isMenuOpen() ? 'hidden' : '';
+        effect((onCleanup) => {
+            if (this.isMenuOpen()) {
+                this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
+            } else {
+                this.renderer.removeStyle(this.document.body, 'overflow');
             }
+
+            onCleanup(() => {
+                this.renderer.removeStyle(this.document.body, 'overflow');
+            });
+        });
+
+        this.destroyRef.onDestroy(() => {
+            this.renderer.removeStyle(this.document.body, 'overflow');
         });
     }
 

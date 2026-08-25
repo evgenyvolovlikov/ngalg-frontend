@@ -1,0 +1,21 @@
+<!-- Рендерим карточку, только если объект подписки существует -->
+@if (subscription(); as sub) {
+<div class="subscription-card">
+  <div class="header">
+    <span class="icon">💳</span>
+    <span class="title">ПОДПИСКА:</span>
+    <span class="plan-badge" [class.premium]="sub.plan === 'PREMIUM'"> {{ sub.plan }} </span>
+  </div>
+
+  @if (sub.validUntil) {
+  <div class="validity">
+    Активна до:
+    <strong>{{ sub.validUntil }}</strong>
+  </div>
+  }
+
+  <div class="actions">
+    <app-subscription-action />
+  </div>
+</div>
+}

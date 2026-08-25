@@ -1,0 +1,47 @@
+<app-terminal-container title="АУДИТ САМОСТОЯТЕЛЬНОСТИ">
+  @if (profile(); as p) {
+  <div class="audit-layout">
+    <!-- Блок 1: Базовая информация -->
+    <div class="section">
+      <div class="row strong">👤 {{ p.fullName }}</div>
+      <div class="row accent">[ СТАЖ: {{ p.experienceYears }} ГОДА ]</div>
+      <div class="row">Стек: {{ p.stack.join(", ") }}</div>
+      <div class="row">
+        GitHub:
+        <a [href]="'https://' + p.githubUrl" target="_blank"> {{ p.githubUrl }} </a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Блок 2: Метрики -->
+    <div class="section">
+      <div class="section-title">📈 АУДИТ КОМПЕТЕНЦИЙ</div>
+
+      <div class="metric-grid">
+        <span class="label">Индекс самостоятельности:</span>
+        <div class="bar-wrapper">
+          <div class="bar-track">
+            <div class="bar-fill" [style.width.%]="p.independenceIndex"></div>
+          </div>
+          <span class="value">{{ p.independenceIndex }}%</span>
+        </div>
+
+        <span class="label">Сложность задач:</span>
+        <span class="value highlight">{{ p.complexityLevel }}</span>
+
+        <span class="label">Всего решено треков:</span>
+        <span class="value">{{ p.solvedTracks }}/{{ p.totalTracks }}</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Блок 3: Инсайт AI -->
+    <div class="section">
+      <div class="section-title">💡 ИНСАЙТ AI-ИНТЕРВЬЮЕРА:</div>
+      <blockquote class="quote">{{ p.aiInsight }}</blockquote>
+    </div>
+  </div>
+  }
+</app-terminal-container>

@@ -1,0 +1,255 @@
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<form class="article-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <header class="article-form__header">
+    <h1 class="article-form__title">{{ isEditMode() ? "Редактирование статьи" : "Новая статья" }}</h1>
+    <div class="article-form__actions">
+      <app-button type="button" variant="outline" routerLink="/articles"> Отмена </app-button>
+      <app-button
+        type="submit"
+        variant="primary"
+        [loading]="isSubmitting()"
+        [disabled]="form.invalid || isSubmitting()"
+      >
+        Сохранить
+      </app-button>
+    </div>
+  </header>
+
+  <div class="article-form__content">
+    <!-- МЕТАДАННЫЕ И СИСТЕМНЫЕ ПОЛЯ -->
+    <section class="form-section">
+      <h2 class="form-section__title">Метаданные</h2>
+
+      <div class="form-row form-row--3-cols">
+        <app-input formControlName="authorId" label="ID Автора" />
+        <app-input formControlName="createdAt" label="Создано" />
+        <app-input formControlName="updatedAt" label="Обновлено" />
+      </div>
+
+      <div class="form-row form-row--3-cols mt-3">
+        <app-input formControlName="id" label="ID Статьи" />
+        <app-input formControlName="problemId" label="ID Задачи (Problem ID)" />
+
+        <div class="native-field">
+          <label for="readingTimeInput">Время чтения (мин)</label>
+          <app-input id="readingTimeInput" type="number" formControlName="readingTimeMinutes" min="0" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ОСНОВНАЯ ИНФОРМАЦИЯ -->
+    <section class="form-section">
+      <h2 class="form-section__title">Основная информация</h2>
+
+      <div class="form-row form-row--2-cols">
+        <app-input formControlName="title" label="Заголовок" />
+        <app-input formControlName="slug" label="Slug (URL)" />
+      </div>
+
+      <div class="form-row form-row--3-cols mt-3">
+        <div class="native-field">
+          <label for="categorySelect">Категория (categoryId)</label>
+          <select id="categorySelect" formControlName="categoryId">
+            <option value="">Выберите категорию</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="algorithms">Алгоритмы</option>
+          </select>
+        </div>
+
+        <div class="native-field">
+          <label for="statusSelect">Статус (status)</label>
+          <select id="statusSelect" formControlName="status">
+            <option value="DRAFT">Черновик</option>
+            <option value="PUBLISHED">Опубликовано</option>
+            <option value="ARCHIVED">В архиве</option>
+          </select>
+        </div>
+
+        <div class="native-field">
+          <label for="levelSelect">Уровень</label>
+          <select id="levelSelect" formControlName="level">
+            <option value="BEGINNER">Beginner</option>
+            <option value="INTERMEDIATE">Intermediate</option>
+            <option value="ADVANCED">Advanced</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="native-field mt-3">
+        <label for="leadTextArea">Лид-абзац (leadText)</label>
+        <textarea id="leadTextArea" formControlName="leadText" rows="2"></textarea>
+      </div>
+
+      <div class="native-field mt-3">
+        <label for="descriptionArea">Полное описание (description)</label>
+        <textarea id="descriptionArea" formControlName="description" rows="4"></textarea>
+      </div>
+    </section>
+
+    <!-- ОБЛОЖКА -->
+    <section class="form-section" formGroupName="coverImage">
+      <h2 class="form-section__title">Обложка</h2>
+      <div class="form-row">
+        <app-input formControlName="url" label="URL изображения" />
+      </div>
+      <div class="form-row form-row--2-cols mt-3">
+        <app-input formControlName="alt" label="Alt текст" />
+        <app-input formControlName="caption" label="Подпись" />
+      </div>
+    </section>
+
+    <!-- ТЕГИ И СЕО -->
+    <div class="form-row form-row--2-cols">
+      <section class="form-section">
+        <h2 class="form-section__title">Теги</h2>
+        <div class="list-container">
+          @for ( tagCtrl of tagsFormArray.controls; track tagCtrl; let index = $index ) {
+          <div class="list-item">
+            <app-input [formControl]="tagCtrl" placeholder="Например: THEORY" />
+            <app-button type="button" variant="danger" size="sm" (click)="removeTag(index)"> Удалить </app-button>
+          </div>
+          }
+          <app-button type="button" variant="outline" size="sm" (click)="addTag()"> + Добавить тег </app-button>
+        </div>
+      </section>
+
+      <section class="form-section" formGroupName="seo">
+        <h2 class="form-section__title">SEO Настройки</h2>
+        <div class="native-field">
+          <label for="seoDescription">SEO Описание</label>
+          <textarea id="seoDescription" formControlName="description" rows="2"></textarea>
+        </div>
+
+        <div class="list-container mt-4">
+          <label class="form-label">Ключевые слова</label>
+          @for ( keywordCtrl of seoKeywordsFormArray.controls; track keywordCtrl; let index = $index ) {
+          <div class="list-item">
+            <app-input [formControl]="keywordCtrl" placeholder="Ключевое слово" />
+            <app-button type="button" variant="danger" size="sm" (click)="removeKeyword(index)"> Удалить </app-button>
+          </div>
+          }
+          <app-button type="button" variant="outline" size="sm" (click)="addKeyword()"> + Добавить ключ </app-button>
+        </div>
+      </section>
+    </div>
+
+    <!-- КОНТЕНТНЫЕ БЛОКИ -->
+    <section class="form-section">
+      <div class="form-section__header">
+        <h2 class="form-section__title">Контентные блоки</h2>
+        <div class="block-toolbar">
+          <app-button type="button" size="sm" (click)="addBlock('TEXT')"> + Текст </app-button>
+          <app-button type="button" size="sm" (click)="addBlock('CODE')"> + Код </app-button>
+          <app-button type="button" size="sm" (click)="addBlock('NOTE')"> + Заметка </app-button>
+          <app-button type="button" size="sm" (click)="addBlock('COMPLEXITY')"> + Сложность </app-button>
+          <app-button type="button" size="sm" (click)="addBlock('IMAGE')"> + Картинка </app-button>
+          <app-button type="button" size="sm" (click)="addBlock('FEATURES')"> + Фичи </app-button>
+        </div>
+      </div>
+
+      <div formArrayName="blocks" class="blocks-container">
+        @for ( block of blocksFormArray.controls; track block; let blockIndex = $index ) {
+        <div class="block-card" [formGroupName]="blockIndex">
+          <div class="block-card__header">
+            <span class="block-card__type"> {{ block.controls.type.value | uppercase }} </span>
+            <app-button type="button" variant="danger" size="sm" (click)="removeBlock(blockIndex)">
+              Удалить блок
+            </app-button>
+          </div>
+
+          <div formGroupName="data" class="block-card__body">
+            @switch (block.controls.type.value) { @case (blockTypes.TEXT) {
+            <div class="native-field">
+              <label [for]="'formatSelect-' + blockIndex">Формат</label>
+              <select [id]="'formatSelect-' + blockIndex" formControlName="format">
+                <option value="MARKDOWN">Markdown</option>
+                <option value="HTML">HTML</option>
+              </select>
+            </div>
+            <div class="native-field mt-3">
+              <label [for]="'textContent-' + blockIndex">Контент</label>
+              <textarea [id]="'textContent-' + blockIndex" formControlName="content" rows="6"></textarea>
+            </div>
+            } @case (blockTypes.CODE) {
+            <div class="form-row form-row--2-cols">
+              <app-input formControlName="language" label="Язык" />
+              <app-input formControlName="filename" label="Имя файла" />
+            </div>
+            <div class="native-field mt-3">
+              <label [for]="'codeArea-' + blockIndex">Код</label>
+              <textarea [id]="'codeArea-' + blockIndex" formControlName="code" rows="6" class="code-font"></textarea>
+            </div>
+            } @case (blockTypes.NOTE) {
+            <div class="native-field">
+              <label [for]="'noteTypeSelect-' + blockIndex">Тип заметки</label>
+              <select [id]="'noteTypeSelect-' + blockIndex" formControlName="noteType">
+                <option value="INFO">Инфо</option>
+                <option value="WARNING">Предупреждение</option>
+                <option value="ERROR">Ошибка</option>
+              </select>
+            </div>
+            <div class="native-field mt-3">
+              <label [for]="'noteTextArea-' + blockIndex">Текст заметки</label>
+              <textarea [id]="'noteTextArea-' + blockIndex" formControlName="text" rows="3"></textarea>
+            </div>
+            } @case (blockTypes.COMPLEXITY) {
+            <div class="form-row form-row--2-cols">
+              <app-input formControlName="time" label="Сложность по времени" />
+              <app-input formControlName="space" label="Сложность по памяти" />
+            </div>
+            <div class="native-field mt-3">
+              <label [for]="'complexityDesc-' + blockIndex">Пояснение (необязательно)</label>
+              <textarea [id]="'complexityDesc-' + blockIndex" formControlName="description" rows="2"></textarea>
+            </div>
+            } @case (blockTypes.IMAGE) {
+            <app-input formControlName="url" label="URL изображения" />
+            <div class="form-row form-row--2-cols mt-3">
+              <app-input formControlName="alt" label="Alt текст" />
+              <app-input formControlName="caption" label="Подпись под фото" />
+            </div>
+            } @case (blockTypes.FEATURES) {
+            <app-input formControlName="sectionTitle" label="Заголовок секции" />
+
+            <div class="features-list mt-4">
+              <label class="form-label">Элементы списка</label>
+              <div formArrayName="items">
+                @for ( item of getFeatureItems(block).controls; track item; let itemIndex = $index ) {
+                <div class="feature-item-card" [formGroupName]="itemIndex">
+                  <app-input formControlName="title" label="Заголовок фичи" />
+                  <div class="native-field mt-2">
+                    <label [for]="'featureText-' + blockIndex + '-' + itemIndex"> Текст фичи </label>
+                    <textarea
+                      [id]="'featureText-' + blockIndex + '-' + itemIndex"
+                      formControlName="text"
+                      rows="2"
+                    ></textarea>
+                  </div>
+                  <div class="feature-item-card__actions mt-2">
+                    <app-button
+                      type="button"
+                      variant="danger"
+                      size="sm"
+                      (click)="removeFeatureItem(blockIndex, itemIndex)"
+                    >
+                      Удалить фичу
+                    </app-button>
+                  </div>
+                </div>
+                }
+              </div>
+
+              <app-button type="button" variant="outline" size="sm" class="mt-3" (click)="addFeatureItem(blockIndex)">
+                + Добавить фичу
+              </app-button>
+            </div>
+            } }
+          </div>
+        </div>
+        } @if (blocksFormArray.length === 0) {
+        <div class="empty-state">Блоков пока нет. Добавьте контент, используя панель выше.</div>
+        }
+      </div>
+    </section>
+  </div>
+</form>

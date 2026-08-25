@@ -1,0 +1,212 @@
+:host {
+    display: block;
+    padding: var(--unit-6) 0;
+}
+
+.article-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-6);
+    max-width: 1000px;
+    margin: 0 auto;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: var(--unit-4);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--font-size-2xl);
+    }
+
+    &__actions {
+        display: flex;
+        gap: var(--unit-3);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-6);
+    }
+}
+
+.form-section {
+    padding: var(--unit-6);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--unit-6);
+    }
+
+    &__title {
+        margin: 0 0 var(--unit-4) 0;
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--unit-4);
+    margin-bottom: var(--unit-4);
+
+    @media (width >= 768px) {
+        grid-template-columns: 1fr 1fr;
+
+        &--3-cols {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &--2-cols {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+/* Утилиты для отступов */
+.mt-2 {
+    margin-top: var(--unit-2);
+}
+
+.mt-3 {
+    margin-top: var(--unit-3);
+}
+
+.mt-4 {
+    margin-top: var(--unit-4);
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-3);
+    align-items: flex-start;
+
+    .list-item {
+        display: flex;
+        gap: var(--unit-2);
+        align-items: flex-end; /* Выравнивание кнопки по инпуту */
+        width: 100%;
+
+        app-input {
+            flex: 1;
+        }
+    }
+}
+
+/* Стилизация блоков контента */
+.block-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--unit-2);
+}
+
+.blocks-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-4);
+}
+
+.block-card {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--unit-3) var(--unit-4);
+        background-color: var(--bg-surface-hover);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &__type {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-muted);
+    }
+
+    &__body {
+        padding: var(--unit-4);
+    }
+}
+
+.feature-item-card {
+    margin-bottom: var(--unit-3);
+    padding: var(--unit-4);
+    background-color: var(--bg-surface);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+/* Стили для нативных инпутов */
+.native-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-1);
+    margin-bottom: var(--unit-4);
+
+    label,
+    .form-label {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-muted);
+    }
+
+    textarea,
+    select {
+        width: 100%;
+        padding: var(--unit-2) var(--unit-3);
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-base);
+        color: var(--text-color);
+        transition: border-color var(--transition-fast);
+
+        &:focus {
+            box-shadow: 0 0 0 2px var(--border-focus);
+            border-color: var(--color-contrast);
+            outline: none;
+        }
+    }
+
+    textarea {
+        min-height: 80px;
+        resize: vertical;
+
+        &.code-font {
+            background-color: #1e1e1e;
+            font-family: monospace;
+            font-size: var(--font-size-sm);
+            color: #d4d4d4;
+        }
+    }
+}
+
+.empty-state {
+    padding: var(--unit-8);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-disabled);
+    text-align: center;
+}

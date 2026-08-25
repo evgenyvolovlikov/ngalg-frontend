@@ -1,0 +1,13 @@
+<div class="terminal-container">
+  @if (title()) {
+  <div class="terminal-container__header">
+    <span class="terminal-container__title">{{ title() }}</span>
+    <div class="terminal-container__header-actions">
+      <ng-content select="[header-actions]"></ng-content>
+    </div>
+  </div>
+  }
+  <div class="terminal-container__body">
+    <ng-content></ng-content>
+  </div>
+</div>

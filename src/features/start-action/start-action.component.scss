@@ -1,0 +1,31 @@
+:host {
+    display: inline-block;
+}
+
+.start-action {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--unit-2, 0.5rem) var(--unit-4, 1rem);
+    background-color: transparent;
+    border: 1px solid var(--border-color, #3f3f46);
+    border-radius: var(--radius-sm, 6px);
+    font-family: var(--font-family-mono, monospace);
+    font-size: var(--font-size-xs, 0.75rem);
+    font-weight: var(--font-weight-bold, 600);
+    color: var(--text-color, #e4e4e7);
+    transition: all var(--transition-fast, 0.2s ease);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+
+    &:hover {
+        background-color: rgb(16 185 129 / 5%);
+        color: var(--color-success, #10b981);
+        border-color: var(--color-success, #10b981);
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}

@@ -1,0 +1,12 @@
+<div
+  class="progress-bar"
+  role="progressbar"
+  [attr.aria-valuenow]="clampedValue()"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="progress-bar__track">
+    <div class="progress-bar__fill" [style.width.%]="clampedValue()"></div>
+  </div>
+  <span class="progress-bar__percentage">{{ clampedValue() }}%</span>
+</div>

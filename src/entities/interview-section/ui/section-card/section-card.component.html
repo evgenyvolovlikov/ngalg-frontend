@@ -1,0 +1,32 @@
+<div
+  class="section-card"
+  [class.section-card--locked]="section().isLocked"
+  [class.section-card--completed]="section().progress === 100"
+>
+  <header class="section-card__header">
+    <h3 class="section-card__title">{{ section().title }}</h3>
+    @if (section().isLocked) {
+    <span class="section-card__lock-badge">LOCKED</span>
+    }
+  </header>
+
+  <div class="section-card__body">
+    <div class="section-card__meta-row">
+      <span class="section-card__label">Core:</span>
+      <span class="section-card__value">{{ section().coreConcept }}</span>
+    </div>
+    <div class="section-card__meta-row">
+      <span class="section-card__label">Integration:</span>
+      <span class="section-card__value">{{ section().integrationType }}</span>
+    </div>
+
+    <div class="section-card__progress-box">
+      <span class="section-card__progress-title">STATUS</span>
+      <app-progress-bar [value]="section().progress" />
+    </div>
+  </div>
+
+  <footer class="section-card__footer">
+    <ng-content></ng-content>
+  </footer>
+</div>

@@ -1,0 +1,13 @@
+<app-terminal-container title="CORE INTERVIEW SECTIONS">
+  <div class="sections-grid">
+    @for (section of sections(); track section.id) {
+    <app-section-card [section]="section">
+      @if (section.isLocked) {
+      <app-premium-guard [sectionId]="section.id" />
+      } @else {
+      <app-start-action [sectionId]="section.id" />
+      }
+    </app-section-card>
+    }
+  </div>
+</app-terminal-container>

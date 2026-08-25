@@ -1,0 +1,7 @@
+<app-button variant="primary" size="md" [loading]="isDeploying()" (click)="onDeploy()">
+  @if (isDeploying()) {
+  <span>DEPLOYING...</span>
+  } @else {
+  <span>DEPLOY PRODUCTION PORTFOLIO &rarr;</span>
+  }
+</app-button>

@@ -1,0 +1,75 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.readiness-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-5, 1.25rem);
+
+    &__status-banner {
+        display: flex;
+        gap: var(--unit-3, 0.625rem);
+        align-items: center;
+        padding: var(--unit-3, 0.625rem) var(--unit-4, 0.875rem);
+        background-color: var(--color-error-bg, rgb(239 68 68 / 10%));
+        border: 1px solid var(--color-error-border, rgb(239 68 68 / 20%));
+        border-radius: var(--radius-md, 8px);
+    }
+
+    &__icon {
+        font-size: var(--font-size-sm, 0.875rem);
+    }
+
+    &__label {
+        font-family: var(--font-family-mono, monospace);
+        font-size: var(--font-size-xs, 0.75rem);
+        font-weight: var(--font-weight-bold, 700);
+        color: var(--color-error, #ef4444);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    &__message-box {
+        line-height: var(--line-height-md, 1.5);
+    }
+
+    &__message {
+        margin: 0;
+        font-size: var(--font-size-sm, 0.875rem);
+        color: var(--text-color, #d4d4d8);
+    }
+
+    &__progress-section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-3, 0.625rem);
+        margin-top: var(--unit-1, 0.25rem);
+    }
+
+    &__progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__progress-title {
+        font-size: var(--font-size-xs, 0.75rem);
+        font-weight: var(--font-weight-semibold, 600);
+        color: var(--text-muted, #a1a1aa);
+    }
+
+    &__progress-value {
+        font-family: var(--font-family-mono, monospace);
+        font-size: var(--font-size-sm, 0.875rem);
+        font-weight: var(--font-weight-bold, 700);
+        color: var(--text-color, #f4f4f5);
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: var(--unit-3, 0.75rem);
+    }
+}

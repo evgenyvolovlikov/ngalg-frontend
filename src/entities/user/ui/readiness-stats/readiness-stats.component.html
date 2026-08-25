@@ -1,0 +1,22 @@
+<div class="readiness-stats">
+  <div class="readiness-stats__status-banner">
+    <span class="readiness-stats__icon" aria-hidden="true">⚠️</span>
+    <span class="readiness-stats__label">STATUS: {{ profile().statusLabel }}</span>
+  </div>
+
+  <div class="readiness-stats__message-box">
+    <p class="readiness-stats__message">{{ profile().statusMessage }}</p>
+  </div>
+
+  <div class="readiness-stats__progress-section">
+    <div class="readiness-stats__progress-header">
+      <span class="readiness-stats__progress-title">Overall Readiness</span>
+      <span class="readiness-stats__progress-value">{{ profile().readinessScore }}%</span>
+    </div>
+    <app-progress-bar [value]="profile().readinessScore" />
+  </div>
+
+  <div class="readiness-stats__actions">
+    <ng-content></ng-content>
+  </div>
+</div>

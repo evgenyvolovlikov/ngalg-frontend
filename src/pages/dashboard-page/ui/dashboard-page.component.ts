@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 // import { ActivityTimelineComponent } from '@widgets/activity-timeline';
 import { InterviewSectionBoardComponent } from '@widgets/interview-section-board';
-
-// import { ReadinessRadarComponent } from '@widgets/readiness-radar';
+import { ReadinessRadarComponent } from '@widgets/readiness-radar';
 
 @Component({
     selector: 'app-dashboard-page',
@@ -11,7 +10,8 @@ import { InterviewSectionBoardComponent } from '@widgets/interview-section-board
     templateUrl: './dashboard-page.component.html',
     styleUrl: './dashboard-page.component.scss',
     imports: [
-        // ReadinessRadarComponent, ActivityTimelineComponent,
+        ReadinessRadarComponent,
+        // ActivityTimelineComponent,
         InterviewSectionBoardComponent,
     ],
 })

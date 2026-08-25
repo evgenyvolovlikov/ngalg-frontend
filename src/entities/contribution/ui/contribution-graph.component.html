@@ -1,0 +1,25 @@
+<div class="contribution-graph">
+  <div class="contribution-graph__stats-header">
+    <div class="contribution-graph__stat-block">
+      <span class="contribution-graph__value">{{ stats().totalCommits }}</span>
+      <span class="contribution-graph__label">Total Commits</span>
+    </div>
+    <div class="contribution-graph__divider"></div>
+    <div class="contribution-graph__stat-block">
+      <span class="contribution-graph__value contribution-graph__value--highlight">
+        {{ stats().streakDays }} days
+      </span>
+      <span class="contribution-graph__label">Current Streak</span>
+    </div>
+  </div>
+
+  <div class="contribution-graph__grid">
+    @for (day of stats().days; track day.date) {
+    <div
+      class="contribution-graph__cell"
+      [class]="getLevelClass(day.count)"
+      [title]="day.date + ': ' + day.count + ' tasks'"
+    ></div>
+    }
+  </div>
+</div>

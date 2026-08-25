@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    flex-shrink: 0;
+    width: 260px;
+
+    @media (width <= 768px) {
+        width: 100%;
+    }
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-3);
+    padding: var(--unit-4);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+
+    &__header {
+        padding-bottom: var(--unit-2);
+        border-bottom: 1px solid var(--border-color);
+
+        span {
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-1);
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        padding: var(--unit-2) var(--unit-3);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-muted);
+        transition: all var(--transition-fast);
+        text-decoration: none;
+
+        &:hover {
+            background-color: var(--bg-surface-hover);
+            color: var(--text-color);
+        }
+
+        &.is-active {
+            background-color: var(--bg-surface-hover);
+            box-shadow: inset 2px 0 0 var(--color-primary);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary, #10b981); /* Или твой акцентный цвет */
+            border-left: 3px solid var(--color-primary, #10b981);
+        }
+    }
+}

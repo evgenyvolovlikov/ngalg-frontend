@@ -1,0 +1,13 @@
+<aside class="profile-sidebar">
+  <div class="profile-sidebar__header">
+    <span>Личный Кабинет</span>
+  </div>
+
+  <nav class="profile-sidebar__nav">
+    @for (item of menuElements; track item.route) {
+    <app-link [routerLink]="item.route" routerLinkActive="is-active" class="profile-sidebar__link">
+      {{ item.label }}
+    </app-link>
+    }
+  </nav>
+</aside>

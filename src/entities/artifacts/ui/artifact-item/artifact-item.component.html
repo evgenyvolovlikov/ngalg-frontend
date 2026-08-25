@@ -1,0 +1,11 @@
+<div class="artifact-row">
+  <span
+    class="status"
+    [class.compiled]="artifact().isCompiled"
+    [attr.aria-label]="artifact().isCompiled ? 'Скомпилировано' : 'Ожидает'"
+  >
+    {{ artifact().isCompiled ? '[✓]' : '[ ]' }}
+  </span>
+  <span class="algorithm">{{ artifact().algorithmName }}</span>
+  <span class="integration">({{ artifact().integrationName }})</span>
+</div>

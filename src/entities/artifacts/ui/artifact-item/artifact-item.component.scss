@@ -1,0 +1,31 @@
+:host {
+    display: block;
+    font-family: var(--font-mono, monospace);
+    font-size: var(--font-size-sm, 13px);
+    line-height: 1.6;
+}
+
+.artifact-row {
+    display: flex;
+    gap: var(--unit-2);
+    align-items: center;
+    color: var(--text-color);
+}
+
+.status {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-muted);
+
+    &.compiled {
+        color: var(--color-success, #10b981);
+    }
+}
+
+.algorithm {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color-bright, #fff);
+}
+
+.integration {
+    color: var(--text-muted);
+}

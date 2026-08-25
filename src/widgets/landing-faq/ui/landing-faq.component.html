@@ -1,0 +1,25 @@
+<section class="landing-faq">
+  <div class="landing-faq__container">
+    <header class="landing-faq__header">
+      <span class="landing-faq__tag">// FAQ</span>
+      <h2 class="landing-faq__title">Часто задаваемые вопросы</h2>
+    </header>
+
+    <div class="landing-faq__list">
+      @for (item of faqList; track item.id) {
+      <div class="faq-item" [class.faq-item--open]="openId() === item.id">
+        <button type="button" class="faq-item__trigger" (click)="toggle(item.id)">
+          <span class="faq-item__question">{{ item.question }}</span>
+          <span class="faq-item__icon">{{ openId() === item.id ? '−' : '+' }}</span>
+        </button>
+
+        @if (openId() === item.id) {
+        <div class="faq-item__content">
+          <p class="faq-item__answer">{{ item.answer }}</p>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</section>

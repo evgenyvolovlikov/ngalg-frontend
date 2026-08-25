@@ -1,0 +1,23 @@
+<section class="landing-metrics">
+  <div class="landing-metrics__container">
+    <!-- Блок с цифрами -->
+    <div class="landing-metrics__grid">
+      @for (metric of metrics; track metric.label) {
+      <div class="metric-card">
+        <span class="metric-card__value">{{ metric.value }}</span>
+        <span class="metric-card__label">{{ metric.label }}</span>
+      </div>
+      }
+    </div>
+
+    <!-- Блок со стеком -->
+    <div class="landing-metrics__stack">
+      <span class="landing-metrics__stack-title">// Core Stack:</span>
+      <div class="landing-metrics__tags">
+        @for (tech of techStack; track tech) {
+        <span class="tech-tag">[ {{ tech }} ]</span>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<section class="landing-pricing">
+  <div class="landing-pricing__container">
+    <header class="landing-pricing__header">
+      <span class="landing-pricing__tag">// PRICING</span>
+      <h2 class="landing-pricing__title">Инвестиция в твой грейд</h2>
+    </header>
+
+    <div class="landing-pricing__grid">
+      @for (plan of plans; track plan.id) {
+      <article class="pricing-card" [class.pricing-card--featured]="plan.isFeatured">
+        <div class="pricing-card__header">
+          @if (plan.badge) {
+          <span class="pricing-card__badge">[ {{ plan.badge }} ]</span>
+          }
+          <h3 class="pricing-card__title">{{ plan.title }}</h3>
+          <p class="pricing-card__description">{{ plan.description }}</p>
+        </div>
+
+        <div class="pricing-card__price-box">
+          <span class="pricing-card__price">{{ plan.price }}</span>
+          <span class="pricing-card__period">/ {{ plan.period }}</span>
+        </div>
+
+        <ul class="pricing-card__features">
+          @for (feature of plan.features; track feature.text) {
+          <li class="pricing-card__feature" [class.pricing-card__feature--disabled]="!feature.included">
+            <span class="pricing-card__icon"> {{ feature.included ? '✓' : '✕' }} </span>
+            <span>{{ feature.text }}</span>
+          </li>
+          }
+        </ul>
+
+        <div class="pricing-card__footer">
+          <app-button [variant]="plan.buttonVariant" routerLink="/auth/register" class="pricing-card__btn">
+            {{ plan.buttonText }}
+          </app-button>
+        </div>
+      </article>
+      }
+    </div>
+  </div>
+</section>

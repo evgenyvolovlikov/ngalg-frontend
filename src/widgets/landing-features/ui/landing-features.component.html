@@ -1,0 +1,23 @@
+<section class="landing-features">
+  <div class="landing-features__container">
+    <header class="landing-features__header">
+      <span class="landing-features__tag">// CAPABILITIES</span>
+      <h2 class="landing-features__title">Инструменты для роста</h2>
+    </header>
+
+    <div class="landing-features__grid">
+      @for (feature of features; track feature.id) {
+      <article class="feature-card">
+        <div class="feature-card__header">
+          <span class="feature-card__icon">{{ feature.iconText }}</span>
+        </div>
+        <h3 class="feature-card__title">{{ feature.title }}</h3>
+        <p class="feature-card__description">{{ feature.description }}</p>
+        <div class="feature-card__footer">
+          <span class="feature-card__status">status: <span class="text-green">active</span></span>
+        </div>
+      </article>
+      }
+    </div>
+  </div>
+</section>

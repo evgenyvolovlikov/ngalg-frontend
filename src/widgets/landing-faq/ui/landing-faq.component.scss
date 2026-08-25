@@ -1,0 +1,103 @@
+/* stylelint-disable declaration-property-unit-allowed-list */
+:host {
+    display: block;
+    width: 100%;
+}
+
+.landing-faq {
+    padding: var(--unit-10) var(--unit-4);
+    background-color: var(--bg-base);
+    border-top: 1px solid var(--border-color);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-8);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-2);
+        align-items: center;
+        text-align: center;
+    }
+
+    &__tag {
+        font-family: monospace;
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-3);
+    }
+}
+
+.faq-item {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-fast);
+    overflow: hidden;
+
+    &--open {
+        border-color: var(--color-primary);
+    }
+
+    &__trigger {
+        display: flex;
+        gap: var(--unit-4);
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: var(--unit-4) var(--unit-6);
+        background: none;
+        border: none;
+        font-family: inherit;
+        color: var(--text-color);
+        text-align: left;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--bg-surface-hover);
+        }
+    }
+
+    &__question {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-bold);
+    }
+
+    &__icon {
+        font-family: monospace;
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-primary);
+    }
+
+    &__content {
+        margin-top: var(--unit-1);
+        padding: 0 var(--unit-6) var(--unit-5) var(--unit-6);
+        border-top: 1px dashed var(--border-color);
+    }
+
+    &__answer {
+        margin: var(--unit-3) 0 0 0;
+        font-size: var(--font-size-sm);
+        line-height: 1.6;
+        color: var(--text-muted);
+    }
+}

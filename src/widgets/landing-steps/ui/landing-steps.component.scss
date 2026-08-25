@@ -1,0 +1,124 @@
+/* stylelint-disable declaration-property-unit-allowed-list */
+:host {
+    display: block;
+    width: 100%;
+}
+
+.landing-steps {
+    padding: var(--unit-10) var(--unit-4);
+    background-color: var(--bg-base);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-8);
+        max-width: 800px; /* Делаем контейнер уже для лучшей читаемости текста */
+        margin: 0 auto;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-2);
+    }
+
+    &__tag {
+        font-family: monospace;
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+    }
+
+    &__timeline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-8);
+        margin-left: var(--unit-3); /* Компенсируем ширину маркера */
+        padding-left: var(--unit-6);
+        border-left: 2px solid var(--border-color);
+
+        @media (width < 768px) {
+            margin-left: var(--unit-2);
+            padding-left: var(--unit-4);
+        }
+    }
+}
+
+.step-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &__marker {
+        position: absolute;
+        top: 0;
+        left: calc((var(--unit-6) + 18px) * -1); /* Вынос маркера на линию */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        background-color: var(--bg-surface);
+        border: 2px solid var(--border-color);
+        border-radius: 50%;
+        font-family: monospace;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+        transition:
+            border-color var(--transition-fast),
+            color var(--transition-fast);
+
+        @media (width < 768px) {
+            left: calc((var(--unit-4) + 14px) * -1);
+            width: 28px;
+            height: 28px;
+            font-size: var(--font-size-xs);
+        }
+    }
+
+    /* Подсветка маркера при наведении на карточку */
+    &:hover &__marker {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-3);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+    }
+
+    &__description {
+        margin: 0;
+        font-size: var(--font-size-md);
+        line-height: 1.5;
+        color: var(--text-muted);
+    }
+
+    &__terminal {
+        margin-top: var(--unit-2);
+        padding: var(--unit-3) var(--unit-4);
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-family: monospace;
+        font-size: var(--font-size-sm);
+        color: var(--color-primary); /* Имитация успешного ввода в терминале */
+        overflow-x: auto;
+    }
+}

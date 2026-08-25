@@ -1,0 +1,97 @@
+/* stylelint-disable declaration-property-unit-allowed-list */
+:host {
+    display: block;
+    width: 100%;
+}
+
+.landing-metrics {
+    padding: var(--unit-6) var(--unit-4);
+    background-color: var(--bg-surface); /* Выделяем секцию подложкой */
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-8);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--unit-4);
+
+        @media (width >= 768px) {
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--unit-6);
+        }
+    }
+
+    &__stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--unit-3);
+        align-items: center;
+
+        @media (width >= 768px) {
+            flex-direction: row;
+            gap: var(--unit-4);
+            justify-content: center;
+        }
+    }
+
+    &__stack-title {
+        font-family: monospace;
+        font-size: var(--font-size-sm);
+        color: var(--text-muted);
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--unit-2);
+        justify-content: center;
+    }
+}
+
+/* Карточка метрики */
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-1);
+    align-items: center;
+    text-align: center;
+
+    &__value {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: var(--font-weight-bold);
+        line-height: 1;
+        color: var(--color-primary);
+    }
+
+    &__label {
+        font-size: var(--font-size-sm);
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* Тег технологии */
+.tech-tag {
+    padding: var(--unit-1) var(--unit-2);
+    background-color: var(--bg-base);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+    font-size: var(--font-size-xs);
+    color: var(--text-color);
+    transition: border-color var(--transition-fast);
+
+    &:hover {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+}

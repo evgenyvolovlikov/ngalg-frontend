@@ -1,0 +1,41 @@
+<section class="landing-ps">
+  <div class="landing-ps__container">
+    <header class="landing-ps__header">
+      <span class="landing-ps__tag">// PARADIGM SHIFT</span>
+      <h2 class="landing-ps__title">Забудь про абстрактные алгоритмы</h2>
+    </header>
+
+    <div class="landing-ps__grid">
+      <!-- Колонки "Обычный LeetCode" vs "ngalg" -->
+      <div class="ps-card ps-card--problem">
+        <div class="ps-card__header">
+          <span class="ps-card__badge">[ OLD WAY ]</span>
+          <h3 class="ps-card__title">Обычный LeetCode</h3>
+        </div>
+        <ul class="ps-card__list">
+          @for (point of comparisonPoints; track point.problem) {
+          <li class="ps-card__item ps-card__item--negative">
+            <span class="ps-card__icon">✕</span>
+            <p class="ps-card__text">{{ point.problem }}</p>
+          </li>
+          }
+        </ul>
+      </div>
+
+      <div class="ps-card ps-card--solution">
+        <div class="ps-card__header">
+          <span class="ps-card__badge">[ NGALG WAY ]</span>
+          <h3 class="ps-card__title">Инженерный подход</h3>
+        </div>
+        <ul class="ps-card__list">
+          @for (point of comparisonPoints; track point.solution) {
+          <li class="ps-card__item ps-card__item--positive">
+            <span class="ps-card__icon">✓</span>
+            <p class="ps-card__text">{{ point.solution }}</p>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

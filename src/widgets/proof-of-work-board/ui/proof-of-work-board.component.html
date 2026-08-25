@@ -1,0 +1,31 @@
+<app-terminal-container title="ВАШИ СКОМПИЛИРОВАННЫЕ МОДУЛИ (PROOF OF WORK)">
+  <div class="proof-layout">
+    <!-- Список артефактов с обработкой пустого состояния -->
+    <div class="artifacts-list">
+      @for (artifact of artifacts(); track artifact.id) {
+      <app-artifact-item [artifact]="artifact" />
+      } @empty {
+      <div class="empty-state">[ ℹ️ Скомпилированных модулей пока нет. Начните выполнение треков ]</div>
+      }
+    </div>
+
+    <!-- Информационная плашка компиляции -->
+    <div class="compilation-info">[ ⏳ Доступно для компиляции: {{ availableForCompilation() }} модулей ]</div>
+
+    <hr class="divider" />
+
+    <!-- Метрика готовности -->
+    <div class="deployment-status">
+      <span>
+        Готовность к деплою:
+        <strong>{{ readinessPercentage() }}%</strong>
+      </span>
+      <span class="version-tag">| Сборка: Angular 22</span>
+    </div>
+
+    <!-- Фича экспорта -->
+    <div class="actions-wrapper">
+      <app-export-actions />
+    </div>
+  </div>
+</app-terminal-container>

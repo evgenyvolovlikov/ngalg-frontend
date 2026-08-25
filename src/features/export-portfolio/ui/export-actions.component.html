@@ -1,0 +1,9 @@
+<div class="export-actions-row">
+  <button class="export-btn zip-btn" [disabled]="isExporting()" (click)="onDownloadZip()">
+    <span> {{ isExporting() ? "[ ⏳ СБОРКА АРХИВА... ]" : "[ ⬇️ СКАЧАТЬ ZIP-АРХИВ ]" }} </span>
+  </button>
+
+  <button class="export-btn deploy-btn" [disabled]="isDeploying()" (click)="onDeployGithub()">
+    <span> {{ isDeploying() ? "[ ⏳ ЗАПУСК CI/CD... ]" : "[ 🚀 ДЕПЛОЙ НА GITHUB ]" }} </span>
+  </button>
+</div>

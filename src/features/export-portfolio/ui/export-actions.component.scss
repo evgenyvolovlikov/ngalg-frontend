@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    font-family: var(--font-mono, monospace);
+}
+
+.export-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--unit-3);
+    align-items: center;
+}
+
+.export-btn {
+    padding: var(--unit-2) var(--unit-4);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: var(--font-size-xs, 12px);
+    font-weight: var(--font-weight-bold, 600);
+    color: var(--text-color);
+    transition: all var(--transition-fast, 0.2s ease);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+
+    &:hover:not(:disabled) {
+        background: var(--bg-surface-hover);
+        border-color: var(--text-muted);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(1px);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Специфичные стили для ZIP-архива (Инфо-акцент) */
+    &.zip-btn {
+        &:hover:not(:disabled) {
+            /* Используй переменные для info/primary цветов. Здесь пример fallback'ов */
+            background: var(--bg-info-light, rgb(56 189 248 / 5%));
+            color: var(--color-info, #38bdf8);
+            border-color: var(--color-info, #38bdf8);
+        }
+    }
+
+    /* Специфичные стили для Deploy (Успешный/Акшен-акцент) */
+    &.deploy-btn {
+        color: var(--color-success, #10b981);
+        border-color: var(--border-success, rgb(16 185 129 / 40%));
+
+        &:hover:not(:disabled) {
+            background: var(--bg-success-light, rgb(16 185 129 / 8%));
+            color: var(--color-success-hover, #34d399);
+            border-color: var(--color-success, #10b981);
+        }
+    }
+}

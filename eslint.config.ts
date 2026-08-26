@@ -2,6 +2,7 @@ import fsdPlugin from '@conarti/eslint-plugin-feature-sliced';
 import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import angular from 'angular-eslint';
+import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
@@ -14,10 +15,9 @@ export default tseslint.config(
             ...angular.configs.tsRecommended,
         ],
         plugins: {
-            // Оборачиваем legacy-плагин для совместимости с ESLint 10
             'feature-sliced': fixupPluginRules(fsdPlugin),
         },
-        processor: angular.processInlineTemplates,
+        processor: angular.processInlineTemplates as any,
         rules: {
             '@angular-eslint/directive-selector': [
                 'error',
@@ -30,7 +30,7 @@ export default tseslint.config(
             '@angular-eslint/component-selector': [
                 'error',
                 {
-                    type: 'element',
+                    type: ['element', 'attribute'],
                     prefix: 'app',
                     style: 'kebab-case',
                 },
@@ -61,6 +61,15 @@ export default tseslint.config(
         rules: {
             '@angular-eslint/template/no-negated-async': 'error',
             '@angular-eslint/template/prefer-control-flow': 'error',
+        },
+    },
+    storybook.configs['flat/recommended'] as any,
+
+    {
+        files: ['**/*.stories.ts'],
+        rules: {
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            'feature-sliced/public-api': 'off', // Сторисам можно импортировать напрямую
         },
     },
 );

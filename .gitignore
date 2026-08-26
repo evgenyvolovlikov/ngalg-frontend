@@ -45,3 +45,6 @@ ehthumbs.db
 Desktop.ini
 
 repomix-output.xml
+
+*storybook.log
+storybook-static

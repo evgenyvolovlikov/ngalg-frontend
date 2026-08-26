@@ -5,6 +5,6 @@
     "types": []
   },
   "files": ["src/main.ts"],
-  "include": ["src/**/*.d.ts", "src/**/*.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "eslint.config.ts"],
   "exclude": ["src/**/*.spec.ts", "node_modules", "dist"]
 }

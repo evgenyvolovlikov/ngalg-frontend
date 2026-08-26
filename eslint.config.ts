@@ -1,6 +1,5 @@
 import eslint from '@eslint/js';
 import angular from 'angular-eslint';
-import type { Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
@@ -12,7 +11,7 @@ export default tseslint.config(
             ...tseslint.configs.stylistic,
             ...angular.configs.tsRecommended,
         ],
-        processor: angular.processInlineTemplates as unknown as Linter.Processor,
+        processor: angular.processInlineTemplates,
         rules: {
             '@angular-eslint/directive-selector': [
                 'error',
@@ -33,7 +32,15 @@ export default tseslint.config(
             '@angular-eslint/prefer-standalone': 'error',
             '@angular-eslint/component-class-suffix': 'error',
             '@angular-eslint/directive-class-suffix': 'error',
-            '@typescript-eslint/explicit-function-return-type': 'off',
+            '@typescript-eslint/explicit-function-return-type': [
+                'error',
+                {
+                    allowExpressions: true,
+                    allowTypedFunctionExpressions: true,
+                    allowHigherOrderFunctions: true,
+                    allowDirectConstAssertionInArrowFunctions: true,
+                },
+            ],
             '@typescript-eslint/no-explicit-any': 'warn',
         },
     },

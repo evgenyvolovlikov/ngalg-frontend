@@ -2,19 +2,12 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-// ==========================================================================
-// 1. SCSS ПЕРЕМЕННЫЕ БРЕЙКПОИНТОВ
-// ==========================================================================
 $screen-xs: 320px !default;
 $screen-sm: 576px !default;
 $screen-md: 768px !default;
 $screen-lg: 992px !default;
 $screen-xl: 1200px !default;
 $screen-xxl: 1440px !default;
-
-// ==========================================================================
-// КАРТА БРЕЙКПОИНТОВ (СИНХРОНИЗИРОВАНА С _tokens.scss)
-// ==========================================================================
 $breakpoints: (
     'xs': $screen-xs,
     'sm': $screen-sm,
@@ -24,11 +17,6 @@ $breakpoints: (
     'xxl': $screen-xxl,
 ) !default;
 
-// ==========================================================================
-// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-// ==========================================================================
-
-/// Получение и валидация значения брейкпоинта
 @function -get-breakpoint-value($key) {
     @if map.has-key($breakpoints, $key) {
         @return map.get($breakpoints, $key);
@@ -39,8 +27,6 @@ $breakpoints: (
     }
 }
 
-/// Безопасное вычитание микрошага с учетом единицы измерения
-/// Защищает от фатальной ошибки Sass: "Incompatible units rem and px"
 @function -decrement-width($value) {
     $unit: math.unit($value);
 
@@ -55,14 +41,6 @@ $breakpoints: (
     @return $value - 0.02;
 }
 
-// ==========================================================================
-// ОСНОВНОЙ МИКСИН РЕСПОНСИВА
-// ==========================================================================
-
-/// Универсальный адаптивный миксин
-/// @param {String | Number} $breakpoint - Ключ или значение ширины
-/// @param {String} $direction - Стратегия: 'min'/'above' (mobile-first), 'max'/'below' (desktop-first), 'between'
-/// @param {String | Number | Null} $next-breakpoint - Верхняя граница (только для 'between')
 @mixin respond-to($breakpoint, $direction: 'min', $next-breakpoint: null) {
     $width: -get-breakpoint-value($breakpoint);
 
@@ -91,25 +69,18 @@ $breakpoints: (
     }
 }
 
-// ==========================================================================
-// СЕМАНТИЧЕСКИЕ АЛИАСЫ (DX SHORTCUTS)
-// ==========================================================================
-
-/// Mobile-first: от указанной ширины и выше
 @mixin media-above($breakpoint) {
     @include respond-to($breakpoint, 'min') {
         @content;
     }
 }
 
-/// Desktop-first: от указанной ширины и ниже
 @mixin media-below($breakpoint) {
     @include respond-to($breakpoint, 'max') {
         @content;
     }
 }
 
-/// Диапазон ширин: между $from и $to
 @mixin media-between($from, $to) {
     @include respond-to($from, 'between', $to) {
         @content;

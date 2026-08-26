@@ -6,5 +6,5 @@
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts", "src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "eslint.config.ts", "node_modules", "dist"]
+  "exclude": ["src/**/*.spec.ts", "node_modules", "dist"]
 }

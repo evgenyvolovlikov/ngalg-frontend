@@ -1,0 +1,146 @@
+/* stylelint-disable declaration-no-important */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    text-size-adjust: 100%;
+    tab-size: 4;
+}
+
+body {
+    min-height: 100%;
+    background-color: var(--background-color);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--text-color);
+    transition:
+        background-color var(--transition-base),
+        color var(--transition-base);
+    font-synthesis: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+}
+
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    transition:
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:not([class]) {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 3px;
+}
+
+a:not([class]):hover {
+    text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+svg {
+    fill: currentcolor;
+}
+
+input,
+button,
+textarea,
+select {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+}
+
+button,
+[role='button'] {
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px var(--bg-surface) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--text-color);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(100%);
+    white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

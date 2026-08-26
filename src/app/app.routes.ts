@@ -11,7 +11,12 @@ const articlesRoute: Route = {
 export const appRoutes: Routes = [
     articlesRoute,
     {
+        path: '',
+        redirectTo: APP_ROUTES_MAP.ARTICLES.path,
+        pathMatch: 'full',
+    },
+    {
         path: '**',
-        redirectTo: '',
+        redirectTo: APP_ROUTES_MAP.ARTICLES.path,
     },
 ];

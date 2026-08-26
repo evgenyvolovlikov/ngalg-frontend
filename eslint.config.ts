@@ -1,3 +1,5 @@
+import fsdPlugin from '@conarti/eslint-plugin-feature-sliced';
+import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
 import angular from 'angular-eslint';
 import tseslint from 'typescript-eslint';
@@ -11,6 +13,10 @@ export default tseslint.config(
             ...tseslint.configs.stylistic,
             ...angular.configs.tsRecommended,
         ],
+        plugins: {
+            // Оборачиваем legacy-плагин для совместимости с ESLint 10
+            'feature-sliced': fixupPluginRules(fsdPlugin),
+        },
         processor: angular.processInlineTemplates,
         rules: {
             '@angular-eslint/directive-selector': [
@@ -42,6 +48,11 @@ export default tseslint.config(
                 },
             ],
             '@typescript-eslint/no-explicit-any': 'warn',
+
+            /* Правила FSD */
+            'feature-sliced/layers-slices': ['error', { allowTypeImports: true }],
+            'feature-sliced/absolute-relative': 'error',
+            'feature-sliced/public-api': 'error',
         },
     },
     {

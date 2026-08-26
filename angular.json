@@ -2,15 +2,20 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "analytics": false,
+    "schematicCollections": ["angular-eslint"]
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ngalg-frontend": {
+    "client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "displayBlock": true,
+          "skipTests": false
         }
       },
       "root": "",
@@ -20,6 +25,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/client",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -29,9 +36,10 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/app/styles"]
+            }
           },
           "configurations": {
             "production": {
@@ -47,12 +55,19 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": {
+                "scripts": true,
+                "styles": true
+              },
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -61,16 +76,19 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ngalg-frontend:build:production"
+              "buildTarget": "client:build:production"
             },
             "development": {
-              "buildTarget": "ngalg-frontend:build:development"
+              "buildTarget": "client:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
-        "test": {
-          "builder": "@angular/build:unit-test"
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     }

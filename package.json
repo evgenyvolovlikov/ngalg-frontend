@@ -1,12 +1,21 @@
 {
-  "name": "ngalg-frontend",
+  "name": "client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start:dev": "ng serve",
+    "build:prod": "ng build",
+    "watch:dev": "ng build --watch --configuration development",
+    "lint": "pnpm lint:ts && pnpm lint:styles",
+    "lint:ts": "ng lint",
+    "lint:ts:fix": "ng lint --fix",
+    "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
+    "lint:styles:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "repomix": "npx repomix"
   },
   "private": true,
   "packageManager": "pnpm@11.7.0",
@@ -21,12 +30,24 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-eslint/builder": "22.1.0",
     "@angular/build": "^22.0.5",
     "@angular/cli": "^22.0.5",
     "@angular/compiler-cli": "^22.0.0",
-    "jsdom": "^28.0.0",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@eslint/js": "^10.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "angular-eslint": "22.1.0",
+    "eslint": "^10.6.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.7.0",
+    "lint-staged": "^17.3.0",
     "prettier": "^3.8.1",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1",
     "typescript": "~6.0.2",
-    "vitest": "^4.0.8"
+    "typescript-eslint": "8.62.1"
   }
 }

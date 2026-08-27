@@ -1,0 +1,65 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.cover-image {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    &__skeleton {
+        position: absolute;
+        z-index: 1;
+        background: linear-gradient(
+            90deg,
+            var(--bg-surface) 25%,
+            var(--bg-surface-hover) 50%,
+            var(--bg-surface) 75%
+        );
+        animation: shimmer 1.5s infinite linear;
+        inset: 0;
+        background-size: 200% 100%;
+    }
+
+    &__fallback {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--unit-4);
+        background: linear-gradient(135deg, var(--bg-surface), var(--background-color));
+        inset: 0;
+
+        &-img {
+            width: var(--unit-12);
+            height: var(--unit-12);
+            opacity: 0.5;
+            object-fit: contain;
+        }
+    }
+
+    &__img {
+        opacity: 0;
+        transition: opacity var(--transition-base);
+        object-fit: cover;
+
+        &--loaded {
+            opacity: 1;
+        }
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

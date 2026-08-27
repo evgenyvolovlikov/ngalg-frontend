@@ -1,5 +1,13 @@
 <section class="article">
-  <div class="article__hero">1</div>
-  <div class="article__main">2</div>
-  <footer class="admin-panel">3</footer>
+  <div class="article__hero">
+    @if (article().coverImage; as cover) {
+      <app-cover-image [src]="cover.url" [alt]="cover.alt" [priority]="true" />
+    } @else {
+      <app-cover-image [src]="null" alt="Изображение по умолчанию" [priority]="true" />
+    }
+  </div>
+  <div class="article__main">
+    <article class="article-render">Header</article>
+  </div>
+  <footer class="admin-panel">Admin Actions</footer>
 </section>

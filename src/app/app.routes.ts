@@ -42,3 +42,19 @@ export const ARTICLE_ROUTES: Routes = [
         title: 'Edit Article',
     },
 ];
+
+export const APP_ROUTES: Routes = [
+    {
+        path: '',
+        redirectTo: 'articles',
+        pathMatch: 'full',
+    },
+    {
+        path: 'articles',
+        children: ARTICLE_ROUTES,
+    },
+    {
+        path: '**',
+        redirectTo: 'articles',
+    },
+];

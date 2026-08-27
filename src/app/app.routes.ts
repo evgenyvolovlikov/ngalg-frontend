@@ -1,28 +1,44 @@
 import { Routes } from '@angular/router';
 
-export const appRoutes: Routes = [
+export const ARTICLE_ROUTES: Routes = [
     {
         path: '',
-        redirectTo: 'articles',
-        pathMatch: 'full',
-    },
-    {
-        path: 'articles',
-        loadComponent: () => import('@pages/article-list').then((c) => c.ArticleListPageComponent),
-    },
-    {
-        path: 'articles/create',
         loadComponent: () =>
-            import('@pages/article-editor').then((c) => c.ArticleEditorPageComponent),
+            import('@pages/articles-home/articles-home-page.component').then(
+                (c) => c.ArticlesHomePageComponent,
+            ),
+        title: 'Articles',
     },
     {
-        path: 'articles/:id',
+        path: 'list',
         loadComponent: () =>
-            import('@pages/article-details').then((c) => c.ArticleDetailsPageComponent),
+            import('@pages/article-list/article-list-page.component').then(
+                (c) => c.ArticleListPageComponent,
+            ),
+        title: 'Article List',
     },
     {
-        path: 'articles/:id/edit',
+        path: 'create',
         loadComponent: () =>
-            import('@pages/article-editor').then((c) => c.ArticleEditorPageComponent),
+            import('@pages/article-editor/article-editor-page.component').then(
+                (c) => c.ArticleEditorPageComponent,
+            ),
+        title: 'Create Article',
+    },
+    {
+        path: ':id',
+        loadComponent: () =>
+            import('@pages/article-details/article-details-page.component').then(
+                (c) => c.ArticleDetailsPageComponent,
+            ),
+        title: 'Article Details',
+    },
+    {
+        path: ':id/edit',
+        loadComponent: () =>
+            import('@pages/article-editor/article-editor-page.component').then(
+                (c) => c.ArticleEditorPageComponent,
+            ),
+        title: 'Edit Article',
     },
 ];

@@ -5,6 +5,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article-editor-page.component.html',
-    imports: [],
 })
 export class ArticleEditorPageComponent {}

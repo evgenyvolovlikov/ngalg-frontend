@@ -16,8 +16,8 @@ export abstract class BaseApiService {
         return this.http.post<T>(endpoint, body).pipe(catchError((err) => this.handleError(err)));
     }
 
-    protected put<T>(endpoint: string, body: unknown): Observable<T> {
-        return this.http.put<T>(endpoint, body).pipe(catchError((err) => this.handleError(err)));
+    protected patch<T>(endpoint: string, body: unknown): Observable<T> {
+        return this.http.patch<T>(endpoint, body).pipe(catchError((err) => this.handleError(err)));
     }
 
     protected delete<T>(endpoint: string): Observable<T> {

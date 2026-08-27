@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { CoverImageComponent } from '@shared/ui/cover-image';
 
-import { Article } from '../model/article.types';
+import { Article } from '../../model/article.types';
+import { ArticleHeaderComponent } from '../article-header/article-header.component';
 
 @Component({
     selector: 'app-article',
@@ -10,7 +11,7 @@ import { Article } from '../model/article.types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article.component.html',
     styleUrl: './article.component.scss',
-    imports: [CoverImageComponent],
+    imports: [CoverImageComponent, ArticleHeaderComponent],
 })
 export class ArticleComponent {
     readonly article = input.required<Article>();

@@ -1,3 +1,7 @@
-<div>
-  <h1>Статья в разработке</h1>
-</div>
+<app-breadcrumbs [items]="breadcrumbs()" />
+
+@if (currentArticle(); as currentArticle) {
+  <app-article [article]="currentArticle" />
+} @else {
+  <p>Загрузка статьи...</p>
+}

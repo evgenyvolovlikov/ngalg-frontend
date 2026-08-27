@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-article-create-page',
+    selector: 'app-article-editor-page',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './article-create-page.component.html',
+    templateUrl: './article-editor-page.component.html',
     imports: [],
 })
-export class ArticleCreatePageComponent {}
+export class ArticleEditorPageComponent {}

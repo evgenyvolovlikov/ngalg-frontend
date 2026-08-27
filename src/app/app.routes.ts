@@ -1,22 +1,28 @@
-import { Route, Routes } from '@angular/router';
-
-import { APP_ROUTES_MAP } from '@shared/config/routes.config';
-
-/* Статьи */
-const articlesRoute: Route = {
-    path: APP_ROUTES_MAP.ARTICLES.path,
-    loadChildren: () => import('@pages/articles-pages').then((routes) => routes.ARTICLE_ROUTES),
-};
+import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-    articlesRoute,
     {
         path: '',
-        redirectTo: APP_ROUTES_MAP.ARTICLES.path,
+        redirectTo: 'articles',
         pathMatch: 'full',
     },
     {
-        path: '**',
-        redirectTo: APP_ROUTES_MAP.ARTICLES.path,
+        path: 'articles',
+        loadComponent: () => import('@pages/article-list').then((c) => c.ArticleListPageComponent),
+    },
+    {
+        path: 'articles/create',
+        loadComponent: () =>
+            import('@pages/article-editor').then((c) => c.ArticleEditorPageComponent),
+    },
+    {
+        path: 'articles/:id',
+        loadComponent: () =>
+            import('@pages/article-details').then((c) => c.ArticleDetailsPageComponent),
+    },
+    {
+        path: 'articles/:id/edit',
+        loadComponent: () =>
+            import('@pages/article-editor').then((c) => c.ArticleEditorPageComponent),
     },
 ];

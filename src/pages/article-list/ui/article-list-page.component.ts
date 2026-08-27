@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-article-detail-page',
+    selector: 'app-article-list-page',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './article-detail-page.component.html',
-    imports: [],
+    templateUrl: './article-list-page.component.html',
 })
-export class ArticleDetailPageComponent {}
+export class ArticleListPageComponent {}

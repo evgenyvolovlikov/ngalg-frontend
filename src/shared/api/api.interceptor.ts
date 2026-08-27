@@ -1,8 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-// eslint-disable-next-line feature-sliced/absolute-relative
-import { ENVIRONMENT } from '@shared/config';
+import { ENVIRONMENT } from '../config/environment.token';
 
 export const apiInterceptor: HttpInterceptorFn = (req, next) => {
     const env = inject(ENVIRONMENT, { optional: true });

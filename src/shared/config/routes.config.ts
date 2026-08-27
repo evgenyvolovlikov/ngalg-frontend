@@ -6,9 +6,9 @@ export interface AppRoute {
     label: string;
 }
 
-export type AppRoutes = Record<RouteMap, AppRoute>;
+export type AppRoutesMap = Record<RouteMap, AppRoute>;
 
-export const APP_ROUTES_MAP: AppRoutes = {
+export const APP_ROUTES_MAP: AppRoutesMap = {
     ARTICLES: { path: 'articles', label: 'Статьи' },
 };
 

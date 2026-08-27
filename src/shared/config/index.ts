@@ -1,2 +1,2 @@
-export { ENVIRONMENT } from './environment.token';
 export * from './routes.config';
+export * from './environment.token';

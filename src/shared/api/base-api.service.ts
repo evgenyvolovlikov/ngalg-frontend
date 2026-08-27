@@ -9,19 +9,19 @@ export abstract class BaseApiService {
     protected get<T>(endpoint: string, params?: Record<string, unknown>): Observable<T> {
         return this.http
             .get<T>(endpoint, { params: this.buildParams(params) })
-            .pipe(catchError(this.handleError));
+            .pipe(catchError((err) => this.handleError(err)));
     }
 
     protected post<T>(endpoint: string, body: unknown): Observable<T> {
-        return this.http.post<T>(endpoint, body).pipe(catchError(this.handleError));
+        return this.http.post<T>(endpoint, body).pipe(catchError((err) => this.handleError(err)));
     }
 
     protected put<T>(endpoint: string, body: unknown): Observable<T> {
-        return this.http.put<T>(endpoint, body).pipe(catchError(this.handleError));
+        return this.http.put<T>(endpoint, body).pipe(catchError((err) => this.handleError(err)));
     }
 
     protected delete<T>(endpoint: string): Observable<T> {
-        return this.http.delete<T>(endpoint).pipe(catchError(this.handleError));
+        return this.http.delete<T>(endpoint).pipe(catchError((err) => this.handleError(err)));
     }
 
     private buildParams(params?: Record<string, unknown>): HttpParams {
@@ -33,8 +33,14 @@ export abstract class BaseApiService {
 
             if (Array.isArray(value)) {
                 value.forEach((item) => {
-                    httpParams = httpParams.append(key, String(item));
+                    const itemValue =
+                        typeof item === 'object' && item !== null
+                            ? JSON.stringify(item)
+                            : String(item);
+                    httpParams = httpParams.append(key, itemValue);
                 });
+            } else if (typeof value === 'object') {
+                httpParams = httpParams.set(key, JSON.stringify(value));
             } else {
                 httpParams = httpParams.set(key, String(value));
             }

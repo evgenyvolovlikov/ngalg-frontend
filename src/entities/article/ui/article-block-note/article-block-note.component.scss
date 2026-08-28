@@ -8,7 +8,7 @@
     gap: var(--unit-3);
     padding: var(--unit-4);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    border-left: 4px solid var(--border-color);
+    border-left: var(--unit-1) solid var(--border-color);
 
     &[data-variant='INFO'] {
         background-color: var(--color-info-bg);
@@ -32,7 +32,7 @@
         flex-shrink: 0;
         width: var(--font-size-xl);
         height: var(--font-size-xl);
-        margin-top: 2px; /* Выравнивание по базовой линии первой строки текста */
+        margin-top: 2px;
 
         svg {
             width: 100%;

@@ -28,7 +28,7 @@ export const ARTICLE_ROUTES: Routes = [
     {
         path: ':id',
         loadComponent: () =>
-            import('@pages/article-details/article-details-page.component').then(
+            import('@pages/article-details-page/article-details-page.component').then(
                 (c) => c.ArticleDetailsPageComponent,
             ),
         title: 'Article Details',

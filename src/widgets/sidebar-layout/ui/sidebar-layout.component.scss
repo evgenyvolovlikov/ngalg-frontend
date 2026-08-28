@@ -1,0 +1,58 @@
+@use 'media' as media;
+
+:host {
+    --sidebar-width: 17.5rem;
+
+    display: block;
+    width: 100%;
+}
+
+.sidebar-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--unit-8);
+    align-items: start;
+    width: 100%;
+    padding: var(--unit-4);
+
+    &__sidebar {
+        position: sticky;
+        top: var(--unit-4);
+        height: calc(100dvh - var(--unit-8));
+        padding-right: var(--unit-4);
+        border-right: 1px solid var(--border-color);
+    }
+
+    &__sidebar-content {
+        height: 100%;
+        overflow-y: auto;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+            width: var(--unit-1); /* Заменили магическое число на токен */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: var(--radius-full);
+        }
+    }
+
+    &__content {
+        min-width: 0;
+    }
+
+    @media (max-width: media.$screen-lg) {
+        grid-template-columns: 1fr;
+        gap: var(--unit-6);
+
+        &__sidebar {
+            position: static;
+            height: auto;
+            padding-right: 0;
+            padding-bottom: var(--unit-4);
+            border-right: none;
+            border-bottom: 1px solid var(--border-color);
+        }
+    }
+}

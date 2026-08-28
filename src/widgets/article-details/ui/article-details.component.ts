@@ -9,13 +9,13 @@ import { APP_ROUTES_MAP, AppRoutes } from '@shared/config';
 import { BreadcrumbItem, BreadcrumbsComponent } from '@shared/ui/breadcrumbs';
 
 @Component({
-    selector: 'app-article-details-widget',
+    selector: 'app-article-details',
     standalone: true,
     imports: [ArticleComponent, BreadcrumbsComponent],
-    templateUrl: './article-details-widget.component.html',
-    styleUrl: './article-details-widget.component.scss',
+    templateUrl: './article-details.component.html',
+    styleUrl: './article-details.component.scss',
 })
-export class ArticleDetailsWidgetComponent {
+export class ArticleDetailsComponent {
     articleId = input.required<string>();
 
     private articleApi = inject(ArticleApiService);

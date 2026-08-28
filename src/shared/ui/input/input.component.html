@@ -1,0 +1,41 @@
+<div class="app-input" [class.app-input--disabled]="isDisabled()" [class.app-input--error]="errorMessage()">
+  @if (label()) {
+    <label class="app-input__label" [for]="id()">
+      {{ label() }}
+    </label>
+  }
+
+  <div class="app-input__wrapper">
+    <input
+      [id]="id()"
+      class="app-input__field"
+      [type]="inputType()"
+      [value]="value()"
+      [placeholder]="placeholder()"
+      [disabled]="isDisabled()"
+      [readOnly]="readonly()"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      [attr.aria-invalid]="!!errorMessage()"
+      [attr.aria-describedby]="errorMessage() ? id() + '-error' : null"
+    />
+
+    @if (type() === "password") {
+      <button
+        type="button"
+        class="app-input__toggle-password"
+        (click)="togglePasswordVisibility($event)"
+        [disabled]="isDisabled()"
+        [attr.aria-label]="isPasswordVisible() ? 'Скрыть пароль' : 'Показать пароль'"
+      >
+        <span class="icon">{{ isPasswordVisible() ? "🙈" : "👁️" }}</span>
+      </button>
+    }
+  </div>
+
+  @if (errorMessage()) {
+    <span class="app-input__error" [id]="id() + '-error'">
+      {{ errorMessage() }}
+    </span>
+  }
+</div>

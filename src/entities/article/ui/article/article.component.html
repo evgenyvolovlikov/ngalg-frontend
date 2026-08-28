@@ -6,8 +6,16 @@
       <app-cover-image [src]="null" alt="Изображение по умолчанию" [priority]="true" />
     }
   </div>
-  <div class="article__main">
-    <article class="article-render"><app-article-header [article]="article()" /></article>
-  </div>
+  <article class="article__main">
+    <app-article-header [article]="article()" />
+
+    <hr class="article__divider" aria-hidden="true" />
+
+    <div class="article__blocks">
+      @for (block of article().blocks; track $index) {
+        <app-article-block-renderer [block]="block" />
+      }
+    </div>
+  </article>
   <footer class="admin-panel">Admin Actions</footer>
 </section>

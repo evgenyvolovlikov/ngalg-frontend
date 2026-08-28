@@ -2,7 +2,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
-import { apiInterceptor } from '@shared/api/api.interceptor';
+import { apiInterceptor } from '@shared/api';
 import { ENVIRONMENT } from '@shared/config';
 
 import { environment } from '../environments/environment';

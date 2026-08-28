@@ -1,9 +1,3 @@
 <div class="article-details">
-  <app-breadcrumbs [items]="breadcrumbs()" />
-
-  @if (currentArticle(); as currentArticle) {
-    <app-article [article]="currentArticle" />
-  } @else {
-    <p>Загрузка статьи...</p>
-  }
+  <app-article-details-widget [articleId]="id()"></app-article-details-widget>
 </div>

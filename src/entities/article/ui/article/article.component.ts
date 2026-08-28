@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CoverImageComponent } from '@shared/ui/cover-image';
 
 import { Article } from '../../model/article.types';
+import { ArticleBlockRendererComponent } from '../article-block-renderer/article-block-renderer.component';
 import { ArticleHeaderComponent } from '../article-header/article-header.component';
 
 @Component({
@@ -11,7 +12,7 @@ import { ArticleHeaderComponent } from '../article-header/article-header.compone
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article.component.html',
     styleUrl: './article.component.scss',
-    imports: [CoverImageComponent, ArticleHeaderComponent],
+    imports: [CoverImageComponent, ArticleHeaderComponent, ArticleBlockRendererComponent],
 })
 export class ArticleComponent {
     readonly article = input.required<Article>();

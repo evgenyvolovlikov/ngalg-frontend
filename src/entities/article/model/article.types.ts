@@ -11,8 +11,8 @@ export type ArticleTag =
 // --- Данные отдельных блоков ---
 
 export interface TextBlockData {
+    format: string;
     content: string;
-    format: TextFormat;
 }
 
 export interface NoteBlockData {

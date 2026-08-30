@@ -1,7 +1,10 @@
-<div class="app-input" [class.app-input--disabled]="isDisabled()" [class.app-input--error]="errorMessage()">
+<div class="app-input" [class.app-input--disabled]="isDisabled()" [class.app-input--error]="hasError || errorMessage()">
   @if (label()) {
     <label class="app-input__label" [for]="id()">
       {{ label() }}
+      @if (isRequired) {
+        <span class="app-input__required-mark" aria-hidden="true">*</span>
+      }
     </label>
   }
 
@@ -14,10 +17,11 @@
       [placeholder]="placeholder()"
       [disabled]="isDisabled()"
       [readOnly]="readonly()"
+      [attr.aria-required]="isRequired"
+      [attr.aria-invalid]="hasError || !!errorMessage()"
+      [attr.aria-describedby]="errorText ? id() + '-error' : null"
       (input)="onInput($event)"
       (blur)="onBlur()"
-      [attr.aria-invalid]="!!errorMessage()"
-      [attr.aria-describedby]="errorMessage() ? id() + '-error' : null"
     />
 
     @if (type() === "password") {
@@ -33,9 +37,9 @@
     }
   </div>
 
-  @if (errorMessage()) {
+  @if (errorText) {
     <span class="app-input__error" [id]="id() + '-error'">
-      {{ errorMessage() }}
+      {{ errorText }}
     </span>
   }
 </div>

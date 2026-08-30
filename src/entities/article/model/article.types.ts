@@ -121,8 +121,6 @@ export interface Article {
 }
 
 // --- Структура навигационного дерева ---
-// Жестко привязано к ответу GET /articles/navigation бекенда
-
 export interface NavigationArticle {
     id: string;
     title: string;

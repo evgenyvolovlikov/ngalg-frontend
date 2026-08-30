@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, booleanAttribute, computed, input } from '@angular/core';
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled';
 export type ButtonSize = 'm' | 'l' | 'xl';
@@ -6,14 +6,7 @@ export type ButtonSize = 'm' | 'l' | 'xl';
 @Component({
     selector: 'button[app-button], a[app-button]',
     standalone: true,
-    template: `
-        @if (loading()) {
-            <span class="app-button__loader" aria-hidden="true"></span>
-        }
-        <span class="app-button__content" [class.app-button__content--hidden]="loading()">
-            <ng-content></ng-content>
-        </span>
-    `,
+    templateUrl: 'button.component.html',
     styleUrl: './button.component.scss',
     host: {
         class: 'app-button',
@@ -26,17 +19,17 @@ export type ButtonSize = 'm' | 'l' | 'xl';
         '[class.app-button--full-width]': 'fullWidth()',
         '[class.app-button--disabled]': 'isDisabled()',
         '[class.app-button--loading]': 'loading()',
-        // Управляем нативными атрибутами
         '[attr.disabled]': 'isDisabled() ? true : null',
         '[attr.aria-busy]': 'loading() ? "true" : null',
     },
 })
 export class ButtonComponent {
-    variant = input<ButtonVariant>('filled');
-    size = input<ButtonSize>('m');
-    loading = input<boolean>(false);
-    disabled = input<boolean>(false);
-    fullWidth = input<boolean>(false);
+    readonly variant = input<ButtonVariant>('filled');
+    readonly size = input<ButtonSize>('m');
 
-    isDisabled = computed(() => this.disabled() || this.loading());
+    readonly loading = input(false, { transform: booleanAttribute });
+    readonly disabled = input(false, { transform: booleanAttribute });
+    readonly fullWidth = input(false, { transform: booleanAttribute });
+
+    readonly isDisabled = computed(() => this.disabled() || this.loading());
 }

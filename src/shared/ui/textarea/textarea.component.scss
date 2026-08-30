@@ -1,0 +1,88 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.app-textarea {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-1);
+    padding: var(--unit-2) 0;
+
+    &__label {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--text-muted);
+    }
+
+    &__required-mark {
+        margin-left: var(--unit-1);
+        color: var(--color-error);
+    }
+
+    &__error {
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-error);
+    }
+
+    &--error {
+        .app-textarea__field {
+            border-color: var(--color-error);
+
+            &:focus {
+                border-color: var(--color-error);
+            }
+
+            // Перебиваем прозрачный border у моноширинного варианта
+            &--monospace {
+                border-color: var(--color-error);
+            }
+        }
+    }
+
+    &__field {
+        width: 100%;
+        min-height: 80px;
+        padding: var(--unit-2) var(--unit-3);
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-normal);
+        color: var(--text-color);
+        transition:
+            border-color var(--transition-fast),
+            box-shadow var(--transition-fast);
+        resize: vertical;
+
+        &::placeholder {
+            color: var(--text-disabled);
+        }
+
+        &:focus {
+            box-shadow: var(--focus-ring);
+            outline: none;
+            border-color: var(--border-focus);
+        }
+
+        &:disabled {
+            background-color: var(--bg-surface);
+            opacity: var(--opacity-disabled);
+            cursor: not-allowed;
+        }
+
+        &--monospace {
+            background-color: var(--bg-surface-active);
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+            color: var(--text-color);
+            border-color: transparent;
+
+            &:focus {
+                border-color: var(--border-focus);
+            }
+        }
+    }
+}

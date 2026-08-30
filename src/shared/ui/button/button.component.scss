@@ -1,4 +1,5 @@
-.app-button {
+/* Базовые стили вешаются строго на сам компонент */
+:host {
     position: relative;
     display: inline-flex;
     justify-content: center;
@@ -25,64 +26,64 @@
     &:active:not(:disabled, .app-button--disabled) {
         transform: scale(0.98);
     }
+}
 
-    &--disabled {
-        opacity: var(--opacity-disabled);
-        cursor: not-allowed;
-        pointer-events: none;
+:host(.app-button--disabled) {
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+:host(.app-button--full-width) {
+    width: 100%;
+}
+
+:host(.app-button--variant-filled) {
+    background-color: var(--color-contrast);
+    color: var(--text-on-contrast);
+
+    &:hover:not(.app-button--disabled) {
+        opacity: var(--opacity-hover);
     }
+}
 
-    &--full-width {
-        width: 100%;
+:host(.app-button--variant-outline) {
+    background-color: transparent;
+    color: var(--text-color);
+    border-color: var(--border-color);
+
+    &:hover:not(.app-button--disabled) {
+        background-color: var(--bg-surface);
+        border-color: var(--border-hover);
     }
+}
 
-    &--variant-filled {
-        background-color: var(--color-contrast);
-        color: var(--text-on-contrast);
+:host(.app-button--variant-clear) {
+    background-color: transparent;
+    color: var(--text-muted);
 
-        &:hover:not(.app-button--disabled) {
-            opacity: var(--opacity-hover);
-        }
-    }
-
-    &--variant-outline {
-        background-color: transparent;
+    &:hover:not(.app-button--disabled) {
+        background-color: var(--bg-surface);
         color: var(--text-color);
-        border-color: var(--border-color);
-
-        &:hover:not(.app-button--disabled) {
-            background-color: var(--bg-surface);
-            border-color: var(--border-hover);
-        }
     }
+}
 
-    &--variant-clear {
-        background-color: transparent;
-        color: var(--text-muted);
+:host(.app-button--size-m) {
+    padding: var(--unit-2) var(--unit-4);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+}
 
-        &:hover:not(.app-button--disabled) {
-            background-color: var(--bg-surface);
-            color: var(--text-color);
-        }
-    }
+:host(.app-button--size-l) {
+    padding: var(--unit-3) var(--unit-6);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+}
 
-    &--size-m {
-        padding: var(--unit-2) var(--unit-4);
-        border-radius: var(--radius-sm);
-        font-size: var(--font-size-sm);
-    }
-
-    &--size-l {
-        padding: var(--unit-3) var(--unit-6);
-        border-radius: var(--radius-md);
-        font-size: var(--font-size-base);
-    }
-
-    &--size-xl {
-        padding: var(--unit-4) var(--unit-8);
-        border-radius: var(--radius-md);
-        font-size: var(--font-size-lg);
-    }
+:host(.app-button--size-xl) {
+    padding: var(--unit-4) var(--unit-8);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-lg);
 }
 
 .app-button__content {

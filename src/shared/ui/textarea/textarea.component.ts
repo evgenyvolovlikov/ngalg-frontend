@@ -1,23 +1,15 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import {
-    ChangeDetectionStrategy,
-    Component,
-    booleanAttribute,
-    computed,
-    inject,
-    input,
-    signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-input',
+    selector: 'app-textarea',
     standalone: true,
-    templateUrl: './input.component.html',
-    styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrl: './textarea.component.scss',
+    templateUrl: './textarea.component.html',
 })
-export class InputComponent implements ControlValueAccessor {
+export class TextareaComponent implements ControlValueAccessor {
     public readonly ngControl = inject(NgControl, { self: true, optional: true });
 
     constructor() {
@@ -26,20 +18,16 @@ export class InputComponent implements ControlValueAccessor {
         }
     }
 
-    readonly type = input<'text' | 'password' | 'email' | 'number'>('text');
-    readonly label = input<string>('');
+    readonly label = input<string>();
     readonly placeholder = input<string>('');
+    readonly rows = input<number>(4);
+    readonly monospace = input<boolean>(false);
+
     readonly errorMessage = input<string>('');
-    readonly readonly = input(false, { transform: booleanAttribute });
-    readonly id = input<string>(`input-${Math.random().toString(36).substring(2, 9)}`);
+    readonly id = input<string>(`textarea-${Math.random().toString(36).substring(2, 9)}`);
 
     readonly value = signal<string>('');
     readonly isDisabled = signal<boolean>(false);
-    readonly isPasswordVisible = signal<boolean>(false);
-
-    readonly inputType = computed(() =>
-        this.type() === 'password' && this.isPasswordVisible() ? 'text' : this.type(),
-    );
 
     get isRequired(): boolean {
         const control = this.ngControl?.control;
@@ -55,9 +43,7 @@ export class InputComponent implements ControlValueAccessor {
         if (!this.hasError || !this.ngControl?.errors) return '';
 
         const errors = this.ngControl.errors;
-
         if (errors['required']) return 'Поле обязательно для заполнения';
-        if (errors['email']) return 'Некорректный формат email';
         if (errors['minlength'])
             return `Минимальная длина — ${errors['minlength'].requiredLength} символов`;
         if (errors['maxlength'])
@@ -69,8 +55,18 @@ export class InputComponent implements ControlValueAccessor {
     private onChange: (value: string) => void = () => {};
     private onTouched: () => void = () => {};
 
-    writeValue(val: string | null): void {
-        this.value.set(val ?? '');
+    protected onInput(event: Event): void {
+        const target = event.target as HTMLTextAreaElement;
+        this.value.set(target.value);
+        this.onChange(this.value());
+    }
+
+    protected onBlur(): void {
+        this.onTouched();
+    }
+
+    writeValue(value: string | null): void {
+        this.value.set(value ?? '');
     }
 
     registerOnChange(fn: (value: string) => void): void {
@@ -83,22 +79,5 @@ export class InputComponent implements ControlValueAccessor {
 
     setDisabledState(isDisabled: boolean): void {
         this.isDisabled.set(isDisabled);
-    }
-
-    protected onInput(event: Event): void {
-        const newValue = (event.target as HTMLInputElement).value;
-        this.value.set(newValue);
-        this.onChange(newValue);
-    }
-
-    protected onBlur(): void {
-        this.onTouched();
-    }
-
-    protected togglePasswordVisibility(event: MouseEvent): void {
-        event.stopPropagation();
-        if (!this.isDisabled()) {
-            this.isPasswordVisible.update((v) => !v);
-        }
     }
 }

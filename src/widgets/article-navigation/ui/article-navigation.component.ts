@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { ArticleApiService } from '@entities/article';
+import { NavigationApiService } from '@entities/navigation';
 
 import { AppRoutes } from '@shared/config';
 import { AccordionComponent } from '@shared/ui/accordion/accordion.component';
@@ -18,8 +18,15 @@ import { BadgeComponent } from '@shared/ui/badge';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleNavigationComponent {
-    private readonly articleApi = inject(ArticleApiService);
+    private readonly navigationApi = inject(NavigationApiService);
 
-    readonly navigationTree = toSignal(this.articleApi.getNavigationTree());
+    readonly navigationTree = toSignal(this.navigationApi.getNavigationTree());
+
+    constructor() {
+        effect(() => {
+            console.log(this.navigationTree());
+        });
+    }
+
     readonly getArticleLink = AppRoutes.ARTICLE_DETAILS;
 }

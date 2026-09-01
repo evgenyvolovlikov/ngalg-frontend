@@ -1,12 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { ArticleFormComponent } from '@features/article-form';
+import { ArticleNavigationManagmentComponent } from '@widgets/article-navigation-managment';
+
+import { ManageArticleComponent } from '@features/manage-article';
 
 @Component({
     selector: 'app-article-editor-page',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article-editor-page.component.html',
-    imports: [ArticleFormComponent],
+    styleUrl: './article-editor-page.component.scss',
+    imports: [ArticleNavigationManagmentComponent, ManageArticleComponent],
 })
-export class ArticleEditorPageComponent {}
+export class ArticleEditorPageComponent {
+    readonly id = input<string | undefined>();
+}

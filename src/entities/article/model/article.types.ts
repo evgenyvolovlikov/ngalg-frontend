@@ -1,12 +1,11 @@
+import { NavigationTag } from '@shared/types';
+
 // --- Базовые типы и перечисления ---
 
 export type ArticleStatus = 'DRAFT' | 'ARCHIVED' | 'PUBLISHED';
 export type ArticleLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
 export type NoteType = 'INFO' | 'WARNING' | 'ERROR';
 export type TextFormat = 'HTML' | 'MARKDOWN';
-
-export type ArticleTag =
-    'THEORY' | 'COMPONENT' | 'EXAMPLE' | 'ALGORITHM' | 'STRUCTURE' | 'ARCHITECTURE' | 'PATTERNS';
 
 // --- Данные отдельных блоков ---
 
@@ -106,18 +105,18 @@ export interface Article {
     title: string;
     leadText: string;
     description: string;
-    problemId?: ProblemId | null;
-    authorId: AuthorId;
+    problemId?: ProblemId;
+    authorId?: AuthorId;
     categoryId: CategoryId;
-    tags: ArticleTag[];
+    tags: NavigationTag[];
     status: ArticleStatus;
     level: ArticleLevel;
-    coverImage?: ArticleImage | null;
+    coverImage?: ArticleImage;
     readingTimeMinutes: number;
     seo: SeoMetadata;
     blocks: ArticleContentBlock[];
-    createdAt: string; // ISO string на фронте
-    updatedAt: string; // ISO string на фронте
+    createdAt: string;
+    updatedAt: string;
 }
 
 // --- Структура навигационного дерева ---
@@ -125,25 +124,10 @@ export interface NavigationArticle {
     id: string;
     title: string;
     slug: string;
-    tag?: ArticleTag;
+    tag?: NavigationTag;
 }
 
-export interface NavigationCategory {
-    id: string;
-    title: string;
-    children: NavigationArticle[];
-}
-
-export interface NavigationSection {
-    id: string;
-    title: string;
-    items: NavigationCategory[];
-}
-
-// --- DTO для работы с API ---
-
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface CreateArticleDto extends Omit<Article, 'id' | 'createdAt' | 'updatedAt'> {}
+export type CreateArticleDto = Omit<Article, 'id' | 'createdAt' | 'updatedAt'>;
 
 export type UpdateArticleDto = Partial<CreateArticleDto>;
 

@@ -1,0 +1,11 @@
+:host {
+    display: block;
+
+    --max-width: 800px;
+}
+
+.article-editor-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--unit-6) var(--unit-4);
+}

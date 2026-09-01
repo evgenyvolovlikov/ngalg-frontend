@@ -1,7 +1,7 @@
 <div class="article-details-widget">
   <app-breadcrumbs [items]="breadcrumbs()" />
   @if (currentArticle(); as currentArticle) {
-    <app-article [article]="currentArticle" />
+    <app-article-content [article]="currentArticle" />
   } @else {
     <p>Загрузка статьи...</p>
   }

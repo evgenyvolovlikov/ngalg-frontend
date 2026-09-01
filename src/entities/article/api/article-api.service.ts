@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BaseApiService } from '@shared/api';
+import { AppRoutes } from '@shared/config';
 
-import {
+import type {
     Article,
     CreateArticleDto,
     GetArticlesQueryDto,
-    NavigationSection,
     UpdateArticleDto,
 } from '../model/article.types';
 
@@ -16,7 +16,7 @@ import {
     providedIn: 'root',
 })
 export class ArticleApiService extends BaseApiService {
-    private readonly basePath = '/articles';
+    private readonly basePath = AppRoutes.ARTICLES;
 
     /**
      * Создание новой статьи
@@ -29,15 +29,7 @@ export class ArticleApiService extends BaseApiService {
      * Получение списка статей с фильтрацией
      */
     public getArticles(query?: GetArticlesQueryDto): Observable<Article[]> {
-        // Приведение типов требуется, если BaseApiService ожидает Record<string, unknown>
         return this.get<Article[]>(this.basePath, query as Record<string, unknown>);
-    }
-
-    /**
-     * Получение навигационного дерева (Секции -> Категории -> Статьи)
-     */
-    public getNavigationTree(): Observable<NavigationSection[]> {
-        return this.get<NavigationSection[]>(`${this.basePath}/navigation`);
     }
 
     /**

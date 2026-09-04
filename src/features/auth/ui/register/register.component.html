@@ -1,0 +1,55 @@
+<div class="register">
+  <header class="register__header">
+    <h2 class="register__title">Создать аккаунт</h2>
+    <p class="register__subtitle">Заполните поля ниже для регистрации в системе</p>
+  </header>
+
+  @if (errorMessage()) {
+    <div class="register__alert" role="alert" aria-live="assertive">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form class="register__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <app-input
+      type="email"
+      formControlName="email"
+      label="Электронная почта"
+      placeholder="example@domain.com"
+      autocomplete="email"
+    />
+
+    <app-input
+      type="password"
+      formControlName="password"
+      label="Пароль"
+      placeholder="Минимум 8 символов"
+      autocomplete="new-password"
+    />
+
+    <app-input
+      type="password"
+      formControlName="confirmPassword"
+      label="Подтверждение пароля"
+      placeholder="Повторите ваш пароль"
+      autocomplete="new-password"
+    />
+
+    <button
+      app-button
+      type="submit"
+      variant="filled"
+      size="l"
+      class="register__submit"
+      [loading]="isLoading()"
+      [disabled]="isLoading() || form.invalid"
+    >
+      Зарегистрироваться
+    </button>
+  </form>
+
+  <footer class="register__footer">
+    <span class="register__footer-text">Уже есть аккаунт?</span>
+    <a app-link variant="underline" routerLink="/auth/login">Войти</a>
+  </footer>
+</div>

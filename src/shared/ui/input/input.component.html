@@ -32,7 +32,13 @@
         [disabled]="isDisabled()"
         [attr.aria-label]="isPasswordVisible() ? 'Скрыть пароль' : 'Показать пароль'"
       >
-        <span class="icon">{{ isPasswordVisible() ? "🙈" : "👁️" }}</span>
+        <span class="icon">
+          @if (isPasswordVisible()) {
+            <img src="/assets/eye-open.svg" alt="eye-opened" />
+          } @else {
+            <img src="/assets/eye-closed.svg" alt="eye-closed" />
+          }
+        </span>
       </button>
     }
   </div>

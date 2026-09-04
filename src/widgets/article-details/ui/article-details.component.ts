@@ -5,7 +5,7 @@ import { catchError, of, switchMap } from 'rxjs';
 
 import { ArticleApiService, ArticleComponent } from '@entities/article';
 
-import { APP_ROUTES_MAP, AppRoutes } from '@shared/config';
+import { RouteBuilder } from '@shared/config';
 import { BreadcrumbItem, BreadcrumbsComponent } from '@shared/ui/breadcrumbs';
 
 @Component({
@@ -40,18 +40,18 @@ export class ArticleDetailsComponent {
         const items: BreadcrumbItem[] = [
             {
                 label: 'Главная',
-                url: AppRoutes.HOME,
+                url: RouteBuilder.HOME(),
             },
             {
-                label: APP_ROUTES_MAP.ARTICLES.label,
-                url: AppRoutes.ARTICLES,
+                label: 'Статьи',
+                url: RouteBuilder.ARTICLES(),
             },
         ];
 
         if (currentArticle) {
             items.push({
                 label: currentArticle.title,
-                url: AppRoutes.ARTICLE_DETAILS(currentArticle.slug || currentArticle.id),
+                url: RouteBuilder.ARTICLE_DETAILS(currentArticle.slug || currentArticle.id),
             });
         }
 

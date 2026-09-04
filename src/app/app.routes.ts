@@ -1,8 +1,41 @@
 import { Routes } from '@angular/router';
 
+import { RouteSegments } from '@shared/config/routes.config';
+
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
+export const AUTH_ROUTES: Routes = [
+    {
+        path: RouteSegments.ROOT,
+        redirectTo: RouteSegments.LOGIN,
+        pathMatch: 'full',
+    },
+    {
+        path: RouteSegments.LOGIN,
+        loadComponent: () =>
+            import('@pages/login/login-page.component').then((c) => c.LoginPageComponent),
+        title: 'Login',
+    },
+    {
+        path: RouteSegments.REGISTER,
+        loadComponent: () =>
+            import('@pages/register/register-page.component').then((c) => c.RegisterPageComponent),
+        title: 'Register',
+    },
+
+    {
+        path: RouteSegments.RESET_PASSWORD,
+        loadComponent: () =>
+            import('@pages/reset-password/reset-password.component').then(
+                (c) => c.ResetPasswordPageComponent,
+            ),
+        title: 'Register',
+    },
+];
+
 export const ARTICLE_ROUTES: Routes = [
     {
-        path: '',
+        path: RouteSegments.ROOT,
         loadComponent: () =>
             import('@pages/articles-home/articles-home-page.component').then(
                 (c) => c.ArticlesHomePageComponent,
@@ -10,7 +43,7 @@ export const ARTICLE_ROUTES: Routes = [
         title: 'Articles',
     },
     {
-        path: 'list',
+        path: RouteSegments.LIST,
         loadComponent: () =>
             import('@pages/article-list/article-list-page.component').then(
                 (c) => c.ArticleListPageComponent,
@@ -18,7 +51,7 @@ export const ARTICLE_ROUTES: Routes = [
         title: 'Article List',
     },
     {
-        path: 'create',
+        path: RouteSegments.CREATE,
         loadComponent: () =>
             import('@pages/article-editor/article-editor-page.component').then(
                 (c) => c.ArticleEditorPageComponent,
@@ -26,7 +59,7 @@ export const ARTICLE_ROUTES: Routes = [
         title: 'Create Article',
     },
     {
-        path: ':id',
+        path: RouteSegments.DETAILS,
         loadComponent: () =>
             import('@pages/article-details/article-details-page.component').then(
                 (c) => c.ArticleDetailsPageComponent,
@@ -34,7 +67,7 @@ export const ARTICLE_ROUTES: Routes = [
         title: 'Article Details',
     },
     {
-        path: ':id/edit',
+        path: RouteSegments.EDIT,
         loadComponent: () =>
             import('@pages/article-editor/article-editor-page.component').then(
                 (c) => c.ArticleEditorPageComponent,
@@ -45,16 +78,21 @@ export const ARTICLE_ROUTES: Routes = [
 
 export const APP_ROUTES: Routes = [
     {
-        path: '',
-        redirectTo: 'articles',
+        path: RouteSegments.ROOT,
+        redirectTo: RouteSegments.ARTICLES,
         pathMatch: 'full',
     },
     {
-        path: 'articles',
+        path: RouteSegments.AUTH,
+        component: AuthLayoutComponent,
+        children: AUTH_ROUTES,
+    },
+    {
+        path: RouteSegments.ARTICLES,
         children: ARTICLE_ROUTES,
     },
     {
-        path: '**',
-        redirectTo: 'articles',
+        path: RouteSegments.WILDCARD,
+        redirectTo: RouteSegments.ARTICLES,
     },
 ];

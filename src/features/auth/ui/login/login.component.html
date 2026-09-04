@@ -1,0 +1,51 @@
+<div class="login">
+  <header class="login__header">
+    <h2 class="login__title">Вход в систему</h2>
+    <p class="login__subtitle">Введите свои данные для доступа к личному кабинету</p>
+  </header>
+
+  @if (errorMessage()) {
+    <div class="login__alert" role="alert" aria-live="assertive">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form class="login__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <app-input
+      type="email"
+      formControlName="email"
+      label="Электронная почта"
+      placeholder="example@domain.com"
+      autocomplete="username"
+    />
+
+    <app-input
+      type="password"
+      formControlName="password"
+      label="Пароль"
+      placeholder="Введите ваш пароль"
+      autocomplete="current-password"
+    />
+
+    <a app-link variant="secondary" routerLink="/auth/reset-password" class="auth-by-login__forgot-link">
+      Забыли пароль?
+    </a>
+
+    <button
+      app-button
+      type="submit"
+      variant="filled"
+      size="l"
+      class="login__submit"
+      [loading]="isLoading()"
+      [disabled]="isLoading() || form.invalid"
+    >
+      Войти
+    </button>
+  </form>
+
+  <footer class="login__footer">
+    <span class="login__footer-text">Нет аккаунта?</span>
+    <a app-link variant="underline" routerLink="/auth/register">Создать профиль</a>
+  </footer>
+</div>

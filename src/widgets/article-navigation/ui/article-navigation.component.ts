@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { NavigationApiService } from '@entities/navigation';
 
-import { AppRoutes } from '@shared/config';
+import { RouteBuilder } from '@shared/config';
 import { AccordionComponent } from '@shared/ui/accordion/accordion.component';
 import { AppLinkComponent } from '@shared/ui/app-link';
 import { BadgeComponent } from '@shared/ui/badge';
@@ -28,5 +28,5 @@ export class ArticleNavigationComponent {
         });
     }
 
-    readonly getArticleLink = AppRoutes.ARTICLE_DETAILS;
+    readonly getArticleLink = RouteBuilder.ARTICLE_DETAILS;
 }

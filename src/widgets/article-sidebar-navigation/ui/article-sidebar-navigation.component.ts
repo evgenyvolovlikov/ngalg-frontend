@@ -10,14 +10,14 @@ import { AppLinkComponent } from '@shared/ui/app-link';
 import { BadgeComponent } from '@shared/ui/badge';
 
 @Component({
-    selector: 'app-article-navigation',
+    selector: 'app-article-sidebar-navigation',
     standalone: true,
     imports: [RouterLink, RouterLinkActive, AppLinkComponent, BadgeComponent, AccordionComponent],
-    templateUrl: './article-navigation.component.html',
-    styleUrl: './article-navigation.component.scss',
+    templateUrl: './article-sidebar-navigation.component.html',
+    styleUrl: './article-sidebar-navigation.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticleNavigationComponent {
+export class ArticleSidebarNavigationComponent {
     private readonly navigationApi = inject(NavigationApiService);
 
     readonly navigationTree = toSignal(this.navigationApi.getNavigationTree());

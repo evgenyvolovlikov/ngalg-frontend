@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { RouteSegments } from '@shared/config/routes.config';
 
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const AUTH_ROUTES: Routes = [
     {
@@ -29,7 +30,7 @@ export const AUTH_ROUTES: Routes = [
             import('@pages/reset-password/reset-password.component').then(
                 (c) => c.ResetPasswordPageComponent,
             ),
-        title: 'Register',
+        title: 'Reset password',
     },
 ];
 
@@ -89,6 +90,7 @@ export const APP_ROUTES: Routes = [
     },
     {
         path: RouteSegments.ARTICLES,
+        component: MainLayoutComponent,
         children: ARTICLE_ROUTES,
     },
     {

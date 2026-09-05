@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { ArticleDetailsComponent } from '@widgets/article-details';
-import { ArticleNavigationComponent } from '@widgets/article-navigation';
+import { ArticleSidebarNavigationComponent } from '@widgets/article-sidebar-navigation';
 import { SidebarLayoutComponent } from '@widgets/sidebar-layout';
 
 @Component({
@@ -10,7 +10,7 @@ import { SidebarLayoutComponent } from '@widgets/sidebar-layout';
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article-details-page.component.html',
     styleUrl: './article-details-page.component.scss',
-    imports: [ArticleDetailsComponent, ArticleNavigationComponent, SidebarLayoutComponent],
+    imports: [ArticleDetailsComponent, ArticleSidebarNavigationComponent, SidebarLayoutComponent],
 })
 export class ArticleDetailsPageComponent {
     readonly id = input.required<string>();

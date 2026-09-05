@@ -34,9 +34,9 @@
       >
         <span class="icon">
           @if (isPasswordVisible()) {
-            <img src="/assets/eye-open.svg" alt="eye-opened" />
+            <app-icon [name]="'eye-opened'" [description]="'eye-opened'" size="m"> </app-icon>
           } @else {
-            <img src="/assets/eye-closed.svg" alt="eye-closed" />
+            <app-icon [name]="'eye-closed'" [description]="'eye-closed'" size="m"> </app-icon>
           }
         </span>
       </button>

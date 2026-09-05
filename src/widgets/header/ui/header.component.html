@@ -1,0 +1,46 @@
+<header class="header">
+  <div class="header__container">
+    <app-link routerLink="/" class="header__logo">
+      <span>NGALG</span>
+    </app-link>
+
+    <button
+      type="button"
+      class="header__burger"
+      [class.header__burger--active]="isMenuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-label]="isMenuOpen() ? 'Закрыть меню' : 'Открыть меню'"
+      [attr.aria-expanded]="isMenuOpen()"
+      aria-controls="header-navigation"
+    >
+      <span></span>
+    </button>
+
+    @if (isMenuOpen()) {
+      <div class="header__overlay" role="presentation" (click)="closeMenu()"></div>
+    }
+
+    <nav
+      id="header-navigation"
+      class="header__nav"
+      [class.header__nav--open]="isMenuOpen()"
+      [attr.aria-hidden]="!isMenuOpen()"
+    >
+      <div class="header__nav-wrapper">
+        <ul class="header__menu">
+          @for (element of menuElements; track element.path) {
+            <li>
+              <a app-link variant="primary" [routerLink]="element.path" class="header__link" (click)="closeMenu()">
+                {{ element.label }}
+              </a>
+            </li>
+          }
+        </ul>
+
+        <div class="header__nav-actions">
+          <app-toggle-theme />
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

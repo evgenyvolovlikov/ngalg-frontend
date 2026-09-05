@@ -10,12 +10,15 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NgControl, Validators } from '@angular/forms';
 
+import { IconComponent } from '../icon';
+
 @Component({
     selector: 'app-input',
     standalone: true,
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [IconComponent],
 })
 export class InputComponent implements ControlValueAccessor {
     public readonly ngControl = inject(NgControl, { self: true, optional: true });

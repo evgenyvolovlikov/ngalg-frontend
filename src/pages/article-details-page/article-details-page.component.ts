@@ -9,7 +9,6 @@ import { SidebarLayoutComponent } from '@widgets/sidebar-layout';
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './article-details-page.component.html',
-    styleUrl: './article-details-page.component.scss',
     imports: [ArticleDetailsComponent, ArticleSidebarNavigationComponent, SidebarLayoutComponent],
 })
 export class ArticleDetailsPageComponent {

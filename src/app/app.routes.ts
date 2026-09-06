@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { RouteSegments } from '@shared/config/routes.config';
 
+import { AccountLayoutComponent } from './layouts/account-layout/account-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
@@ -14,20 +15,22 @@ export const AUTH_ROUTES: Routes = [
     {
         path: RouteSegments.LOGIN,
         loadComponent: () =>
-            import('@pages/login/login-page.component').then((c) => c.LoginPageComponent),
+            import('@pages/login-page/login-page.component').then((c) => c.LoginPageComponent),
         title: 'Login',
     },
     {
         path: RouteSegments.REGISTER,
         loadComponent: () =>
-            import('@pages/register/register-page.component').then((c) => c.RegisterPageComponent),
+            import('@pages/register-page/register-page.component').then(
+                (c) => c.RegisterPageComponent,
+            ),
         title: 'Register',
     },
 
     {
         path: RouteSegments.RESET_PASSWORD,
         loadComponent: () =>
-            import('@pages/reset-password/reset-password.component').then(
+            import('@pages/reset-password-page/reset-password.component').then(
                 (c) => c.ResetPasswordPageComponent,
             ),
         title: 'Reset password',
@@ -62,7 +65,7 @@ export const ARTICLE_ROUTES: Routes = [
     {
         path: RouteSegments.DETAILS,
         loadComponent: () =>
-            import('@pages/article-details/article-details-page.component').then(
+            import('@pages/article-details-page/article-details-page.component').then(
                 (c) => c.ArticleDetailsPageComponent,
             ),
         title: 'Article Details',
@@ -74,6 +77,30 @@ export const ARTICLE_ROUTES: Routes = [
                 (c) => c.ArticleEditorPageComponent,
             ),
         title: 'Edit Article',
+    },
+];
+
+export const ACCOUNT_ROUTES: Routes = [
+    {
+        path: RouteSegments.ROOT,
+        redirectTo: RouteSegments.OVERVIEW,
+        pathMatch: 'full',
+    },
+    {
+        path: RouteSegments.OVERVIEW,
+        loadComponent: () =>
+            import('@pages/account-overview-page/account-overview-page.component').then(
+                (c) => c.AccountOverviewPageComponent,
+            ),
+        title: 'Account Overview',
+    },
+    {
+        path: RouteSegments.TRANSACTIONS,
+        loadComponent: () =>
+            import('@pages/account-transactions-page/account-transactions-page.component').then(
+                (c) => c.AccountTransactionsPageComponent,
+            ),
+        title: 'Account Transactions',
     },
 ];
 
@@ -92,6 +119,11 @@ export const APP_ROUTES: Routes = [
         path: RouteSegments.ARTICLES,
         component: MainLayoutComponent,
         children: ARTICLE_ROUTES,
+    },
+    {
+        path: RouteSegments.ACCOUNT,
+        component: AccountLayoutComponent,
+        children: ACCOUNT_ROUTES,
     },
     {
         path: RouteSegments.WILDCARD,

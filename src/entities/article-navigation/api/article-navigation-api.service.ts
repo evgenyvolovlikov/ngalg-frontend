@@ -5,10 +5,10 @@ import { BehaviorSubject, Observable, shareReplay, switchMap, tap } from 'rxjs';
 
 import { NavigationSection } from '@shared/types';
 
-import { CreateCategoryDto, CreateSectionDto } from '../model/navigation.types';
+import { CreateCategoryDto, CreateSectionDto } from '../model/article-navigation.types';
 
 @Injectable({ providedIn: 'root' })
-export class NavigationApiService {
+export class ArticleNavigationApiService {
     private readonly http = inject(HttpClient);
     private readonly baseArticleUrl = 'articles';
     private readonly baseArticleNavigation = 'navigation';

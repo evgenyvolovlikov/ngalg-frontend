@@ -1,0 +1,53 @@
+@use 'media' as *;
+
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.profile-hero {
+    display: flex;
+    justify-content: center;
+    padding: var(--unit-4);
+    border-bottom: 1px solid var(--border-color);
+
+    @include media-above(md) {
+        padding: var(--unit-2);
+    }
+}
+
+.account-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--unit-6);
+    align-items: start;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--unit-6) var(--unit-4);
+
+    @include media-above(md) {
+        grid-template-columns: 280px 1fr;
+        gap: 0;
+        padding: var(--unit-10) var(--unit-12);
+    }
+
+    &__sidebar {
+        @include media-above(md) {
+            position: sticky;
+            top: var(--unit-6);
+            padding-right: var(--unit-6);
+        }
+    }
+
+    &__content {
+        min-width: 0;
+
+        @include media-above(md) {
+            min-height: 50vh;
+            padding-left: var(--unit-8);
+            border-left: 1px solid var(--border-color);
+        }
+    }
+}

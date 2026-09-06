@@ -8,17 +8,18 @@ import {
     inject,
     signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { ToggleThemeComponent } from '@features/toggle-theme';
 
-import { MAIN_NAV_ITEMS } from '@shared/config';
+import { MAIN_NAV_ITEMS, RouteBuilder } from '@shared/config';
 import { AppLinkComponent } from '@shared/ui/app-link';
+import { ButtonComponent } from '@shared/ui/button';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterLink, AppLinkComponent, ToggleThemeComponent],
+    imports: [RouterLink, AppLinkComponent, ToggleThemeComponent, ButtonComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +27,7 @@ import { AppLinkComponent } from '@shared/ui/app-link';
 export class HeaderComponent {
     private readonly document = inject(DOCUMENT);
     private readonly renderer = inject(Renderer2);
+    private readonly router = inject(Router);
 
     readonly isMenuOpen = signal(false);
     protected readonly menuElements = MAIN_NAV_ITEMS;
@@ -49,6 +51,10 @@ export class HeaderComponent {
         if (this.isMenuOpen()) {
             this.closeMenu();
         }
+    }
+
+    navigateLogin(): void {
+        this.router.navigate([RouteBuilder.AUTH_LOGIN()]);
     }
 
     toggleMenu(): void {

@@ -1,7 +1,7 @@
 import { Component, booleanAttribute, computed, input } from '@angular/core';
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled';
-export type ButtonSize = 'm' | 'l' | 'xl';
+export type ButtonSize = 's' | 'm' | 'l' | 'xl';
 
 @Component({
     selector: 'button[app-button], a[app-button]',
@@ -13,6 +13,7 @@ export type ButtonSize = 'm' | 'l' | 'xl';
         '[class.app-button--variant-clear]': 'variant() === "clear"',
         '[class.app-button--variant-outline]': 'variant() === "outline"',
         '[class.app-button--variant-filled]': 'variant() === "filled"',
+        '[class.app-button--size-s]': 'size() === "s"',
         '[class.app-button--size-m]': 'size() === "m"',
         '[class.app-button--size-l]': 'size() === "l"',
         '[class.app-button--size-xl]': 'size() === "xl"',

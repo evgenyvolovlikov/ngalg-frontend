@@ -13,13 +13,12 @@
     gap: var(--unit-8);
     align-items: start;
     width: 100%;
-    padding: var(--unit-4);
 
     &__sidebar {
         position: sticky;
         top: var(--unit-4);
         height: calc(100dvh - var(--unit-8));
-        padding-right: var(--unit-4);
+        padding-right: var(--unit-3);
         border-right: 1px solid var(--border-color);
     }
 
@@ -29,7 +28,7 @@
         scrollbar-width: thin;
 
         &::-webkit-scrollbar {
-            width: var(--unit-1); /* Заменили магическое число на токен */
+            width: var(--unit-1);
         }
 
         &::-webkit-scrollbar-thumb {

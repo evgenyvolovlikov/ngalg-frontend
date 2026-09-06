@@ -7,7 +7,7 @@ import { RegisterComponent } from '@features/auth';
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
 
-    template: `<div><app-register /></div>`,
+    template: `<app-register />`,
     imports: [RegisterComponent],
 })
 export class RegisterPageComponent {}

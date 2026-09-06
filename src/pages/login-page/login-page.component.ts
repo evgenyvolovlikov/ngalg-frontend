@@ -8,6 +8,6 @@ import { LoginComponent } from '@features/auth';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [LoginComponent],
 
-    template: `<div><app-login /></div>`,
+    template: `<app-login />`,
 })
 export class LoginPageComponent {}

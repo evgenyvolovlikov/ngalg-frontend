@@ -2,7 +2,7 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { NavigationApiService } from '@entities/navigation';
+import { ArticleNavigationApiService } from '@entities/article-navigation';
 
 import { ButtonComponent } from '@shared/ui/button';
 import { InputComponent } from '@shared/ui/input';
@@ -39,7 +39,7 @@ import { SelectComponent } from '@shared/ui/select';
 })
 export class CreateCategoryComponent {
     private readonly fb = inject(NonNullableFormBuilder);
-    private readonly navigationApi = inject(NavigationApiService);
+    private readonly navigationApi = inject(ArticleNavigationApiService);
     private readonly destroyRef = inject(DestroyRef);
 
     protected readonly navigationTree = toSignal(this.navigationApi.navigationTree$, {

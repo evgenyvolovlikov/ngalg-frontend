@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { CreateSectionDto, NavigationApiService } from '@entities/navigation';
+import { ArticleNavigationApiService, CreateSectionDto } from '@entities/article-navigation';
 
 import { ButtonComponent } from '@shared/ui/button';
 import { InputComponent } from '@shared/ui/input';
@@ -29,7 +29,7 @@ import { InputComponent } from '@shared/ui/input';
 })
 export class CreateSectionComponent {
     private readonly fb = inject(NonNullableFormBuilder);
-    private readonly api = inject(NavigationApiService);
+    private readonly api = inject(ArticleNavigationApiService);
     private readonly destroyRef = inject(DestroyRef);
 
     protected form = this.fb.group({

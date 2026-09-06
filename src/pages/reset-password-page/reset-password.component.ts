@@ -7,7 +7,7 @@ import { ResetPasswordComponent } from '@features/auth';
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
 
-    template: `<div><app-reset-password /></div>`,
+    template: `<app-reset-password />`,
     imports: [ResetPasswordComponent],
 })
 export class ResetPasswordPageComponent {}

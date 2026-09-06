@@ -68,6 +68,12 @@
     }
 }
 
+:host(.app-button--size-s) {
+    padding: var(--unit-1) var(--unit-3);
+    border-radius: var(--radius-xs);
+    font-size: var(--font-size-xs);
+}
+
 :host(.app-button--size-m) {
     padding: var(--unit-2) var(--unit-4);
     border-radius: var(--radius-sm);

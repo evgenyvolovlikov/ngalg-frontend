@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { NavigationApiService } from '@entities/navigation';
+import { ArticleNavigationApiService } from '@entities/article-navigation';
 
 import { RouteBuilder } from '@shared/config';
 import { AccordionComponent } from '@shared/ui/accordion/accordion.component';
@@ -18,7 +18,7 @@ import { BadgeComponent } from '@shared/ui/badge';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleSidebarNavigationComponent {
-    private readonly navigationApi = inject(NavigationApiService);
+    private readonly navigationApi = inject(ArticleNavigationApiService);
 
     readonly navigationTree = toSignal(this.navigationApi.getNavigationTree());
 

@@ -1,0 +1,68 @@
+@use 'media' as *;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-3);
+    align-items: center;
+    padding: var(--unit-4);
+    background-color: transparent;
+    text-align: center;
+
+    @include media-above(md) {
+        flex-direction: row;
+        gap: var(--unit-5);
+        padding: var(--unit-5);
+        text-align: left;
+    }
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-contrast);
+
+    @include media-above(md) {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: var(--font-size-xxxl);
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-1);
+    justify-content: center;
+}
+
+.name {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-none);
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+
+    @include media-above(md) {
+        font-size: var(--font-size-xxxl);
+    }
+}
+
+.account-type {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--text-muted);
+
+    @include media-above(md) {
+        font-size: var(--font-size-base);
+    }
+}

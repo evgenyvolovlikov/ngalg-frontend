@@ -22,7 +22,7 @@ import {
     createInitialArticleForm,
     populateArticleBlocks,
 } from '@entities/article';
-import { NavigationApiService } from '@entities/navigation';
+import { ArticleNavigationApiService } from '@entities/article-navigation';
 
 @Component({
     selector: 'app-manage-article',
@@ -48,7 +48,7 @@ export class ManageArticleComponent implements OnInit {
     private readonly fb = inject(NonNullableFormBuilder);
     private readonly router = inject(Router);
     private readonly articleApi = inject(ArticleApiService);
-    private readonly navigationApi = inject(NavigationApiService);
+    private readonly navigationApi = inject(ArticleNavigationApiService);
     private readonly destroyRef = inject(DestroyRef);
 
     protected readonly articleForm = createInitialArticleForm(this.fb);

@@ -12,6 +12,13 @@
 
   <form class="register__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     <app-input
+      formControlName="username"
+      label="Имя пользователя"
+      placeholder="Введите ваше имя"
+      autocomplete="username"
+    />
+
+    <app-input
       type="email"
       formControlName="email"
       label="Электронная почта"

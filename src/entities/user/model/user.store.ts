@@ -1,12 +1,17 @@
 import { Injectable, signal } from '@angular/core';
 
-import { AuthResponse } from './user.types';
+import { AuthResponse, Profile } from './user.types';
 
 @Injectable({ providedIn: 'root' })
 export class UserStore {
-    readonly currentUser = signal<AuthResponse | null>(null);
+    readonly currentAuthUser = signal<AuthResponse | null>(null);
+    readonly currentProfile = signal<Profile | null>(null);
 
-    setUser(user: AuthResponse | null): void {
-        this.currentUser.set(user);
+    setAuthUser(user: AuthResponse | null): void {
+        this.currentAuthUser.set(user);
+    }
+
+    setProfile(profile: Profile | null): void {
+        this.currentProfile.set(profile);
     }
 }

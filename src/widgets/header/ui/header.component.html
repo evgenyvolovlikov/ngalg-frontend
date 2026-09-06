@@ -39,7 +39,15 @@
 
         <div class="header__nav-actions">
           <app-toggle-theme />
-          <button app-button type="button" variant="outline" size="s" (click)="navigateLogin()">Войти</button>
+
+          @if (currentUser()) {
+            <a app-link routerLink="/account/overview" class="profile-badge" aria-label="Личный кабинет">
+              <app-icon name="person" size="m" />
+              <span class="profile-badge__email">{{ currentUser()?.email }}</span>
+            </a>
+          } @else {
+            <button app-button type="button" variant="outline" size="m" (click)="navigateLogin()">Войти</button>
+          }
         </div>
       </div>
     </nav>

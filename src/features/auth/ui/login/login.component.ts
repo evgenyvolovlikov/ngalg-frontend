@@ -57,7 +57,7 @@ export class LoginComponent {
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (user) => {
-                    this.userStore.setUser(user);
+                    this.userStore.setAuthUser(user);
                     this.isLoading.set(false);
                     this.router.navigate([RouteBuilder.HOME()]);
                 },

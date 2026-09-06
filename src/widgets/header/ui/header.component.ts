@@ -12,14 +12,17 @@ import { Router, RouterLink } from '@angular/router';
 
 import { ToggleThemeComponent } from '@features/toggle-theme';
 
+import { UserStore } from '@entities/user';
+
 import { MAIN_NAV_ITEMS, RouteBuilder } from '@shared/config';
 import { AppLinkComponent } from '@shared/ui/app-link';
 import { ButtonComponent } from '@shared/ui/button';
+import { IconComponent } from '@shared/ui/icon';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [RouterLink, AppLinkComponent, ToggleThemeComponent, ButtonComponent],
+    imports: [RouterLink, AppLinkComponent, ToggleThemeComponent, ButtonComponent, IconComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +31,9 @@ export class HeaderComponent {
     private readonly document = inject(DOCUMENT);
     private readonly renderer = inject(Renderer2);
     private readonly router = inject(Router);
+    private readonly userStore = inject(UserStore);
 
+    readonly currentUser = this.userStore.currentAuthUser;
     readonly isMenuOpen = signal(false);
     protected readonly menuElements = MAIN_NAV_ITEMS;
 

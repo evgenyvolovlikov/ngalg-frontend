@@ -11,11 +11,17 @@ import { UserStore } from '../model/user.store';
 })
 export class UserProfileHeroComponent {
     private readonly userStore = inject(UserStore);
-    readonly user = this.userStore.currentUser;
+    readonly user = this.userStore.currentAuthUser;
+    readonly profile = this.userStore.currentProfile;
 
     readonly name = computed(() => {
-        const currentUser = this.user();
-        return currentUser?.email || 'Пользователь';
+        const p = this.profile();
+        if (!p) return 'Пользователь';
+
+        if (p.firstName || p.lastName) {
+            return `${p.firstName || ''} ${p.lastName || ''}`.trim();
+        }
+        return p.username;
     });
 
     readonly initial = computed(() => {
@@ -23,8 +29,11 @@ export class UserProfileHeroComponent {
         return userName.charAt(0).toUpperCase();
     });
 
+    readonly avatarUrl = computed(() => {
+        return this.profile()?.avatarUrl ?? null;
+    });
+
     readonly accountType = computed(() => {
-        // TODO: Добавить после обновления стора необходимым полем
-        return 'Google';
+        return 'Undefined';
     });
 }

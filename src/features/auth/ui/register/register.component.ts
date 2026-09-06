@@ -49,6 +49,15 @@ export class RegisterComponent {
 
     protected readonly form = this.fb.group(
         {
+            username: [
+                '',
+                [
+                    Validators.required,
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(30),
+                ],
+            ],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(8)]],
             confirmPassword: ['', [Validators.required]],
@@ -65,14 +74,14 @@ export class RegisterComponent {
         this.isLoading.set(true);
         this.errorMessage.set(null);
 
-        const { email, password } = this.form.getRawValue();
+        const { username, email, password } = this.form.getRawValue();
 
         this.authService
-            .register({ email, password })
+            .register({ username, email, password })
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (user) => {
-                    this.userStore.setUser(user);
+                    this.userStore.setAuthUser(user);
                     this.isLoading.set(false);
                     this.router.navigate([RouteBuilder.HOME()]);
                 },

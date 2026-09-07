@@ -1,0 +1,10 @@
+.ui-card {
+    padding: var(--unit-6);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition:
+        box-shadow var(--transition-base),
+        border-color var(--transition-base);
+}

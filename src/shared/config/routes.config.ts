@@ -19,6 +19,9 @@ export const RouteSegments = {
     OVERVIEW: 'overview',
     TRANSACTIONS: 'transactions',
 
+    PROFILES: 'profiles',
+    ME: 'me',
+
     WILDCARD: '**',
 } as const;
 

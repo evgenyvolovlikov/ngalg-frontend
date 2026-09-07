@@ -13,7 +13,7 @@ export interface RegisterDto {
     password: string;
 }
 
-export interface AuthResponse {
+export interface AuthUserResponse {
     id: string;
     username: string;
     email: string;

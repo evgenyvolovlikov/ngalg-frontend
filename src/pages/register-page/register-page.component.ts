@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { RegisterComponent } from '@features/auth';
+import { RegisterComponent } from '@features/auth-user';
 
 @Component({
     selector: 'app-register-page',

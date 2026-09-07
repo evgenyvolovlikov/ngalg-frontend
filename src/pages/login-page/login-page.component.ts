@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { LoginComponent } from '@features/auth';
+import { LoginComponent } from '@features/auth-user';
 
 @Component({
     selector: 'app-login-page',

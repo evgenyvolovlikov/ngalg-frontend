@@ -5,20 +5,20 @@ import { Observable } from 'rxjs';
 
 import { RouteBuilder } from '@shared/config';
 
-import { AuthResponse, LoginDto, RegisterDto } from './auth.types';
+import { AuthUserResponse, LoginDto, RegisterDto } from './auth-user.types';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private readonly http = inject(HttpClient);
 
-    login(dto: LoginDto): Observable<AuthResponse> {
-        return this.http.post<AuthResponse>(RouteBuilder.AUTH_LOGIN(), dto, {
+    login(dto: LoginDto): Observable<AuthUserResponse> {
+        return this.http.post<AuthUserResponse>(RouteBuilder.AUTH_LOGIN(), dto, {
             withCredentials: true,
         });
     }
 
-    register(dto: RegisterDto): Observable<AuthResponse> {
-        return this.http.post<AuthResponse>(RouteBuilder.AUTH_REGISTER(), dto, {
+    register(dto: RegisterDto): Observable<AuthUserResponse> {
+        return this.http.post<AuthUserResponse>(RouteBuilder.AUTH_REGISTER(), dto, {
             withCredentials: true,
         });
     }

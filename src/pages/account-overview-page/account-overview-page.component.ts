@@ -1,19 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
+import { UpdateUsernameCardComponent } from '@features/update-username';
+
 import { UserStore } from '@entities/user';
 
 @Component({
     selector: 'app-account-overview-page',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `<div>
-        <div>
-            <h2>Обзор аккаунта</h2>
-            @if (profile(); as userProfile) {
-                <p><strong>Имя пользователя:</strong> {{ userProfile.username }}</p>
-            }
-        </div>
-    </div> `,
+    template: ` <app-update-username-card /> `,
+    imports: [UpdateUsernameCardComponent],
 })
 export class AccountOverviewPageComponent {
     private readonly userStore = inject(UserStore);

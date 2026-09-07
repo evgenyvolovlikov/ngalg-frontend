@@ -30,7 +30,7 @@
     @include media-above(md) {
         grid-template-columns: 280px 1fr;
         gap: 0;
-        padding: var(--unit-10) var(--unit-12);
+        padding: var(--unit-10) calc(var(--unit-12) + var(--unit-12));
     }
 
     &__sidebar {

@@ -1,2 +1,10 @@
 export type IconName =
-    'sun' | 'moon' | 'logo' | 'eye-opened' | 'eye-closed' | 'person' | 'credit-card';
+    | 'sun'
+    | 'moon'
+    | 'logo'
+    | 'eye-opened'
+    | 'eye-closed'
+    | 'person'
+    | 'credit-card'
+    | 'pencil-to-square'
+    | 'floppy-disk';

@@ -1,0 +1,19 @@
+<div class="lesson-box">
+  <div class="lesson-content">
+    <app-lesson-header [lesson]="lesson()" />
+
+    <app-video-player [src]="videoUrl()" />
+
+    <div class="lesson-content__actions">
+      <app-mark-lesson-watched
+        [lessonId]="lesson().id"
+        [isCompleted]="lesson().isCompleted"
+        (toggleComplete)="toggleComplete.emit($event)"
+      />
+    </div>
+  </div>
+
+  <div class="lesson-button-next">
+    <app-lesson-navigation-controls [nextLesson]="nextLesson()" (nextLessonSelect)="selectLesson.emit($event)" />
+  </div>
+</div>

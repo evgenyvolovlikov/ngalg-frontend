@@ -19,6 +19,10 @@ export const RouteSegments = {
     OVERVIEW: 'overview',
     TRANSACTIONS: 'transactions',
 
+    COURSES: 'courses',
+    COURSE_DETAILS: ':id',
+    LESSONS: 'lessons',
+
     PROFILES: 'profiles',
     ME: 'me',
 
@@ -40,6 +44,8 @@ export const RouteBuilder = {
 
     ACCOUNT_OVERVIEW: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.OVERVIEW}`,
     ACCOUNT_TRANSACTIONS: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.TRANSACTIONS}`,
+
+    COURSE_DETAILS: (id: string) => `/${RouteSegments.COURSES}/${id}`,
 } as const;
 
 export interface NavItem {
@@ -50,6 +56,7 @@ export interface NavItem {
 
 export const MAIN_NAV_ITEMS: readonly NavItem[] = [
     { path: RouteBuilder.ARTICLES(), label: 'Статьи' },
+    { path: RouteBuilder.COURSE_DETAILS('angular-advanced'), label: 'Курс' },
 ] as const;
 
 export const ACCOUNT_SIDEBAR_ITEMS: readonly NavItem[] = [

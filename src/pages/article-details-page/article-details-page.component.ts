@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { ArticleDetailsComponent } from '@widgets/article-details';
 import { ArticleSidebarNavigationComponent } from '@widgets/article-sidebar-navigation';
-import { SidebarLayoutComponent } from '@widgets/sidebar-layout';
+
+import { SidebarLayoutComponent } from '@shared/layouts/sidebar-layout';
 
 @Component({
     selector: 'app-article-details-page',

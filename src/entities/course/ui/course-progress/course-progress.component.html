@@ -1,0 +1,12 @@
+<div class="course-progress-card">
+  <h3 class="title">Course Progress</h3>
+
+  <div class="chart-container">
+    <app-circular-progress [value]="progress().percentage" [size]="140" [strokeWidth]="12" />
+  </div>
+
+  <div class="stats">
+    <span class="stats-label">Videos Watched</span>
+    <span class="stats-value">{{ progress().completedLessons }} / {{ progress().totalLessons }}</span>
+  </div>
+</div>

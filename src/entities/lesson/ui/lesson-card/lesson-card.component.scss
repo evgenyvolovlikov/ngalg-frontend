@@ -1,0 +1,61 @@
+:host {
+    display: block;
+    cursor: pointer;
+}
+
+.lesson-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: var(--unit-3);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+
+    &:hover:not(.is-locked) {
+        background-color: var(--bg-surface-hover);
+
+        .lesson-card {
+            background-color: var(--bg-surface-hover);
+            color: var(--text-color);
+        }
+    }
+
+    &.is-active {
+        background-color: var(--color-success-bg);
+
+        .lesson-card,
+        .lesson-status {
+            font-weight: var(--font-weight-medium);
+            color: var(--color-success);
+        }
+    }
+
+    &.is-locked {
+        opacity: var(--opacity-disabled);
+        cursor: not-allowed;
+    }
+}
+
+.lesson-card {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding-right: var(--unit-2);
+}
+
+.lesson-status {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-muted);
+
+    app-icon {
+        display: flex;
+        color: inherit;
+    }
+
+    &.is-free {
+        color: var(--color-success);
+    }
+}

@@ -1,0 +1,21 @@
+<app-sidebar-layout>
+  <app-course-sidebar
+    sidebar
+    [progress]="progress()"
+    [lessons]="lessons()"
+    [activeLessonId]="activeLessonId()"
+    (selectLesson)="selectLesson($event)"
+  />
+
+  @if (activeLessonSkeleton(); as lesson) {
+    <app-lesson-content
+      [lesson]="lesson"
+      [nextLesson]="nextLesson()"
+      [videoUrl]="activeLessonDetail()?.videoUrl ?? null"
+      (toggleComplete)="toggleLessonCompleted($event)"
+      (selectLesson)="selectLesson($event)"
+    />
+  } @else {
+    <div class="loading-state">Загрузка курса...</div>
+  }
+</app-sidebar-layout>

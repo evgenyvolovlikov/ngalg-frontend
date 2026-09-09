@@ -7,4 +7,7 @@ export type IconName =
     | 'person'
     | 'credit-card'
     | 'pencil-to-square'
-    | 'floppy-disk';
+    | 'floppy-disk'
+    | 'check'
+    | 'lock'
+    | 'clock';

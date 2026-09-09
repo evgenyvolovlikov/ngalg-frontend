@@ -1,0 +1,88 @@
+:host {
+    display: inline-flex;
+}
+
+.checkbox {
+    display: inline-flex;
+    gap: var(--unit-2);
+    align-items: center;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    transition: opacity var(--transition-fast);
+    cursor: pointer;
+    user-select: none;
+
+    &--disabled {
+        opacity: var(--opacity-disabled);
+        cursor: not-allowed;
+
+        .checkbox__box {
+            background-color: var(--bg-surface-hover);
+            border-color: var(--border-color);
+        }
+    }
+
+    &__input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        overflow: hidden;
+        clip-path: inset(100%);
+        white-space: nowrap;
+
+        &:focus-visible + .checkbox__box {
+            outline: 2px solid var(--border-focus);
+            outline-offset: 2px;
+        }
+
+        &:checked + .checkbox__box {
+            background-color: var(--color-contrast);
+            border-color: var(--color-contrast);
+
+            .checkbox__icon {
+                stroke-dashoffset: 0;
+
+                path {
+                    /* Цвет галочки контрастирует с заливкой фона */
+                    stroke: var(--text-on-contrast);
+                }
+            }
+        }
+    }
+
+    &__box {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        width: var(--unit-5); /* 1.25rem */
+        height: var(--unit-5);
+        background-color: var(--background-color);
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        transition:
+            background-color var(--transition-fast),
+            border-color var(--transition-fast);
+    }
+
+    &__icon {
+        width: var(--font-size-sm); /* 0.875rem */
+        height: var(--font-size-sm);
+        transition: stroke-dashoffset var(--transition-base);
+        stroke: var(--text-on-contrast);
+        stroke-dasharray: 24;
+        stroke-dashoffset: 24;
+    }
+
+    &__label {
+        line-height: var(--line-height-tight);
+
+        &:empty {
+            display: none;
+        }
+    }
+}

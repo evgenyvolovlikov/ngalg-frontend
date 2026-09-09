@@ -1,0 +1,40 @@
+:host {
+    display: block;
+}
+
+.lesson-header {
+    margin-bottom: var(--unit-6);
+}
+
+.header-top {
+    display: flex;
+    gap: var(--unit-4);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--unit-4);
+}
+
+.title {
+    margin: 0;
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color);
+}
+
+.duration {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--unit-2);
+    align-items: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-success);
+    white-space: nowrap;
+}
+
+.description {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-muted);
+}

@@ -104,6 +104,22 @@ export const ACCOUNT_ROUTES: Routes = [
     },
 ];
 
+export const COURSE_ROUTES: Routes = [
+    {
+        path: RouteSegments.ROOT,
+        redirectTo: 'angular-advanced',
+        pathMatch: 'full',
+    },
+    {
+        path: RouteSegments.COURSE_DETAILS,
+        loadComponent: () =>
+            import('@pages/course-details-page/course-details-page.component').then(
+                (c) => c.CourseDetailsPageComponent,
+            ),
+        title: 'Course Details Page',
+    },
+];
+
 export const APP_ROUTES: Routes = [
     {
         path: RouteSegments.ROOT,
@@ -119,6 +135,11 @@ export const APP_ROUTES: Routes = [
         path: RouteSegments.ARTICLES,
         component: MainLayoutComponent,
         children: ARTICLE_ROUTES,
+    },
+    {
+        path: RouteSegments.COURSES,
+        component: MainLayoutComponent,
+        children: COURSE_ROUTES,
     },
     {
         path: RouteSegments.ACCOUNT,

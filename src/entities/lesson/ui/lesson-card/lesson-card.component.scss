@@ -21,12 +21,11 @@
     }
 
     &.is-active {
-        background-color: var(--color-success-bg);
+        background-color: var(--bg-surface-hover);
 
-        .lesson-card,
-        .lesson-status {
+        .lesson-card {
             font-weight: var(--font-weight-medium);
-            color: var(--color-success);
+            color: var(--text-color);
         }
     }
 
@@ -41,6 +40,13 @@
     flex-grow: 1;
     justify-content: flex-start;
     padding-right: var(--unit-2);
+    text-align: left;
+}
+
+.lesson-title {
+    display: block;
+    width: 100%;
+    text-align: left;
 }
 
 .lesson-status {
@@ -55,7 +61,8 @@
         color: inherit;
     }
 
-    &.is-free {
+    &.is-free,
+    &.is-completed {
         color: var(--color-success);
     }
 }

@@ -3,7 +3,11 @@
     <span class="lesson-title">{{ lesson().sequenceOrder }} - {{ lesson().title }}</span>
   </button>
 
-  <span class="lesson-status" [class.is-free]="lesson().isFree && !lesson().isCompleted">
+  <span
+    class="lesson-status"
+    [class.is-free]="lesson().isFree && !lesson().isCompleted"
+    [class.is-completed]="lesson().isCompleted"
+  >
     @if (lesson().isCompleted) {
       <app-icon name="check" />
     } @else if (lesson().isFree) {

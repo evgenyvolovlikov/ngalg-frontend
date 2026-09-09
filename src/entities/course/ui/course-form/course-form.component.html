@@ -1,0 +1,14 @@
+<form [formGroup]="form()" (ngSubmit)="onSubmit()" class="course-form">
+  <app-input formControlName="title" label="Название курса" />
+  <app-input formControlName="slug" label="Slug (URL)" />
+  <app-textarea formControlName="description" label="Описание курса" [rows]="4" />
+
+  <app-checkbox formControlName="isPublished">Опубликован</app-checkbox>
+
+  <div class="course-form__actions mt-4">
+    <button app-button type="submit" variant="filled" [disabled]="isSubmitting()">
+      {{ isEditMode() ? "Сохранить изменения" : "Создать курс" }}
+    </button>
+    <button app-button type="button" variant="outline" (click)="cancel.emit()">Отмена</button>
+  </div>
+</form>

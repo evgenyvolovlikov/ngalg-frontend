@@ -10,4 +10,5 @@ export type IconName =
     | 'floppy-disk'
     | 'check'
     | 'lock'
-    | 'clock';
+    | 'clock'
+    | 'envelope';

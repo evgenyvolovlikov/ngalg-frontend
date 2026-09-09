@@ -1,0 +1,18 @@
+<!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-content" role="dialog" aria-modal="true">
+    @if (title()) {
+      <div class="modal-header">
+        <h4 class="modal-title">{{ title() }}</h4>
+      </div>
+    }
+
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="modal-footer">
+      <ng-content select="[modal-footer]"></ng-content>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,12 @@
     --max-width: 1440px;
 }
 
-.article-editor-page {
+.manage-course-container {
     max-width: var(--max-width);
     margin: 0 auto;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
 }

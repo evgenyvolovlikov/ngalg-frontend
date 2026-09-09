@@ -1,0 +1,23 @@
+<div class="manage-course-container">
+  <h2>{{ isEditMode() ? "Редактирование курса" : "Создание нового курса" }}</h2>
+  <app-course-form
+    [form]="courseForm"
+    [isEditMode]="isEditMode()"
+    [isSubmitting]="isSubmitting()"
+    (save)="handleSaveCourse()"
+    (cancel)="handleCancel()"
+  />
+
+  @if (isEditMode() && activeCourseSlug()) {
+    <hr class="divider my-6" />
+    <app-lesson-manager
+      [lessons]="lessons()"
+      [lessonToEdit]="editingLessonDetail()"
+      (requestEdit)="handleRequestEdit($event)"
+      (cancelEdit)="handleCancelEdit()"
+      (createLesson)="handleCreateLesson($event)"
+      (updateLesson)="handleUpdateLesson($event)"
+      (deleteLesson)="handleDeleteLesson($event)"
+    />
+  }
+</div>

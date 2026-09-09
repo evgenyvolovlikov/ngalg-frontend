@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { IconService } from './icon.service';
 import { IconName } from './icon.types';
 
-export type IconSize = 's' | 'm' | 'l' | 'xl';
+export type IconSize = 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 @Component({
     selector: 'app-icon',

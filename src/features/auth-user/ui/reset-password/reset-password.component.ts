@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { AppLinkComponent } from '@shared/ui/app-link';
 import { ButtonComponent } from '@shared/ui/button';
+import { IconComponent } from '@shared/ui/icon';
 import { InputComponent } from '@shared/ui/input';
 
 export interface ResetPasswordCredentials {
@@ -16,7 +17,14 @@ export interface ResetPasswordCredentials {
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './reset-password.component.html',
     styleUrl: './reset-password.component.scss',
-    imports: [ReactiveFormsModule, RouterLink, InputComponent, ButtonComponent, AppLinkComponent],
+    imports: [
+        ReactiveFormsModule,
+        RouterLink,
+        InputComponent,
+        ButtonComponent,
+        AppLinkComponent,
+        IconComponent,
+    ],
 })
 export class ResetPasswordComponent {
     private readonly fb = inject(NonNullableFormBuilder);

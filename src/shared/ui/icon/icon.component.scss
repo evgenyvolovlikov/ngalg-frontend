@@ -36,4 +36,9 @@
         width: var(--unit-8);
         height: var(--unit-8);
     }
+
+    &.icon--size-xxl {
+        width: var(--unit-12);
+        height: var(--unit-12);
+    }
 }

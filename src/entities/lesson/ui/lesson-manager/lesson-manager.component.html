@@ -1,0 +1,57 @@
+<div class="lesson-manager">
+  <div class="lesson-manager__header">
+    <h3>Уроки курса</h3>
+    <button app-button type="button" variant="outline" size="m" (click)="openCreateModal()">+ Добавить урок</button>
+  </div>
+
+  <div class="lesson-manager__list">
+    @for (lesson of lessons(); track lesson.id) {
+      <div class="lesson-item-card">
+        <div class="lesson-item-card__main">
+          <span class="lesson-item-card__order">#{{ lesson.sequenceOrder }}</span>
+          <span class="lesson-item-card__title">{{ lesson.title }}</span>
+        </div>
+        <div class="lesson-item-card__right">
+          <span class="lesson-item-card__meta">
+            {{ lesson.durationSeconds }} сек. |
+            {{ lesson.isFree ? "Бесплатный" : "Платный" }}
+          </span>
+          <div class="lesson-item-card__actions">
+            <button app-button type="button" variant="clear" size="s" (click)="requestEdit.emit(lesson.id)">
+              Редактировать
+            </button>
+            <button app-button type="button" variant="clear" size="s" (click)="deleteLesson.emit(lesson.id)">
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty-text">Уроки еще не добавлены</p>
+    }
+  </div>
+
+  @if (isModalOpen()) {
+    <app-modal [title]="editingLessonId() ? 'Редактировать урок' : 'Новый урок'" (close)="closeModal()">
+      <form id="lesson-form" [formGroup]="lessonForm" (ngSubmit)="submitLesson()" class="modal-form">
+        <app-input formControlName="title" label="Название урока" />
+        <app-input formControlName="sequenceOrder" type="number" label="Порядковый номер" />
+        <app-input formControlName="videoUrl" label="Ссылка на видео" />
+        <app-input formControlName="durationSeconds" type="number" label="Длительность (мин)" />
+        <app-textarea formControlName="description" label="Описание" [rows]="3" />
+
+        <div class="checkbox-group">
+          <app-checkbox formControlName="isFree">Бесплатный доступ</app-checkbox>
+        </div>
+      </form>
+
+      <ng-container ngProjectAs="[modal-footer]">
+        <button app-button type="button" variant="outline" (click)="closeModal()">Отмена</button>
+
+        <button app-button type="submit" form="lesson-form" variant="filled" [disabled]="lessonForm.invalid">
+          Сохранить
+        </button>
+      </ng-container>
+    </app-modal>
+  }
+</div>

@@ -71,7 +71,7 @@ export class CourseDetailsPageComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
-            const slug = params.get('id');
+            const slug = params.get('slug');
             if (slug) {
                 this.loadCourse(slug);
             }

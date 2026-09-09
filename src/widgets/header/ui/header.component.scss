@@ -1,3 +1,9 @@
+:host {
+    display: block;
+
+    --max-width: 1440px;
+}
+
 .header {
     position: relative;
     z-index: var(--z-fixed);
@@ -10,7 +16,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: var(--screen-xxl);
+        max-width: var(--max-width);
         height: var(--unit-16);
         margin: 0 auto;
         padding: 0 var(--unit-8);

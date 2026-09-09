@@ -20,8 +20,11 @@ export const RouteSegments = {
     TRANSACTIONS: 'transactions',
 
     COURSES: 'courses',
-    COURSE_DETAILS: ':id',
+    COURSE_DETAILS: ':slug',
     LESSONS: 'lessons',
+
+    COURSE_CREATE: 'create',
+    COURSE_EDIT: ':slug/edit',
 
     PROFILES: 'profiles',
     ME: 'me',
@@ -45,7 +48,7 @@ export const RouteBuilder = {
     ACCOUNT_OVERVIEW: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.OVERVIEW}`,
     ACCOUNT_TRANSACTIONS: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.TRANSACTIONS}`,
 
-    COURSE_DETAILS: (id: string) => `/${RouteSegments.COURSES}/${id}`,
+    COURSE_DETAILS: (slug: string) => `/${RouteSegments.COURSES}/${slug}`, // Исправлено с id на slug
 } as const;
 
 export interface NavItem {

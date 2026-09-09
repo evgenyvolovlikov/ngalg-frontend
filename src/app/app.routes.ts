@@ -111,6 +111,22 @@ export const COURSE_ROUTES: Routes = [
         pathMatch: 'full',
     },
     {
+        path: RouteSegments.COURSE_CREATE,
+        loadComponent: () =>
+            import('@pages/course-editor/course-editor-page.component').then(
+                (c) => c.CourseEditorPageComponent,
+            ),
+        title: 'Course Create Page',
+    },
+    {
+        path: RouteSegments.COURSE_EDIT,
+        loadComponent: () =>
+            import('@pages/course-editor/course-editor-page.component').then(
+                (c) => c.CourseEditorPageComponent,
+            ),
+        title: 'Course Edit Page',
+    },
+    {
         path: RouteSegments.COURSE_DETAILS,
         loadComponent: () =>
             import('@pages/course-details-page/course-details-page.component').then(

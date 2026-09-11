@@ -1,0 +1,105 @@
+:host {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+}
+
+.app-split-pane {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    &--vertical {
+        flex-direction: column;
+
+        .app-split-pane__gutter {
+            width: 100%;
+            height: var(--split-pane-gutter-size);
+            cursor: row-resize;
+
+            &::before {
+                width: 100%;
+                height: calc(var(--split-pane-gutter-size) * 3);
+                inset: calc(var(--split-pane-gutter-size) * -1) 0;
+            }
+        }
+
+        .app-split-pane__first {
+            width: 100%;
+            height: var(--split-percent);
+        }
+
+        .app-split-pane__second {
+            width: 100%;
+            height: calc(100% - var(--split-percent));
+        }
+    }
+
+    &--dragging {
+        cursor: col-resize;
+        user-select: none;
+
+        &.app-split-pane--vertical {
+            cursor: row-resize;
+        }
+
+        .app-split-pane__first,
+        .app-split-pane__second {
+            pointer-events: none;
+        }
+
+        .app-split-pane__gutter {
+            background-color: var(--color-primary);
+        }
+    }
+
+    &__first {
+        width: var(--split-percent);
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    &__second {
+        flex: 1;
+        width: calc(100% - var(--split-percent));
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    &__gutter {
+        position: relative;
+        z-index: var(--z-elevate);
+        flex-shrink: 0;
+        width: var(--split-pane-gutter-size);
+        height: 100%;
+        background-color: var(--split-pane-gutter-color);
+        transition: background-color var(--transition-fast);
+        cursor: col-resize;
+        outline: none;
+
+        &::before {
+            position: absolute;
+            z-index: calc(var(--z-elevate) + 1);
+            width: calc(var(--split-pane-gutter-size) * 3);
+            height: 100%;
+            inset: 0 calc(var(--split-pane-gutter-size) * -1);
+            content: '';
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--color-primary);
+        }
+
+        &:focus-visible {
+            box-shadow: var(--focus-ring);
+        }
+    }
+}

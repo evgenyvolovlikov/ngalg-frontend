@@ -1,1 +1,17 @@
-<div>Articles Homepage</div>
+<div style="height: 600px; border: 1px solid var(--border-color)">
+  <app-split-pane direction="horizontal" [initialSplit]="33">
+    <div pane-first>
+      <p>Левая панель</p>
+    </div>
+
+    <app-split-pane pane-second direction="horizontal" [initialSplit]="50">
+      <div pane-first>
+        <p>Центральная панель</p>
+      </div>
+
+      <div pane-second>
+        <p>Правая панель</p>
+      </div>
+    </app-split-pane>
+  </app-split-pane>
+</div>

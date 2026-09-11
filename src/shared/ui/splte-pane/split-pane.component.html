@@ -1,0 +1,25 @@
+<div
+  class="app-split-pane"
+  [class.app-split-pane--vertical]="direction() === 'vertical'"
+  [class.app-split-pane--dragging]="isDragging()"
+  [style.--split-percent]="splitPercent() + '%'"
+>
+  <div class="app-split-pane__first">
+    <ng-content select="[pane-first]"></ng-content>
+  </div>
+
+  <div
+    class="app-split-pane__gutter"
+    role="separator"
+    tabindex="0"
+    [attr.aria-valuenow]="splitPercent()"
+    aria-valuemin="10"
+    aria-valuemax="90"
+    (mousedown)="startDrag($event)"
+    (keydown)="onKeyDown($event)"
+  ></div>
+
+  <div class="app-split-pane__second">
+    <ng-content select="[pane-second]"></ng-content>
+  </div>
+</div>

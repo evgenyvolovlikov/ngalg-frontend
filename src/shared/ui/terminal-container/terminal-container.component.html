@@ -1,0 +1,10 @@
+<div class="container-wrapper">
+  @if (title()) {
+    <div class="container-header">
+      <span class="title-text">{{ title() }}</span>
+    </div>
+  }
+  <div class="container-body">
+    <ng-content></ng-content>
+  </div>
+</div>

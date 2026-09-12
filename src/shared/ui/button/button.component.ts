@@ -1,6 +1,7 @@
 import { Component, booleanAttribute, computed, input } from '@angular/core';
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled';
+export type ButtonColor = 'default' | 'primary' | 'error' | 'success';
 export type ButtonSize = 's' | 'm' | 'l' | 'xl';
 
 @Component({
@@ -13,6 +14,10 @@ export type ButtonSize = 's' | 'm' | 'l' | 'xl';
         '[class.app-button--variant-clear]': 'variant() === "clear"',
         '[class.app-button--variant-outline]': 'variant() === "outline"',
         '[class.app-button--variant-filled]': 'variant() === "filled"',
+        '[class.app-button--color-default]': 'color() === "default"',
+        '[class.app-button--color-primary]': 'color() === "primary"',
+        '[class.app-button--color-error]': 'color() === "error"',
+        '[class.app-button--color-success]': 'color() === "success"',
         '[class.app-button--size-s]': 'size() === "s"',
         '[class.app-button--size-m]': 'size() === "m"',
         '[class.app-button--size-l]': 'size() === "l"',
@@ -26,6 +31,7 @@ export type ButtonSize = 's' | 'm' | 'l' | 'xl';
 })
 export class ButtonComponent {
     readonly variant = input<ButtonVariant>('filled');
+    readonly color = input<ButtonColor>('default');
     readonly size = input<ButtonSize>('m');
 
     readonly loading = input(false, { transform: booleanAttribute });

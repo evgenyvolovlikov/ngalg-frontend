@@ -1,0 +1,89 @@
+@if (step(); as currentStep) {
+  <div class="navigator-container">
+    <app-terminal-container [title]="'Шаг ' + currentStep.sequenceOrder + ': ' + currentStep.title" ]>
+      <div class="navigator-content">
+        <!-- СЕКЦИЯ 1: СТРУКТУРА ТРЕКА -->
+        <section class="section">
+          <h3 class="section-title">СТРУКТУРА ТРЕКА</h3>
+
+          <nav class="steps-nav-list">
+            @for (item of steps(); track item.id) {
+              <button
+                class="step-nav-item"
+                [class.active]="item.id === currentStep.id"
+                [class.completed]="item.isCompleted"
+                (click)="selectStep.emit(item.id)"
+              >
+                <span class="step-icon">
+                  @if (item.isCompleted) {
+                    <app-icon name="check" class="icon-completed" />
+                  } @else if (item.id === currentStep.id) {
+                    <app-icon name="check" class="icon-active" />
+                  } @else {
+                    <app-icon name="check" class="icon-pending" />
+                  }
+                </span>
+                <span class="step-nav-title">Step {{ item.sequenceOrder }}: {{ item.title }}</span>
+              </button>
+            }
+          </nav>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- СЕКЦИЯ 2: ТЕХНИЧЕСКОЕ ЗАДАНИЕ -->
+        <section class="section">
+          <h3 class="section-title">ТЕХНИЧЕСКОЕ ЗАДАНИЕ</h3>
+
+          <div class="spec-text" [innerHTML]="currentStep.specText"></div>
+
+          <div class="complexities">
+            <app-badge variant="outline">Сложность: {{ currentStep.timeComplexity }}</app-badge>
+            <app-badge variant="outline">Память: {{ currentStep.spaceComplexity }}</app-badge>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- СЕКЦИЯ 3: РЕЗУЛЬТАТЫ ТЕСТОВ -->
+        <section class="section">
+          <h3 class="section-title">РЕЗУЛЬТАТЫ ТЕСТОВ</h3>
+
+          <ul class="tests-list">
+            @for (test of testResults(); track test.name) {
+              <li class="test-item">
+                <span class="test-status" [class.passed]="test.passed" [class.failed]="test.passed === false">
+                  @if (test.passed === true) {
+                    <app-icon name="check" class="status-passed" />
+                  } @else if (test.passed === false) {
+                    <app-icon name="check" class="status-failed" />
+                  } @else {
+                    <app-icon name="clock" class="status-pending" />
+                  }
+                </span>
+                <span class="test-name">{{ test.name }}</span>
+              </li>
+            } @empty {
+              <li class="test-item empty-state">Запустите тесты для проверки кода</li>
+            }
+          </ul>
+        </section>
+      </div>
+    </app-terminal-container>
+
+    <footer class="navigator-footer">
+      <button
+        class="action-button"
+        [disabled]="isRunningTests()"
+        (click)="runTests.emit()"
+        variant="filled"
+        color="primary"
+      >
+        <app-icon name="check" />
+        {{ isRunningTests() ? "Выполнение..." : "Запустить тесты" }}
+      </button>
+    </footer>
+  </div>
+} @else {
+  <div class="loading-state">Загрузка спецификации...</div>
+}

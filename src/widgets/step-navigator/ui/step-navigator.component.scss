@@ -1,0 +1,225 @@
+:host {
+    display: block;
+    height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.navigator-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navigator-header {
+    padding: var(--unit-4);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+
+    .step-title {
+        margin: 0;
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-bold);
+        text-transform: uppercase;
+    }
+}
+
+.navigator-content {
+    flex: 1;
+    padding: var(--unit-4);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: var(--unit-2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--border-color);
+        border-radius: var(--radius-full);
+    }
+}
+
+.section {
+    margin-bottom: var(--unit-6);
+
+    .section-title {
+        margin-bottom: var(--unit-3);
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+}
+
+/* Навигация по шагам */
+.steps-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-1);
+    margin: 0;
+    padding: 0;
+}
+
+.step-nav-item {
+    display: flex;
+    gap: var(--unit-2);
+    align-items: center;
+    width: 100%;
+    padding: var(--unit-2) var(--unit-3);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    text-align: left;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--bg-surface-hover);
+        color: var(--text-color);
+    }
+
+    &.active {
+        background-color: var(--bg-surface-active);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary);
+    }
+
+    &.completed {
+        .icon-completed {
+            color: var(--color-success);
+        }
+    }
+
+    .step-icon {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    .step-nav-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Контент задания */
+.spec-text {
+    margin-bottom: var(--unit-4);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-color);
+
+    ::ng-deep code {
+        padding: var(--unit-1) var(--unit-2);
+        background-color: var(--bg-surface);
+        border-radius: var(--radius-xs);
+        font-family: var(--font-family-mono);
+        font-size: 0.9em;
+    }
+}
+
+.complexities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--unit-2);
+}
+
+.divider {
+    margin: var(--unit-6) 0;
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Список тестов */
+.tests-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--unit-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.test-item {
+    display: flex;
+    gap: var(--unit-2);
+    align-items: center;
+    padding: var(--unit-2) var(--unit-3);
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+
+    &.empty-state {
+        justify-content: center;
+        background-color: transparent;
+        border: 1px solid var(--border-color); /* Сделал border как на скрине */
+        color: var(--text-muted);
+    }
+
+    .test-status {
+        display: flex;
+        color: var(--text-muted);
+
+        &.passed {
+            color: var(--color-success);
+        }
+
+        &.failed {
+            color: var(--color-error);
+        }
+    }
+}
+
+.navigator-footer {
+    padding: var(--unit-4);
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+
+    .action-button {
+        display: flex;
+        gap: var(--unit-2);
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: var(--unit-2) var(--unit-4);
+        background-color: var(--color-primary-bg);
+        border: 1px solid var(--color-primary);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-family-sans);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary);
+        transition: background-color var(--transition-fast);
+        cursor: pointer;
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-primary);
+            color: var(--text-on-contrast);
+        }
+
+        &:disabled {
+            opacity: var(--opacity-disabled);
+            cursor: not-allowed;
+        }
+    }
+}
+
+.loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: var(--font-family-sans);
+    color: var(--text-muted);
+}

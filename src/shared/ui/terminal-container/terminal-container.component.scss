@@ -1,0 +1,39 @@
+:host {
+    display: block;
+    height: 100%;
+    font-family:
+        system-ui,
+        -apple-system,
+        sans-serif;
+}
+
+.container-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #121215;
+    border: 1px solid #27272a;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    overflow: hidden;
+}
+
+.container-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #18181b;
+    border-bottom: 1px solid #27272a;
+}
+
+.title-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #a1a1aa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.container-body {
+    flex: 1;
+    overflow: auto;
+}

@@ -22,9 +22,14 @@ export const RouteSegments = {
     COURSES: 'courses',
     COURSE_DETAILS: ':slug',
     LESSONS: 'lessons',
-
     COURSE_CREATE: 'create',
     COURSE_EDIT: ':slug/edit',
+
+    TRACKS: 'tracks',
+    TRACKS_CREATE: 'create',
+    TRACK_DETAILS: ':slug',
+    TRACK_EDIT: ':slug/edit',
+    TRACK_STEP: ':slug/steps/:stepId',
 
     PROFILES: 'profiles',
     ME: 'me',
@@ -48,7 +53,14 @@ export const RouteBuilder = {
     ACCOUNT_OVERVIEW: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.OVERVIEW}`,
     ACCOUNT_TRANSACTIONS: () => `/${RouteSegments.ACCOUNT}/${RouteSegments.TRANSACTIONS}`,
 
-    COURSE_DETAILS: (slug: string) => `/${RouteSegments.COURSES}/${slug}`, // Исправлено с id на slug
+    COURSE_DETAILS: (slug: string) => `/${RouteSegments.COURSES}/${slug}`,
+
+    TRACKS: () => `/${RouteSegments.TRACKS}`,
+    TRACK_CREATE: () => `/${RouteSegments.TRACKS}/${RouteSegments.CREATE}`,
+    TRACK_DETAILS: (slug: string) => `/${RouteSegments.TRACKS}/${slug}`,
+    TRACK_EDIT: (slug: string) => `/${RouteSegments.TRACKS}/${slug}/edit`,
+    TRACK_STEP: (slug: string, stepId: string) =>
+        `/${RouteSegments.TRACKS}/${slug}/steps/${stepId}`,
 } as const;
 
 export interface NavItem {
@@ -60,6 +72,7 @@ export interface NavItem {
 export const MAIN_NAV_ITEMS: readonly NavItem[] = [
     { path: RouteBuilder.ARTICLES(), label: 'Статьи' },
     { path: RouteBuilder.COURSE_DETAILS('angular-advanced'), label: 'Курс' },
+    { path: RouteBuilder.TRACKS(), label: 'Тренажер' },
 ] as const;
 
 export const ACCOUNT_SIDEBAR_ITEMS: readonly NavItem[] = [

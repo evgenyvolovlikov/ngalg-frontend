@@ -136,6 +136,33 @@ export const COURSE_ROUTES: Routes = [
     },
 ];
 
+export const TRACK_ROUTES: Routes = [
+    {
+        path: RouteSegments.TRACKS_CREATE,
+        loadComponent: () =>
+            import('@pages/track-editor-page/track-editor-page.component').then(
+                (c) => c.TrackEditorPageComponent,
+            ),
+        title: 'Создать трек',
+    },
+    {
+        path: RouteSegments.TRACK_EDIT,
+        loadComponent: () =>
+            import('@pages/track-editor-page/track-editor-page.component').then(
+                (c) => c.TrackEditorPageComponent,
+            ),
+        title: 'Редактировать трек',
+    },
+    {
+        path: RouteSegments.TRACK_DETAILS,
+        loadComponent: () =>
+            import('@pages/track-details-page/track-details-page.component').then(
+                (c) => c.TrackDetailsPageComponent,
+            ),
+        title: 'Детали трека',
+    },
+];
+
 export const APP_ROUTES: Routes = [
     {
         path: RouteSegments.ROOT,
@@ -152,6 +179,12 @@ export const APP_ROUTES: Routes = [
         component: MainLayoutComponent,
         children: ARTICLE_ROUTES,
     },
+
+    {
+        path: RouteSegments.TRACKS,
+        children: TRACK_ROUTES,
+    },
+
     {
         path: RouteSegments.COURSES,
         component: MainLayoutComponent,

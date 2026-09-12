@@ -38,16 +38,29 @@
     width: 100%;
 }
 
-:host(.app-button--variant-filled) {
+:host(.app-button--variant-filled.app-button--color-default) {
     background-color: var(--color-contrast);
     color: var(--text-on-contrast);
+    border-color: transparent;
 
     &:hover:not(.app-button--disabled) {
         opacity: var(--opacity-hover);
     }
 }
 
-:host(.app-button--variant-outline) {
+:host(.app-button--variant-filled.app-button--color-primary) {
+    background-color: var(--color-primary-bg);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover:not(.app-button--disabled) {
+        background-color: var(--color-primary);
+        color: var(--text-on-contrast);
+    }
+}
+
+/* --- Вариант: Outline --- */
+:host(.app-button--variant-outline.app-button--color-default) {
     background-color: transparent;
     color: var(--text-color);
     border-color: var(--border-color);
@@ -58,13 +71,35 @@
     }
 }
 
-:host(.app-button--variant-clear) {
+:host(.app-button--variant-outline.app-button--color-primary) {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover:not(.app-button--disabled) {
+        background-color: var(--color-primary-bg);
+    }
+}
+
+/* --- Вариант: Clear --- */
+:host(.app-button--variant-clear.app-button--color-default) {
     background-color: transparent;
     color: var(--text-muted);
+    border-color: transparent;
 
     &:hover:not(.app-button--disabled) {
         background-color: var(--bg-surface);
         color: var(--text-color);
+    }
+}
+
+:host(.app-button--variant-clear.app-button--color-primary) {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: transparent;
+
+    &:hover:not(.app-button--disabled) {
+        background-color: var(--color-primary-bg);
     }
 }
 
